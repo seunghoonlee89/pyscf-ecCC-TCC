@@ -1,0 +1,3 @@
+#!/bin/csh
+set DATE=`date +%F%H%M%S`
+cp $1 old/$1.$DATE-$2

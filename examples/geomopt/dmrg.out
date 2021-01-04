@@ -1,0 +1,3243 @@
+Runing with 1 processors
+Block  Copyright (C) 2012  Garnet K.-L. Chan
+This program comes with ABSOLUTELY NO WARRANTY; for details see license file.
+This is free software, and you are welcome to redistribute it
+under certain conditions; see license file for details.
+Reading input file
+m_hf_occ_user integral
+/home/slee89/pyscf-374/examples/geomopt/scratch
+Fiedler-vector orbital ordering: 2 4 3 1 
+
+open orbs   :
+closed orbs :
+Initial HF occupancy guess: 1 1 0 0 0 0 1 1 
+Checking input for errors
+Summary of input
+----------------
+Total number of orbitals                           :   4
+Symmetry of the targeted wavefunctions             :   4:0:1
+Number of wavefunctions targeted                   :   1
+Symmetry of the molecule                           :   c1
+
+Schedule
+--------
+Iter       : # States              Davidson_tol          Random_noise        
+0          : 50                    1.000000e-05          1.000000e-05        
+4          : 100                   1.000000e-05          5.000000e-05        
+6          : 100                   1.000000e-06          5.000000e-05        
+8          : 100                   1.000000e-07          5.000000e-05        
+10         : 100                   1.000000e-08          5.000000e-05        
+12         : 100                   1.000000e-09          5.000000e-05        
+14         : 100                   1.000000e-09          0.000000e+00        
+Switching from twodot to onedot algorithm          :   18
+Maximum sweep iterations                           :   30
+
+processor: 0  numthrds: 1  node name: pauling
+allocating 250000000 doubles 
+**** STACK MEMORY REMAINING ***** 2.000000000000 GB
+
+			 Sweep iteration ... 0 50 0.000010000000 0.000010000000 0.000000000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+
+			 Starting sweep 0 in forwards direction
+			 ============================================================================ 
+			 Starting block is :: 
+			 Sites ::  0--0
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.0-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 0
+			 ============================
+			 Current direction is :: Forwards 
+			 Blocking and Decimating 
+			 dot with system 1
+
+			 Performing Blocking
+			 Quantum numbers and states used for warm up :: 
+			 0:0:A = 2, 1:1:A = 2, 2:0:A = 2, 2:2:A = 1, 3:1:A = 1, 4:0:A = 1, 
+			 
+Allocating 44 for the block 
+			 System  Block			 Sites ::  0--1
+			 # states: 10			 # states: 10
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+
+			 Environment Block			 Sites ::  2--3
+			 # states: 10			 # states: 10
+
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKDESDES_COMP  Virtual Operators   3  
+			 3 :  STACKCREDES_COMP  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 Solving wavefunction 
+			 Building Diagonal Hamiltonian 
+			 Done building diagonal hamiltonian 
+			 Number of elements in wavefunction :: 20  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->System                         - 0.0000    
+      |-->Envrionment                    - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   -  62 x 0.0000     = 0.0000    
+      |-->sys op                         -   1 x 0.0000     = 0.0000    
+      |-->env op                         -   1 x 0.0000     = 0.0000    
+			 No trial vector
+			 Norm of wavefunction :: 1.000000000000
+		            iter   Root           Energy      Error        Time      FLOPS 
+		               1      0    -108.95126650   1.44e-01       0.00 (s)   9.770e+02
+		               2      0    -109.04173478   8.21e-03       0.00 (s)   9.770e+02
+		               3      0    -109.04613336   1.13e-05       0.00 (s)   9.770e+02
+		               4      0    -109.04614376   5.23e-07       0.00 (s)   9.770e+02
+
+			 norm before modification 1.000000000000
+			 norm after modification 1.000010000000
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000010000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000010000000  norm after truncation: 1.000010000000
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state_average.tmp
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-0-1.0.0.tmp
+			 Performing Renormalization 
+
+			 Total discarded weight 0.000000000000
+
+			 Transforming to new basis 
+**** STACK MEMORY REMAINING ***** 1.999996640000 GB
+Total walltime                           - 0.0970    
+  |-->Blocking (includes first sweep)    - 0.0020    
+      |-->diski                          - 0.0000    
+          |-->makeiter                   - 0.0000    
+          |-->allocop                    - 0.0000    
+          |-->rawdata                    - 0.0000    
+      |-->mpicomm                        - 0.0008    
+      |-->builditerators                 - 0.0003    
+  |-->Wavefunction Solution              - 0.0096    
+      |-->davidson/guesswf/diagonal      - 0.0085    
+          |-->guesswf                    - 0.0001    
+          |-->diagonal                   - 0.0043    
+          |-->davidson                   - 0.0039    
+      |-->makerotation(includes noise)   - 0.0011    
+          |-->Add noise                  - 0.0011    
+      |-->wave and rotation io           - 0.0003    
+  |-->Renormalisation                    - 0.0004    
+      |-->in parallel region             - 0.0003    
+  |-->Save block                         - 0.0040    
+      |-->rawdata                        - 0.0001    
+			 Total block energy for State [ 0 ] with 50 States :: -109.046143757015
+			 1 :  STACKHAM  Core Operators   1  
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 2 :  STACKCRECREDES_COMP  Core Operators   2  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.1-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 Saving state 1
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Finished Sweep with 50 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -109.046143757015
+
+			 Largest Error for Sweep with 50 states is 0.000000000000
+			 M = 50      state = 0     Largest Discarded Weight = 0.000000000000  Sweep Energy = -109.046143757015 
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.020000000000
+			 Elapsed Sweep Wall Time (seconds): 0.022916000104
+
+			 Sweep iteration ... 1 50 0.000010000000 0.000010000000 0.000000000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+
+			 Starting sweep 1 in backwards direction
+			 ============================================================================ 
+			 Starting block is :: 
+			 Sites ::  3--3
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-3.3-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 0
+			 ============================
+			 Current direction is :: Backwards 
+			 Blocking and Decimating 
+			 dot with system 1
+
+			 Performing Blocking
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.0-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 System  Block			 Sites ::  2--3
+			 # states: 10			 # states: 10
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+
+			 Environment Block			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKDESDES_COMP  Virtual Operators   3  
+			 3 :  STACKCREDES_COMP  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 Solving wavefunction 
+			 Building Diagonal Hamiltonian 
+			 Done building diagonal hamiltonian 
+			 Number of elements in wavefunction :: 20  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->System                         - 0.0000    
+      |-->Envrionment                    - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   -  62 x 0.0000     = 0.0000    
+      |-->sys op                         -   1 x 0.0000     = 0.0000    
+      |-->env op                         -   1 x 0.0000     = 0.0000    
+			 No trial vector
+			 Norm of wavefunction :: 1.000000000000
+		            iter   Root           Energy      Error        Time      FLOPS 
+		               1      0    -108.95136488   1.44e-01       0.00 (s)   9.770e+02
+		               2      0    -109.04174635   8.19e-03       0.00 (s)   9.770e+02
+		               3      0    -109.04613367   1.10e-05       0.00 (s)   9.770e+02
+		               4      0    -109.04614378   5.02e-07       0.00 (s)   9.770e+02
+
+			 norm before modification 1.000000000000
+			 norm after modification 1.000010000000
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000010000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000010000000  norm after truncation: 1.000010000000
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-2-3.0.state_average.tmp
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-2-3.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-2-3.0.0.tmp
+			 Performing Renormalization 
+
+			 Total discarded weight 0.000000000000
+
+			 Transforming to new basis 
+**** STACK MEMORY REMAINING ***** 1.999996640000 GB
+Total walltime                           - 0.1153    
+  |-->Blocking (includes first sweep)    - 0.0035    
+      |-->diski                          - 0.0006    
+          |-->makeiter                   - 0.0000    
+          |-->allocop                    - 0.0000    
+          |-->rawdata                    - 0.0000    
+      |-->mpicomm                        - 0.0008    
+      |-->builditerators                 - 0.0005    
+  |-->Wavefunction Solution              - 0.0149    
+      |-->davidson/guesswf/diagonal      - 0.0127    
+          |-->guesswf                    - 0.0002    
+          |-->diagonal                   - 0.0047    
+          |-->davidson                   - 0.0074    
+      |-->makerotation(includes noise)   - 0.0021    
+          |-->Add noise                  - 0.0021    
+      |-->wave and rotation io           - 0.0006    
+  |-->Renormalisation                    - 0.0007    
+      |-->in parallel region             - 0.0005    
+  |-->Save block                         - 0.0140    
+      |-->rawdata                        - 0.0003    
+			 Total block energy for State [ 0 ] with 50 States :: -109.046143780281
+			 1 :  STACKHAM  Core Operators   1  
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 2 :  STACKCRECREDES_COMP  Core Operators   2  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-2.3-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  2--3
+			 # states: 10			 # states: 10
+
+			 Saving state 1
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Finished Sweep with 50 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -109.046143780281
+
+			 Largest Error for Sweep with 50 states is 0.000000000000
+			 M = 50      state = 0     Largest Discarded Weight = 0.000000000000  Sweep Energy = -109.046143780281 
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.000000000000
+			 Elapsed Sweep Wall Time (seconds): 0.016945000039
+			 Finished Sweep Iteration 2
+
+			 Sweep iteration ... 2 50 0.000010000000 0.000010000000 0.000100000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+
+			 Starting sweep 2 in forwards direction
+			 ============================================================================ 
+			 Starting block is :: 
+			 Sites ::  0--0
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.0-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 0
+			 ============================
+			 Current direction is :: Forwards 
+			 Blocking and Decimating 
+			 dot with system 1
+
+			 Performing Blocking
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-3.3-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 System  Block			 Sites ::  0--1
+			 # states: 10			 # states: 10
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+
+			 Environment Block			 Sites ::  2--3
+			 # states: 10			 # states: 10
+
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKDESDES_COMP  Virtual Operators   3  
+			 3 :  STACKCREDES_COMP  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 Solving wavefunction 
+			 Building Diagonal Hamiltonian 
+			 Done building diagonal hamiltonian 
+			 Number of elements in wavefunction :: 20  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->System                         - 0.0000    
+      |-->Envrionment                    - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   -  62 x 0.0000     = 0.0000    
+      |-->sys op                         -   1 x 0.0000     = 0.0000    
+      |-->env op                         -   1 x 0.0000     = 0.0000    
+			 Transposing previous wavefunction
+			 Loading Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-2-3.0.0.tmp
+			 Norm of wavefunction :: 1.000000000000
+		            iter   Root           Energy      Error        Time      FLOPS 
+		               1      0    -109.04614378   5.02e-07       0.00 (s)   9.770e+02
+
+			 norm before modification 1.000000000000
+			 norm after modification 1.000010000000
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000010000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000010000000  norm after truncation: 1.000010000000
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state_average.tmp
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-0-1.0.0.tmp
+			 Performing Renormalization 
+
+			 Total discarded weight 0.000000000000
+
+			 Transforming to new basis 
+**** STACK MEMORY REMAINING ***** 1.999996640000 GB
+Total walltime                           - 0.1296    
+  |-->Blocking (includes first sweep)    - 0.0050    
+      |-->diski                          - 0.0012    
+          |-->makeiter                   - 0.0001    
+          |-->allocop                    - 0.0001    
+          |-->rawdata                    - 0.0001    
+      |-->mpicomm                        - 0.0008    
+      |-->builditerators                 - 0.0007    
+  |-->Wavefunction Solution              - 0.0173    
+      |-->davidson/guesswf/diagonal      - 0.0142    
+          |-->guesswf                    - 0.0004    
+          |-->diagonal                   - 0.0051    
+          |-->davidson                   - 0.0083    
+      |-->makerotation(includes noise)   - 0.0029    
+          |-->Add noise                  - 0.0029    
+      |-->wave and rotation io           - 0.0009    
+  |-->Renormalisation                    - 0.0010    
+      |-->in parallel region             - 0.0008    
+  |-->Save block                         - 0.0233    
+      |-->rawdata                        - 0.0005    
+			 Total block energy for State [ 0 ] with 50 States :: -109.046143780281
+			 1 :  STACKHAM  Core Operators   1  
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 2 :  STACKCRECREDES_COMP  Core Operators   2  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.1-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 Saving state 1
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Finished Sweep with 50 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -109.046143780281
+
+			 Largest Error for Sweep with 50 states is 0.000000000000
+			 M = 50      state = 0     Largest Discarded Weight = 0.000000000000  Sweep Energy = -109.046143780281 
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.010000000000
+			 Elapsed Sweep Wall Time (seconds): 0.014297999907
+			 Finished Sweep Iteration 3
+
+			 Sweep iteration ... 3 50 0.000010000000 0.000010000000 0.000100000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+
+			 Starting sweep 3 in backwards direction
+			 ============================================================================ 
+			 Starting block is :: 
+			 Sites ::  3--3
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-3.3-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 0
+			 ============================
+			 Current direction is :: Backwards 
+			 Blocking and Decimating 
+			 dot with system 1
+
+			 Performing Blocking
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.0-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 System  Block			 Sites ::  2--3
+			 # states: 10			 # states: 10
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+
+			 Environment Block			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKDESDES_COMP  Virtual Operators   3  
+			 3 :  STACKCREDES_COMP  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 Solving wavefunction 
+			 Building Diagonal Hamiltonian 
+			 Done building diagonal hamiltonian 
+			 Number of elements in wavefunction :: 20  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->System                         - 0.0000    
+      |-->Envrionment                    - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   -  62 x 0.0000     = 0.0000    
+      |-->sys op                         -   1 x 0.0000     = 0.0000    
+      |-->env op                         -   1 x 0.0000     = 0.0000    
+			 Transposing previous wavefunction
+			 Loading Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-0-1.0.0.tmp
+			 Norm of wavefunction :: 1.000000000000
+		            iter   Root           Energy      Error        Time      FLOPS 
+		               1      0    -109.04614378   5.02e-07       0.00 (s)   9.770e+02
+
+			 norm before modification 1.000000000000
+			 norm after modification 1.000010000000
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000010000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000010000000  norm after truncation: 1.000010000000
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-2-3.0.state_average.tmp
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-2-3.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-2-3.0.0.tmp
+			 Performing Renormalization 
+
+			 Total discarded weight 0.000000000000
+
+			 Transforming to new basis 
+**** STACK MEMORY REMAINING ***** 1.999996640000 GB
+Total walltime                           - 0.1436    
+  |-->Blocking (includes first sweep)    - 0.0064    
+      |-->diski                          - 0.0017    
+          |-->makeiter                   - 0.0001    
+          |-->allocop                    - 0.0001    
+          |-->rawdata                    - 0.0001    
+      |-->mpicomm                        - 0.0008    
+      |-->builditerators                 - 0.0009    
+  |-->Wavefunction Solution              - 0.0198    
+      |-->davidson/guesswf/diagonal      - 0.0157    
+          |-->guesswf                    - 0.0006    
+          |-->diagonal                   - 0.0054    
+          |-->davidson                   - 0.0092    
+      |-->makerotation(includes noise)   - 0.0038    
+          |-->Add noise                  - 0.0038    
+      |-->wave and rotation io           - 0.0012    
+  |-->Renormalisation                    - 0.0013    
+      |-->in parallel region             - 0.0010    
+  |-->Save block                         - 0.0322    
+      |-->rawdata                        - 0.0007    
+			 Total block energy for State [ 0 ] with 50 States :: -109.046143780281
+			 1 :  STACKHAM  Core Operators   1  
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 2 :  STACKCRECREDES_COMP  Core Operators   2  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-2.3-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  2--3
+			 # states: 10			 # states: 10
+
+			 Saving state 1
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Finished Sweep with 50 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -109.046143780281
+
+			 Largest Error for Sweep with 50 states is 0.000000000000
+			 M = 50      state = 0     Largest Discarded Weight = 0.000000000000  Sweep Energy = -109.046143780281 
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.000000000000
+			 Elapsed Sweep Wall Time (seconds): 0.013449999969
+			 Finished Sweep Iteration 4
+
+			 Sweep iteration ... 4 100 0.000010000000 0.000050000000 0.000100000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+
+			 Starting sweep 4 in forwards direction
+			 ============================================================================ 
+			 Starting block is :: 
+			 Sites ::  0--0
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.0-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 0
+			 ============================
+			 Current direction is :: Forwards 
+			 Blocking and Decimating 
+			 dot with system 1
+
+			 Performing Blocking
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-3.3-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 System  Block			 Sites ::  0--1
+			 # states: 10			 # states: 10
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+
+			 Environment Block			 Sites ::  2--3
+			 # states: 10			 # states: 10
+
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKDESDES_COMP  Virtual Operators   3  
+			 3 :  STACKCREDES_COMP  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 Solving wavefunction 
+			 Building Diagonal Hamiltonian 
+			 Done building diagonal hamiltonian 
+			 Number of elements in wavefunction :: 20  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->System                         - 0.0000    
+      |-->Envrionment                    - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   -  62 x 0.0000     = 0.0000    
+      |-->sys op                         -   1 x 0.0000     = 0.0000    
+      |-->env op                         -   1 x 0.0000     = 0.0000    
+			 Transposing previous wavefunction
+			 Loading Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-2-3.0.0.tmp
+			 Norm of wavefunction :: 1.000000000000
+		            iter   Root           Energy      Error        Time      FLOPS 
+		               1      0    -109.04614378   5.02e-07       0.00 (s)   9.770e+02
+
+			 norm before modification 1.000000000000
+			 norm after modification 1.000050000000
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000050000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000050000000  norm after truncation: 1.000050000000
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state_average.tmp
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-0-1.0.0.tmp
+			 Performing Renormalization 
+
+			 Total discarded weight 0.000000000000
+
+			 Transforming to new basis 
+**** STACK MEMORY REMAINING ***** 1.999996640000 GB
+Total walltime                           - 0.1580    
+  |-->Blocking (includes first sweep)    - 0.0079    
+      |-->diski                          - 0.0023    
+          |-->makeiter                   - 0.0001    
+          |-->allocop                    - 0.0001    
+          |-->rawdata                    - 0.0001    
+      |-->mpicomm                        - 0.0008    
+      |-->builditerators                 - 0.0010    
+  |-->Wavefunction Solution              - 0.0223    
+      |-->davidson/guesswf/diagonal      - 0.0172    
+          |-->guesswf                    - 0.0007    
+          |-->diagonal                   - 0.0057    
+          |-->davidson                   - 0.0101    
+      |-->makerotation(includes noise)   - 0.0048    
+          |-->Add noise                  - 0.0048    
+      |-->wave and rotation io           - 0.0016    
+  |-->Renormalisation                    - 0.0017    
+      |-->in parallel region             - 0.0013    
+  |-->Save block                         - 0.0413    
+      |-->rawdata                        - 0.0009    
+			 Total block energy for State [ 0 ] with 100 States :: -109.046143780281
+			 1 :  STACKHAM  Core Operators   1  
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 2 :  STACKCRECREDES_COMP  Core Operators   2  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.1-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 Saving state 1
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Finished Sweep with 100 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -109.046143780281
+
+			 Largest Error for Sweep with 100 states is 0.000000000000
+			 M = 100     state = 0     Largest Discarded Weight = 0.000000000000  Sweep Energy = -109.046143780281 
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.010000000000
+			 Elapsed Sweep Wall Time (seconds): 0.016213999828
+			 Finished Sweep Iteration 5
+
+			 Sweep iteration ... 5 100 0.000010000000 0.000050000000 0.000100000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+
+			 Starting sweep 5 in backwards direction
+			 ============================================================================ 
+			 Starting block is :: 
+			 Sites ::  3--3
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-3.3-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 0
+			 ============================
+			 Current direction is :: Backwards 
+			 Blocking and Decimating 
+			 dot with system 1
+
+			 Performing Blocking
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.0-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 System  Block			 Sites ::  2--3
+			 # states: 10			 # states: 10
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+
+			 Environment Block			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKDESDES_COMP  Virtual Operators   3  
+			 3 :  STACKCREDES_COMP  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 Solving wavefunction 
+			 Building Diagonal Hamiltonian 
+			 Done building diagonal hamiltonian 
+			 Number of elements in wavefunction :: 20  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->System                         - 0.0000    
+      |-->Envrionment                    - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   -  62 x 0.0000     = 0.0000    
+      |-->sys op                         -   1 x 0.0000     = 0.0000    
+      |-->env op                         -   1 x 0.0000     = 0.0000    
+			 Transposing previous wavefunction
+			 Loading Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-0-1.0.0.tmp
+			 Norm of wavefunction :: 1.000000000000
+		            iter   Root           Energy      Error        Time      FLOPS 
+		               1      0    -109.04614378   5.02e-07       0.00 (s)   9.770e+02
+
+			 norm before modification 1.000000000000
+			 norm after modification 1.000050000000
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000050000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000050000000  norm after truncation: 1.000050000000
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-2-3.0.state_average.tmp
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-2-3.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-2-3.0.0.tmp
+			 Performing Renormalization 
+
+			 Total discarded weight 0.000000000000
+
+			 Transforming to new basis 
+**** STACK MEMORY REMAINING ***** 1.999996640000 GB
+Total walltime                           - 0.1745    
+  |-->Blocking (includes first sweep)    - 0.0093    
+      |-->diski                          - 0.0029    
+          |-->makeiter                   - 0.0002    
+          |-->allocop                    - 0.0001    
+          |-->rawdata                    - 0.0002    
+      |-->mpicomm                        - 0.0008    
+      |-->builditerators                 - 0.0012    
+  |-->Wavefunction Solution              - 0.0247    
+      |-->davidson/guesswf/diagonal      - 0.0188    
+          |-->guesswf                    - 0.0009    
+          |-->diagonal                   - 0.0060    
+          |-->davidson                   - 0.0111    
+      |-->makerotation(includes noise)   - 0.0056    
+          |-->Add noise                  - 0.0056    
+      |-->wave and rotation io           - 0.0019    
+  |-->Renormalisation                    - 0.0020    
+      |-->in parallel region             - 0.0015    
+  |-->Save block                         - 0.0526    
+      |-->rawdata                        - 0.0011    
+			 Total block energy for State [ 0 ] with 100 States :: -109.046143780281
+			 1 :  STACKHAM  Core Operators   1  
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 2 :  STACKCRECREDES_COMP  Core Operators   2  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-2.3-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  2--3
+			 # states: 10			 # states: 10
+
+			 Saving state 1
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Finished Sweep with 100 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -109.046143780281
+
+			 Largest Error for Sweep with 100 states is 0.000000000000
+			 M = 100     state = 0     Largest Discarded Weight = 0.000000000000  Sweep Energy = -109.046143780281 
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.010000000000
+			 Elapsed Sweep Wall Time (seconds): 0.016828000080
+			 Finished Sweep Iteration 6
+
+			 Sweep iteration ... 6 100 0.000001000000 0.000050000000 0.000100000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+
+			 Starting sweep 6 in forwards direction
+			 ============================================================================ 
+			 Starting block is :: 
+			 Sites ::  0--0
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.0-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 0
+			 ============================
+			 Current direction is :: Forwards 
+			 Blocking and Decimating 
+			 dot with system 1
+
+			 Performing Blocking
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-3.3-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 System  Block			 Sites ::  0--1
+			 # states: 10			 # states: 10
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+
+			 Environment Block			 Sites ::  2--3
+			 # states: 10			 # states: 10
+
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKDESDES_COMP  Virtual Operators   3  
+			 3 :  STACKCREDES_COMP  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 Solving wavefunction 
+			 Building Diagonal Hamiltonian 
+			 Done building diagonal hamiltonian 
+			 Number of elements in wavefunction :: 20  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->System                         - 0.0000    
+      |-->Envrionment                    - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   -  62 x 0.0000     = 0.0000    
+      |-->sys op                         -   1 x 0.0000     = 0.0000    
+      |-->env op                         -   1 x 0.0000     = 0.0000    
+			 Transposing previous wavefunction
+			 Loading Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-2-3.0.0.tmp
+			 Norm of wavefunction :: 1.000000000000
+		            iter   Root           Energy      Error        Time      FLOPS 
+		               1      0    -109.04614378   5.02e-07       0.00 (s)   9.770e+02
+
+			 norm before modification 1.000000000000
+			 norm after modification 1.000050000000
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000050000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000050000000  norm after truncation: 1.000050000000
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state_average.tmp
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-0-1.0.0.tmp
+			 Performing Renormalization 
+
+			 Total discarded weight 0.000000000000
+
+			 Transforming to new basis 
+**** STACK MEMORY REMAINING ***** 1.999996640000 GB
+Total walltime                           - 0.1916    
+  |-->Blocking (includes first sweep)    - 0.0107    
+      |-->diski                          - 0.0034    
+          |-->makeiter                   - 0.0002    
+          |-->allocop                    - 0.0002    
+          |-->rawdata                    - 0.0002    
+      |-->mpicomm                        - 0.0008    
+      |-->builditerators                 - 0.0014    
+  |-->Wavefunction Solution              - 0.0272    
+      |-->davidson/guesswf/diagonal      - 0.0204    
+          |-->guesswf                    - 0.0011    
+          |-->diagonal                   - 0.0063    
+          |-->davidson                   - 0.0120    
+      |-->makerotation(includes noise)   - 0.0065    
+          |-->Add noise                  - 0.0065    
+      |-->wave and rotation io           - 0.0021    
+  |-->Renormalisation                    - 0.0023    
+      |-->in parallel region             - 0.0018    
+  |-->Save block                         - 0.0646    
+      |-->rawdata                        - 0.0013    
+			 Total block energy for State [ 0 ] with 100 States :: -109.046143780281
+			 1 :  STACKHAM  Core Operators   1  
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 2 :  STACKCRECREDES_COMP  Core Operators   2  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.1-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 Saving state 1
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Finished Sweep with 100 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -109.046143780281
+
+			 Largest Error for Sweep with 100 states is 0.000000000000
+			 M = 100     state = 0     Largest Discarded Weight = 0.000000000000  Sweep Energy = -109.046143780281 
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.010000000000
+			 Elapsed Sweep Wall Time (seconds): 0.028019000078
+			 Finished Sweep Iteration 7
+
+			 Sweep iteration ... 7 100 0.000001000000 0.000050000000 0.000100000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+
+			 Starting sweep 7 in backwards direction
+			 ============================================================================ 
+			 Starting block is :: 
+			 Sites ::  3--3
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-3.3-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 0
+			 ============================
+			 Current direction is :: Backwards 
+			 Blocking and Decimating 
+			 dot with system 1
+
+			 Performing Blocking
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.0-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 System  Block			 Sites ::  2--3
+			 # states: 10			 # states: 10
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+
+			 Environment Block			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKDESDES_COMP  Virtual Operators   3  
+			 3 :  STACKCREDES_COMP  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 Solving wavefunction 
+			 Building Diagonal Hamiltonian 
+			 Done building diagonal hamiltonian 
+			 Number of elements in wavefunction :: 20  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->System                         - 0.0000    
+      |-->Envrionment                    - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   -  62 x 0.0000     = 0.0000    
+      |-->sys op                         -   1 x 0.0000     = 0.0000    
+      |-->env op                         -   1 x 0.0000     = 0.0000    
+			 Transposing previous wavefunction
+			 Loading Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-0-1.0.0.tmp
+			 Norm of wavefunction :: 1.000000000000
+		            iter   Root           Energy      Error        Time      FLOPS 
+		               1      0    -109.04614378   5.02e-07       0.00 (s)   9.770e+02
+
+			 norm before modification 1.000000000000
+			 norm after modification 1.000050000000
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000050000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000050000000  norm after truncation: 1.000050000000
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-2-3.0.state_average.tmp
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-2-3.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-2-3.0.0.tmp
+			 Performing Renormalization 
+
+			 Total discarded weight 0.000000000000
+
+			 Transforming to new basis 
+**** STACK MEMORY REMAINING ***** 1.999996640000 GB
+Total walltime                           - 0.2202    
+  |-->Blocking (includes first sweep)    - 0.0121    
+      |-->diski                          - 0.0040    
+          |-->makeiter                   - 0.0002    
+          |-->allocop                    - 0.0002    
+          |-->rawdata                    - 0.0002    
+      |-->mpicomm                        - 0.0008    
+      |-->builditerators                 - 0.0016    
+  |-->Wavefunction Solution              - 0.0297    
+      |-->davidson/guesswf/diagonal      - 0.0219    
+          |-->guesswf                    - 0.0013    
+          |-->diagonal                   - 0.0067    
+          |-->davidson                   - 0.0129    
+      |-->makerotation(includes noise)   - 0.0074    
+          |-->Add noise                  - 0.0074    
+      |-->wave and rotation io           - 0.0025    
+  |-->Renormalisation                    - 0.0026    
+      |-->in parallel region             - 0.0020    
+  |-->Save block                         - 0.0775    
+      |-->rawdata                        - 0.0016    
+			 Total block energy for State [ 0 ] with 100 States :: -109.046143780281
+			 1 :  STACKHAM  Core Operators   1  
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 2 :  STACKCRECREDES_COMP  Core Operators   2  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-2.3-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  2--3
+			 # states: 10			 # states: 10
+
+			 Saving state 1
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Finished Sweep with 100 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -109.046143780281
+
+			 Largest Error for Sweep with 100 states is 0.000000000000
+			 M = 100     state = 0     Largest Discarded Weight = 0.000000000000  Sweep Energy = -109.046143780281 
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.000000000000
+			 Elapsed Sweep Wall Time (seconds): 0.014008000027
+			 Finished Sweep Iteration 8
+
+			 Sweep iteration ... 8 100 0.000000100000 0.000050000000 0.000100000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+
+			 Starting sweep 8 in forwards direction
+			 ============================================================================ 
+			 Starting block is :: 
+			 Sites ::  0--0
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.0-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 0
+			 ============================
+			 Current direction is :: Forwards 
+			 Blocking and Decimating 
+			 dot with system 1
+
+			 Performing Blocking
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-3.3-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 System  Block			 Sites ::  0--1
+			 # states: 10			 # states: 10
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+
+			 Environment Block			 Sites ::  2--3
+			 # states: 10			 # states: 10
+
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKDESDES_COMP  Virtual Operators   3  
+			 3 :  STACKCREDES_COMP  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 Solving wavefunction 
+			 Building Diagonal Hamiltonian 
+			 Done building diagonal hamiltonian 
+			 Number of elements in wavefunction :: 20  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->System                         - 0.0000    
+      |-->Envrionment                    - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   -  62 x 0.0000     = 0.0000    
+      |-->sys op                         -   1 x 0.0000     = 0.0000    
+      |-->env op                         -   1 x 0.0000     = 0.0000    
+			 Transposing previous wavefunction
+			 Loading Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-2-3.0.0.tmp
+			 Norm of wavefunction :: 1.000000000000
+		            iter   Root           Energy      Error        Time      FLOPS 
+		               1      0    -109.04614378   5.02e-07       0.00 (s)   9.770e+02
+		               2      0    -109.04614430   3.79e-08       0.00 (s)   9.770e+02
+
+			 norm before modification 1.000000000000
+			 norm after modification 1.000050000000
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000050000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000050000000  norm after truncation: 1.000050000000
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state_average.tmp
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-0-1.0.0.tmp
+			 Performing Renormalization 
+
+			 Total discarded weight 0.000000000000
+
+			 Transforming to new basis 
+**** STACK MEMORY REMAINING ***** 1.999996640000 GB
+Total walltime                           - 0.2347    
+  |-->Blocking (includes first sweep)    - 0.0136    
+      |-->diski                          - 0.0045    
+          |-->makeiter                   - 0.0002    
+          |-->allocop                    - 0.0002    
+          |-->rawdata                    - 0.0003    
+      |-->mpicomm                        - 0.0008    
+      |-->builditerators                 - 0.0018    
+  |-->Wavefunction Solution              - 0.0329    
+      |-->davidson/guesswf/diagonal      - 0.0243    
+          |-->guesswf                    - 0.0015    
+          |-->diagonal                   - 0.0070    
+          |-->davidson                   - 0.0147    
+      |-->makerotation(includes noise)   - 0.0082    
+          |-->Add noise                  - 0.0082    
+      |-->wave and rotation io           - 0.0027    
+  |-->Renormalisation                    - 0.0029    
+      |-->in parallel region             - 0.0023    
+  |-->Save block                         - 0.0860    
+      |-->rawdata                        - 0.0017    
+			 Total block energy for State [ 0 ] with 100 States :: -109.046144304819
+			 1 :  STACKHAM  Core Operators   1  
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 2 :  STACKCRECREDES_COMP  Core Operators   2  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.1-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 Saving state 1
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Finished Sweep with 100 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -109.046144304819
+
+			 Largest Error for Sweep with 100 states is 0.000000000000
+			 M = 100     state = 0     Largest Discarded Weight = 0.000000000000  Sweep Energy = -109.046144304819 
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.010000000000
+			 Elapsed Sweep Wall Time (seconds): 0.015485000098
+			 Finished Sweep Iteration 9
+
+			 Sweep iteration ... 9 100 0.000000100000 0.000050000000 0.000100000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+
+			 Starting sweep 9 in backwards direction
+			 ============================================================================ 
+			 Starting block is :: 
+			 Sites ::  3--3
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-3.3-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 0
+			 ============================
+			 Current direction is :: Backwards 
+			 Blocking and Decimating 
+			 dot with system 1
+
+			 Performing Blocking
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.0-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 System  Block			 Sites ::  2--3
+			 # states: 10			 # states: 10
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+
+			 Environment Block			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKDESDES_COMP  Virtual Operators   3  
+			 3 :  STACKCREDES_COMP  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 Solving wavefunction 
+			 Building Diagonal Hamiltonian 
+			 Done building diagonal hamiltonian 
+			 Number of elements in wavefunction :: 20  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->System                         - 0.0000    
+      |-->Envrionment                    - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   -  62 x 0.0000     = 0.0000    
+      |-->sys op                         -   1 x 0.0000     = 0.0000    
+      |-->env op                         -   1 x 0.0000     = 0.0000    
+			 Transposing previous wavefunction
+			 Loading Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-0-1.0.0.tmp
+			 Norm of wavefunction :: 1.000000000000
+		            iter   Root           Energy      Error        Time      FLOPS 
+		               1      0    -109.04614430   3.79e-08       0.00 (s)   9.770e+02
+
+			 norm before modification 1.000000000000
+			 norm after modification 1.000050000000
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000050000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000050000000  norm after truncation: 1.000050000000
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-2-3.0.state_average.tmp
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-2-3.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-2-3.0.0.tmp
+			 Performing Renormalization 
+
+			 Total discarded weight 0.000000000000
+
+			 Transforming to new basis 
+**** STACK MEMORY REMAINING ***** 1.999996640000 GB
+Total walltime                           - 0.2486    
+  |-->Blocking (includes first sweep)    - 0.0150    
+      |-->diski                          - 0.0051    
+          |-->makeiter                   - 0.0003    
+          |-->allocop                    - 0.0002    
+          |-->rawdata                    - 0.0003    
+      |-->mpicomm                        - 0.0008    
+      |-->builditerators                 - 0.0020    
+  |-->Wavefunction Solution              - 0.0355    
+      |-->davidson/guesswf/diagonal      - 0.0258    
+          |-->guesswf                    - 0.0016    
+          |-->diagonal                   - 0.0073    
+          |-->davidson                   - 0.0156    
+      |-->makerotation(includes noise)   - 0.0093    
+          |-->Add noise                  - 0.0093    
+      |-->wave and rotation io           - 0.0031    
+  |-->Renormalisation                    - 0.0033    
+      |-->in parallel region             - 0.0025    
+  |-->Save block                         - 0.0947    
+      |-->rawdata                        - 0.0019    
+			 Total block energy for State [ 0 ] with 100 States :: -109.046144304819
+			 1 :  STACKHAM  Core Operators   1  
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 2 :  STACKCRECREDES_COMP  Core Operators   2  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-2.3-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  2--3
+			 # states: 10			 # states: 10
+
+			 Saving state 1
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Finished Sweep with 100 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -109.046144304819
+
+			 Largest Error for Sweep with 100 states is 0.000000000000
+			 M = 100     state = 0     Largest Discarded Weight = 0.000000000000  Sweep Energy = -109.046144304819 
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.000000000000
+			 Elapsed Sweep Wall Time (seconds): 0.014712000033
+			 Finished Sweep Iteration 10
+
+			 Sweep iteration ... 10 100 0.000000010000 0.000050000000 0.000100000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+
+			 Starting sweep 10 in forwards direction
+			 ============================================================================ 
+			 Starting block is :: 
+			 Sites ::  0--0
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.0-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 0
+			 ============================
+			 Current direction is :: Forwards 
+			 Blocking and Decimating 
+			 dot with system 1
+
+			 Performing Blocking
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-3.3-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 System  Block			 Sites ::  0--1
+			 # states: 10			 # states: 10
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+
+			 Environment Block			 Sites ::  2--3
+			 # states: 10			 # states: 10
+
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKDESDES_COMP  Virtual Operators   3  
+			 3 :  STACKCREDES_COMP  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 Solving wavefunction 
+			 Building Diagonal Hamiltonian 
+			 Done building diagonal hamiltonian 
+			 Number of elements in wavefunction :: 20  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->System                         - 0.0000    
+      |-->Envrionment                    - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   -  62 x 0.0000     = 0.0000    
+      |-->sys op                         -   1 x 0.0000     = 0.0000    
+      |-->env op                         -   1 x 0.0000     = 0.0000    
+			 Transposing previous wavefunction
+			 Loading Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-2-3.0.0.tmp
+			 Norm of wavefunction :: 1.000000000000
+		            iter   Root           Energy      Error        Time      FLOPS 
+		               1      0    -109.04614430   3.79e-08       0.00 (s)   9.770e+02
+		               2      0    -109.04614434   4.33e-09       0.00 (s)   9.770e+02
+
+			 norm before modification 1.000000000000
+			 norm after modification 1.000050000000
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000050000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000050000000  norm after truncation: 1.000050000000
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state_average.tmp
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-0-1.0.0.tmp
+			 Performing Renormalization 
+
+			 Total discarded weight 0.000000000000
+
+			 Transforming to new basis 
+**** STACK MEMORY REMAINING ***** 1.999996640000 GB
+Total walltime                           - 0.2629    
+  |-->Blocking (includes first sweep)    - 0.0164    
+      |-->diski                          - 0.0056    
+          |-->makeiter                   - 0.0003    
+          |-->allocop                    - 0.0003    
+          |-->rawdata                    - 0.0003    
+      |-->mpicomm                        - 0.0008    
+      |-->builditerators                 - 0.0022    
+  |-->Wavefunction Solution              - 0.0389    
+      |-->davidson/guesswf/diagonal      - 0.0282    
+          |-->guesswf                    - 0.0018    
+          |-->diagonal                   - 0.0076    
+          |-->davidson                   - 0.0174    
+      |-->makerotation(includes noise)   - 0.0102    
+          |-->Add noise                  - 0.0102    
+      |-->wave and rotation io           - 0.0035    
+  |-->Renormalisation                    - 0.0036    
+      |-->in parallel region             - 0.0028    
+  |-->Save block                         - 0.1030    
+      |-->rawdata                        - 0.0021    
+			 Total block energy for State [ 0 ] with 100 States :: -109.046144335078
+			 1 :  STACKHAM  Core Operators   1  
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 2 :  STACKCRECREDES_COMP  Core Operators   2  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.1-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 Saving state 1
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Finished Sweep with 100 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -109.046144335078
+
+			 Largest Error for Sweep with 100 states is 0.000000000000
+			 M = 100     state = 0     Largest Discarded Weight = 0.000000000000  Sweep Energy = -109.046144335078 
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.010000000000
+			 Elapsed Sweep Wall Time (seconds): 0.012315000175
+			 Finished Sweep Iteration 11
+
+			 Sweep iteration ... 11 100 0.000000010000 0.000050000000 0.000100000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+
+			 Starting sweep 11 in backwards direction
+			 ============================================================================ 
+			 Starting block is :: 
+			 Sites ::  3--3
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-3.3-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 0
+			 ============================
+			 Current direction is :: Backwards 
+			 Blocking and Decimating 
+			 dot with system 1
+
+			 Performing Blocking
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.0-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 System  Block			 Sites ::  2--3
+			 # states: 10			 # states: 10
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+
+			 Environment Block			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKDESDES_COMP  Virtual Operators   3  
+			 3 :  STACKCREDES_COMP  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 Solving wavefunction 
+			 Building Diagonal Hamiltonian 
+			 Done building diagonal hamiltonian 
+			 Number of elements in wavefunction :: 20  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->System                         - 0.0000    
+      |-->Envrionment                    - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   -  62 x 0.0000     = 0.0000    
+      |-->sys op                         -   1 x 0.0000     = 0.0000    
+      |-->env op                         -   1 x 0.0000     = 0.0000    
+			 Transposing previous wavefunction
+			 Loading Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-0-1.0.0.tmp
+			 Norm of wavefunction :: 1.000000000000
+		            iter   Root           Energy      Error        Time      FLOPS 
+		               1      0    -109.04614434   4.33e-09       0.00 (s)   9.770e+02
+
+			 norm before modification 1.000000000000
+			 norm after modification 1.000050000000
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000050000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000050000000  norm after truncation: 1.000050000000
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-2-3.0.state_average.tmp
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-2-3.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-2-3.0.0.tmp
+			 Performing Renormalization 
+
+			 Total discarded weight 0.000000000000
+
+			 Transforming to new basis 
+**** STACK MEMORY REMAINING ***** 1.999996640000 GB
+Total walltime                           - 0.2763    
+  |-->Blocking (includes first sweep)    - 0.0179    
+      |-->diski                          - 0.0062    
+          |-->makeiter                   - 0.0003    
+          |-->allocop                    - 0.0003    
+          |-->rawdata                    - 0.0004    
+      |-->mpicomm                        - 0.0008    
+      |-->builditerators                 - 0.0024    
+  |-->Wavefunction Solution              - 0.0414    
+      |-->davidson/guesswf/diagonal      - 0.0297    
+          |-->guesswf                    - 0.0020    
+          |-->diagonal                   - 0.0079    
+          |-->davidson                   - 0.0183    
+      |-->makerotation(includes noise)   - 0.0111    
+          |-->Add noise                  - 0.0111    
+      |-->wave and rotation io           - 0.0038    
+  |-->Renormalisation                    - 0.0039    
+      |-->in parallel region             - 0.0030    
+  |-->Save block                         - 0.1113    
+      |-->rawdata                        - 0.0023    
+			 Total block energy for State [ 0 ] with 100 States :: -109.046144335078
+			 1 :  STACKHAM  Core Operators   1  
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 2 :  STACKCRECREDES_COMP  Core Operators   2  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-2.3-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  2--3
+			 # states: 10			 # states: 10
+
+			 Saving state 1
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Finished Sweep with 100 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -109.046144335078
+
+			 Largest Error for Sweep with 100 states is 0.000000000000
+			 M = 100     state = 0     Largest Discarded Weight = 0.000000000000  Sweep Energy = -109.046144335078 
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.000000000000
+			 Elapsed Sweep Wall Time (seconds): 0.012436999939
+			 Finished Sweep Iteration 12
+
+			 Sweep iteration ... 12 100 0.000000001000 0.000050000000 0.000100000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+
+			 Starting sweep 12 in forwards direction
+			 ============================================================================ 
+			 Starting block is :: 
+			 Sites ::  0--0
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.0-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 0
+			 ============================
+			 Current direction is :: Forwards 
+			 Blocking and Decimating 
+			 dot with system 1
+
+			 Performing Blocking
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-3.3-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 System  Block			 Sites ::  0--1
+			 # states: 10			 # states: 10
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+
+			 Environment Block			 Sites ::  2--3
+			 # states: 10			 # states: 10
+
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKDESDES_COMP  Virtual Operators   3  
+			 3 :  STACKCREDES_COMP  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 Solving wavefunction 
+			 Building Diagonal Hamiltonian 
+			 Done building diagonal hamiltonian 
+			 Number of elements in wavefunction :: 20  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->System                         - 0.0000    
+      |-->Envrionment                    - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   -  62 x 0.0000     = 0.0000    
+      |-->sys op                         -   1 x 0.0000     = 0.0000    
+      |-->env op                         -   1 x 0.0000     = 0.0000    
+			 Transposing previous wavefunction
+			 Loading Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-2-3.0.0.tmp
+			 Norm of wavefunction :: 1.000000000000
+		            iter   Root           Energy      Error        Time      FLOPS 
+		               1      0    -109.04614434   4.33e-09       0.00 (s)   9.770e+02
+		               2      0    -109.04614434   7.39e-10       0.00 (s)   9.770e+02
+
+			 norm before modification 1.000000000000
+			 norm after modification 1.000050000000
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000050000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000050000000  norm after truncation: 1.000050000000
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state_average.tmp
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-0-1.0.0.tmp
+			 Performing Renormalization 
+
+			 Total discarded weight 0.000000000000
+
+			 Transforming to new basis 
+**** STACK MEMORY REMAINING ***** 1.999996640000 GB
+Total walltime                           - 0.2902    
+  |-->Blocking (includes first sweep)    - 0.0193    
+      |-->diski                          - 0.0067    
+          |-->makeiter                   - 0.0004    
+          |-->allocop                    - 0.0003    
+          |-->rawdata                    - 0.0004    
+      |-->mpicomm                        - 0.0008    
+      |-->builditerators                 - 0.0026    
+  |-->Wavefunction Solution              - 0.0447    
+      |-->davidson/guesswf/diagonal      - 0.0321    
+          |-->guesswf                    - 0.0021    
+          |-->diagonal                   - 0.0083    
+          |-->davidson                   - 0.0201    
+      |-->makerotation(includes noise)   - 0.0119    
+          |-->Add noise                  - 0.0119    
+      |-->wave and rotation io           - 0.0041    
+  |-->Renormalisation                    - 0.0043    
+      |-->in parallel region             - 0.0033    
+  |-->Save block                         - 0.1193    
+      |-->rawdata                        - 0.0025    
+			 Total block energy for State [ 0 ] with 100 States :: -109.046144338062
+			 1 :  STACKHAM  Core Operators   1  
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 2 :  STACKCRECREDES_COMP  Core Operators   2  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.1-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 Saving state 1
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Finished Sweep with 100 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -109.046144338062
+
+			 Largest Error for Sweep with 100 states is 0.000000000000
+			 M = 100     state = 0     Largest Discarded Weight = 0.000000000000  Sweep Energy = -109.046144338062 
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.010000000000
+			 Elapsed Sweep Wall Time (seconds): 0.021948999958
+			 Finished Sweep Iteration 13
+
+			 Sweep iteration ... 13 100 0.000000001000 0.000050000000 0.000100000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+
+			 Starting sweep 13 in backwards direction
+			 ============================================================================ 
+			 Starting block is :: 
+			 Sites ::  3--3
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-3.3-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 0
+			 ============================
+			 Current direction is :: Backwards 
+			 Blocking and Decimating 
+			 dot with system 1
+
+			 Performing Blocking
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.0-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 System  Block			 Sites ::  2--3
+			 # states: 10			 # states: 10
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+
+			 Environment Block			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKDESDES_COMP  Virtual Operators   3  
+			 3 :  STACKCREDES_COMP  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 Solving wavefunction 
+			 Building Diagonal Hamiltonian 
+			 Done building diagonal hamiltonian 
+			 Number of elements in wavefunction :: 20  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->System                         - 0.0000    
+      |-->Envrionment                    - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   -  62 x 0.0000     = 0.0000    
+      |-->sys op                         -   1 x 0.0000     = 0.0000    
+      |-->env op                         -   1 x 0.0000     = 0.0000    
+			 Transposing previous wavefunction
+			 Loading Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-0-1.0.0.tmp
+			 Norm of wavefunction :: 1.000000000000
+		            iter   Root           Energy      Error        Time      FLOPS 
+		               1      0    -109.04614434   7.39e-10       0.00 (s)   9.770e+02
+
+			 norm before modification 1.000000000000
+			 norm after modification 1.000050000000
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000050000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000050000000  norm after truncation: 1.000050000000
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-2-3.0.state_average.tmp
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-2-3.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-2-3.0.0.tmp
+			 Performing Renormalization 
+
+			 Total discarded weight 0.000000000000
+
+			 Transforming to new basis 
+**** STACK MEMORY REMAINING ***** 1.999996640000 GB
+Total walltime                           - 0.3103    
+  |-->Blocking (includes first sweep)    - 0.0207    
+      |-->diski                          - 0.0073    
+          |-->makeiter                   - 0.0004    
+          |-->allocop                    - 0.0003    
+          |-->rawdata                    - 0.0004    
+      |-->mpicomm                        - 0.0009    
+      |-->builditerators                 - 0.0028    
+  |-->Wavefunction Solution              - 0.0472    
+      |-->davidson/guesswf/diagonal      - 0.0336    
+          |-->guesswf                    - 0.0023    
+          |-->diagonal                   - 0.0086    
+          |-->davidson                   - 0.0210    
+      |-->makerotation(includes noise)   - 0.0129    
+          |-->Add noise                  - 0.0129    
+      |-->wave and rotation io           - 0.0044    
+  |-->Renormalisation                    - 0.0046    
+      |-->in parallel region             - 0.0036    
+  |-->Save block                         - 0.1341    
+      |-->rawdata                        - 0.0027    
+			 Total block energy for State [ 0 ] with 100 States :: -109.046144338062
+			 1 :  STACKHAM  Core Operators   1  
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 2 :  STACKCRECREDES_COMP  Core Operators   2  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-2.3-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  2--3
+			 # states: 10			 # states: 10
+
+			 Saving state 1
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Finished Sweep with 100 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -109.046144338062
+
+			 Largest Error for Sweep with 100 states is 0.000000000000
+			 M = 100     state = 0     Largest Discarded Weight = 0.000000000000  Sweep Energy = -109.046144338062 
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.010000000000
+			 Elapsed Sweep Wall Time (seconds): 0.014054999920
+			 Finished Sweep Iteration 14
+
+			 Sweep iteration ... 14 100 0.000000001000 0.000000000000 0.000100000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+
+			 Starting sweep 14 in forwards direction
+			 ============================================================================ 
+			 Starting block is :: 
+			 Sites ::  0--0
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.0-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 0
+			 ============================
+			 Current direction is :: Forwards 
+			 Blocking and Decimating 
+			 dot with system 1
+
+			 Performing Blocking
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-3.3-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 System  Block			 Sites ::  0--1
+			 # states: 10			 # states: 10
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+
+			 Environment Block			 Sites ::  2--3
+			 # states: 10			 # states: 10
+
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKDESDES_COMP  Virtual Operators   3  
+			 3 :  STACKCREDES_COMP  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 Solving wavefunction 
+			 Building Diagonal Hamiltonian 
+			 Done building diagonal hamiltonian 
+			 Number of elements in wavefunction :: 20  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->System                         - 0.0000    
+      |-->Envrionment                    - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   -  62 x 0.0000     = 0.0000    
+      |-->sys op                         -   1 x 0.0000     = 0.0000    
+      |-->env op                         -   1 x 0.0000     = 0.0000    
+			 Transposing previous wavefunction
+			 Loading Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-2-3.0.0.tmp
+			 Norm of wavefunction :: 1.000000000000
+		            iter   Root           Energy      Error        Time      FLOPS 
+		               1      0    -109.04614434   7.39e-10       0.00 (s)   9.770e+02
+
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state_average.tmp
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-0-1.0.0.tmp
+			 Performing Renormalization 
+
+			 Total discarded weight 0.000000000000
+
+			 Transforming to new basis 
+**** STACK MEMORY REMAINING ***** 1.999996640000 GB
+Total walltime                           - 0.3249    
+  |-->Blocking (includes first sweep)    - 0.0222    
+      |-->diski                          - 0.0079    
+          |-->makeiter                   - 0.0004    
+          |-->allocop                    - 0.0004    
+          |-->rawdata                    - 0.0005    
+      |-->mpicomm                        - 0.0009    
+      |-->builditerators                 - 0.0029    
+  |-->Wavefunction Solution              - 0.0493    
+      |-->davidson/guesswf/diagonal      - 0.0352    
+          |-->guesswf                    - 0.0025    
+          |-->diagonal                   - 0.0089    
+          |-->davidson                   - 0.0219    
+      |-->makerotation(includes noise)   - 0.0134    
+          |-->Add noise                  - 0.0134    
+      |-->wave and rotation io           - 0.0047    
+  |-->Renormalisation                    - 0.0050    
+      |-->in parallel region             - 0.0038    
+  |-->Save block                         - 0.1421    
+      |-->rawdata                        - 0.0029    
+			 Total block energy for State [ 0 ] with 100 States :: -109.046144338062
+			 1 :  STACKHAM  Core Operators   1  
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 2 :  STACKCRECREDES_COMP  Core Operators   2  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.1-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 Saving state 1
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Finished Sweep with 100 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -109.046144338062
+
+			 Largest Error for Sweep with 100 states is 0.000000000000
+			 M = 100     state = 0     Largest Discarded Weight = 0.000000000000  Sweep Energy = -109.046144338062 
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.000000000000
+			 Elapsed Sweep Wall Time (seconds): 0.015995000023
+			 Finished Sweep Iteration 15
+
+			 Sweep iteration ... 15 100 0.000000001000 0.000000000000 0.000100000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+
+			 Starting sweep 15 in backwards direction
+			 ============================================================================ 
+			 Starting block is :: 
+			 Sites ::  3--3
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-3.3-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 0
+			 ============================
+			 Current direction is :: Backwards 
+			 Blocking and Decimating 
+			 dot with system 1
+
+			 Performing Blocking
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.0-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 System  Block			 Sites ::  2--3
+			 # states: 10			 # states: 10
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+
+			 Environment Block			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKDESDES_COMP  Virtual Operators   3  
+			 3 :  STACKCREDES_COMP  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 Solving wavefunction 
+			 Building Diagonal Hamiltonian 
+			 Done building diagonal hamiltonian 
+			 Number of elements in wavefunction :: 20  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->System                         - 0.0000    
+      |-->Envrionment                    - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   -  62 x 0.0000     = 0.0000    
+      |-->sys op                         -   1 x 0.0000     = 0.0000    
+      |-->env op                         -   1 x 0.0000     = 0.0000    
+			 Transposing previous wavefunction
+			 Loading Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-0-1.0.0.tmp
+			 Norm of wavefunction :: 1.000000000000
+		            iter   Root           Energy      Error        Time      FLOPS 
+		               1      0    -109.04614434   7.39e-10       0.00 (s)   9.770e+02
+
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-2-3.0.state_average.tmp
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-2-3.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-2-3.0.0.tmp
+			 Performing Renormalization 
+
+			 Total discarded weight 0.000000000000
+
+			 Transforming to new basis 
+**** STACK MEMORY REMAINING ***** 1.999996640000 GB
+Total walltime                           - 0.3415    
+  |-->Blocking (includes first sweep)    - 0.0236    
+      |-->diski                          - 0.0084    
+          |-->makeiter                   - 0.0004    
+          |-->allocop                    - 0.0004    
+          |-->rawdata                    - 0.0005    
+      |-->mpicomm                        - 0.0009    
+      |-->builditerators                 - 0.0031    
+  |-->Wavefunction Solution              - 0.0514    
+      |-->davidson/guesswf/diagonal      - 0.0368    
+          |-->guesswf                    - 0.0027    
+          |-->diagonal                   - 0.0092    
+          |-->davidson                   - 0.0229    
+      |-->makerotation(includes noise)   - 0.0139    
+          |-->Add noise                  - 0.0139    
+      |-->wave and rotation io           - 0.0050    
+  |-->Renormalisation                    - 0.0053    
+      |-->in parallel region             - 0.0041    
+  |-->Save block                         - 0.1539    
+      |-->rawdata                        - 0.0031    
+			 Total block energy for State [ 0 ] with 100 States :: -109.046144338062
+			 1 :  STACKHAM  Core Operators   1  
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 2 :  STACKCRECREDES_COMP  Core Operators   2  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-2.3-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  2--3
+			 # states: 10			 # states: 10
+
+			 Saving state 1
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Finished Sweep with 100 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -109.046144338062
+
+			 Largest Error for Sweep with 100 states is 0.000000000000
+			 M = 100     state = 0     Largest Discarded Weight = 0.000000000000  Sweep Energy = -109.046144338062 
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.000000000000
+			 Elapsed Sweep Wall Time (seconds): 0.012676999904
+			 Finished Sweep Iteration 16
+
+			 Sweep iteration ... 16 100 0.000000001000 0.000000000000 0.000100000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+
+			 Starting sweep 16 in forwards direction
+			 ============================================================================ 
+			 Starting block is :: 
+			 Sites ::  0--0
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.0-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 0
+			 ============================
+			 Current direction is :: Forwards 
+			 Blocking and Decimating 
+			 dot with system 1
+
+			 Performing Blocking
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-3.3-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 System  Block			 Sites ::  0--1
+			 # states: 10			 # states: 10
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+
+			 Environment Block			 Sites ::  2--3
+			 # states: 10			 # states: 10
+
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKDESDES_COMP  Virtual Operators   3  
+			 3 :  STACKCREDES_COMP  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 Solving wavefunction 
+			 Building Diagonal Hamiltonian 
+			 Done building diagonal hamiltonian 
+			 Number of elements in wavefunction :: 20  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->System                         - 0.0000    
+      |-->Envrionment                    - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   -  62 x 0.0000     = 0.0000    
+      |-->sys op                         -   1 x 0.0000     = 0.0000    
+      |-->env op                         -   1 x 0.0000     = 0.0000    
+			 Transposing previous wavefunction
+			 Loading Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-2-3.0.0.tmp
+			 Norm of wavefunction :: 1.000000000000
+		            iter   Root           Energy      Error        Time      FLOPS 
+		               1      0    -109.04614434   7.39e-10       0.00 (s)   9.770e+02
+
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state_average.tmp
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-0-1.0.0.tmp
+			 Performing Renormalization 
+
+			 Total discarded weight 0.000000000000
+
+			 Transforming to new basis 
+**** STACK MEMORY REMAINING ***** 1.999996640000 GB
+Total walltime                           - 0.3529    
+  |-->Blocking (includes first sweep)    - 0.0249    
+      |-->diski                          - 0.0089    
+          |-->makeiter                   - 0.0005    
+          |-->allocop                    - 0.0004    
+          |-->rawdata                    - 0.0005    
+      |-->mpicomm                        - 0.0009    
+      |-->builditerators                 - 0.0033    
+  |-->Wavefunction Solution              - 0.0536    
+      |-->davidson/guesswf/diagonal      - 0.0383    
+          |-->guesswf                    - 0.0028    
+          |-->diagonal                   - 0.0096    
+          |-->davidson                   - 0.0238    
+      |-->makerotation(includes noise)   - 0.0144    
+          |-->Add noise                  - 0.0144    
+      |-->wave and rotation io           - 0.0053    
+  |-->Renormalisation                    - 0.0056    
+      |-->in parallel region             - 0.0043    
+  |-->Save block                         - 0.1607    
+      |-->rawdata                        - 0.0033    
+			 Total block energy for State [ 0 ] with 100 States :: -109.046144338062
+			 1 :  STACKHAM  Core Operators   1  
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 2 :  STACKCRECREDES_COMP  Core Operators   2  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.1-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 Saving state 1
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Finished Sweep with 100 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -109.046144338062
+
+			 Largest Error for Sweep with 100 states is 0.000000000000
+			 M = 100     state = 0     Largest Discarded Weight = 0.000000000000  Sweep Energy = -109.046144338062 
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.010000000000
+			 Elapsed Sweep Wall Time (seconds): 0.012343999930
+			 Finished Sweep Iteration 17
+
+			 Sweep iteration ... 17 100 0.000000001000 0.000000000000 0.000100000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+
+			 Starting sweep 17 in backwards direction
+			 ============================================================================ 
+			 Starting block is :: 
+			 Sites ::  3--3
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-3.3-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 0
+			 ============================
+			 Current direction is :: Backwards 
+			 Blocking and Decimating 
+			 dot with system 1
+
+			 Performing Blocking
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.0-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 System  Block			 Sites ::  2--3
+			 # states: 10			 # states: 10
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+
+			 Environment Block			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKDESDES_COMP  Virtual Operators   3  
+			 3 :  STACKCREDES_COMP  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 Solving wavefunction 
+			 Building Diagonal Hamiltonian 
+			 Done building diagonal hamiltonian 
+			 Number of elements in wavefunction :: 20  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->System                         - 0.0000    
+      |-->Envrionment                    - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   -  62 x 0.0000     = 0.0000    
+      |-->sys op                         -   1 x 0.0000     = 0.0000    
+      |-->env op                         -   1 x 0.0000     = 0.0000    
+			 Transposing previous wavefunction
+			 Loading Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-0-1.0.0.tmp
+			 Norm of wavefunction :: 1.000000000000
+		            iter   Root           Energy      Error        Time      FLOPS 
+		               1      0    -109.04614434   7.39e-10       0.00 (s)   9.770e+02
+
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-2-3.0.state_average.tmp
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-2-3.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-2-3.0.0.tmp
+			 Performing Renormalization 
+
+			 Total discarded weight 0.000000000000
+
+			 Transforming to new basis 
+**** STACK MEMORY REMAINING ***** 1.999996640000 GB
+Total walltime                           - 0.3673    
+  |-->Blocking (includes first sweep)    - 0.0264    
+      |-->diski                          - 0.0095    
+          |-->makeiter                   - 0.0005    
+          |-->allocop                    - 0.0004    
+          |-->rawdata                    - 0.0006    
+      |-->mpicomm                        - 0.0009    
+      |-->builditerators                 - 0.0035    
+  |-->Wavefunction Solution              - 0.0557    
+      |-->davidson/guesswf/diagonal      - 0.0399    
+          |-->guesswf                    - 0.0030    
+          |-->diagonal                   - 0.0099    
+          |-->davidson                   - 0.0247    
+      |-->makerotation(includes noise)   - 0.0149    
+          |-->Add noise                  - 0.0149    
+      |-->wave and rotation io           - 0.0056    
+  |-->Renormalisation                    - 0.0059    
+      |-->in parallel region             - 0.0046    
+  |-->Save block                         - 0.1703    
+      |-->rawdata                        - 0.0035    
+			 Total block energy for State [ 0 ] with 100 States :: -109.046144338062
+			 1 :  STACKHAM  Core Operators   1  
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 2 :  STACKCRECREDES_COMP  Core Operators   2  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-2.3-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  2--3
+			 # states: 10			 # states: 10
+
+			 Saving state 1
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Finished Sweep with 100 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -109.046144338062
+
+			 Largest Error for Sweep with 100 states is 0.000000000000
+			 M = 100     state = 0     Largest Discarded Weight = 0.000000000000  Sweep Energy = -109.046144338062 
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.000000000000
+			 Elapsed Sweep Wall Time (seconds): 0.022683000192
+			 Finished Sweep Iteration 18
+
+			 Sweep iteration ... 18 100 0.000000001000 0.000000000000 0.000100000000
+			 Switching from two dot to one dot ... 
+			 forward system starting size ... 1 2
+			 backward system starting size ... 1 2
+
+			 Starting sweep 18 in forwards direction
+			 ============================================================================ 
+			 Starting block is :: 
+			 Sites ::  0--0
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.0-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 0
+			 ============================
+			 Current direction is :: Forwards 
+			 Blocking and Decimating 
+			 dot with system 1
+
+			 Performing Blocking
+			 Restoring block of size 2 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-2.3-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 System  Block			 Sites ::  0--1
+			 # states: 10			 # states: 10
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+
+			 Environment Block			 Sites ::  2--3
+			 # states: 10			 # states: 10
+
+			 1 :  STACKHAM  Core Operators   1  
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKDESDES_COMP  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 3 :  STACKCREDES_COMP  Core Operators   3  
+			 2 :  STACKCRECREDES_COMP  Core Operators   2  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 Solving wavefunction 
+			 Building Diagonal Hamiltonian 
+			 Done building diagonal hamiltonian 
+			 Number of elements in wavefunction :: 20  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->System                         - 0.0000    
+      |-->Envrionment                    - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   -  62 x 0.0000     = 0.0000    
+      |-->sys op                         -   1 x 0.0000     = 0.0000    
+      |-->env op                         -   1 x 0.0000     = 0.0000    
+			 No trial vector
+			 Norm of wavefunction :: 1.000000000000
+		            iter   Root           Energy      Error        Time      FLOPS 
+		               1      0    -108.98045326   9.51e-02       0.00 (s)   1.153e+03
+		               2      0    -109.04284214   4.98e-03       0.00 (s)   1.153e+03
+		               3      0    -109.04601198   1.25e-04       0.00 (s)   1.153e+03
+		               4      0    -109.04613698   7.93e-06       0.00 (s)   1.153e+03
+		               5      0    -109.04614414   1.73e-07       0.00 (s)   1.153e+03
+		               6      0    -109.04614434   3.27e-09       0.00 (s)   1.153e+03
+		               7      0    -109.04614434   2.74e-10       0.00 (s)   1.153e+03
+
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state_average.tmp
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-0-1.0.0.tmp
+			 Performing Renormalization 
+
+			 Total discarded weight 0.000000000000
+
+			 Transforming to new basis 
+**** STACK MEMORY REMAINING ***** 1.999993624000 GB
+Total walltime                           - 0.3974    
+  |-->Blocking (includes first sweep)    - 0.0346    
+      |-->diski                          - 0.0102    
+          |-->makeiter                   - 0.0005    
+          |-->allocop                    - 0.0005    
+          |-->rawdata                    - 0.0006    
+      |-->mpicomm                        - 0.0009    
+      |-->builditerators                 - 0.0037    
+  |-->Wavefunction Solution              - 0.0603    
+      |-->davidson/guesswf/diagonal      - 0.0439    
+          |-->guesswf                    - 0.0031    
+          |-->diagonal                   - 0.0100    
+          |-->davidson                   - 0.0284    
+      |-->makerotation(includes noise)   - 0.0154    
+          |-->Add noise                  - 0.0154    
+      |-->wave and rotation io           - 0.0059    
+  |-->Renormalisation                    - 0.0063    
+      |-->in parallel region             - 0.0049    
+  |-->Save block                         - 0.1862    
+      |-->rawdata                        - 0.0037    
+			 Total block energy for State [ 0 ] with 100 States :: -109.046144338578
+			 1 :  STACKHAM  Core Operators   1  
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 2 :  STACKCRECREDES_COMP  Core Operators   2  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.1-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 Saving state 1
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 1
+			 ============================
+			 Current direction is :: Forwards 
+			 Blocking and Decimating 
+			 dot with system 0
+
+			 Performing Blocking
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-3.3-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 System  Block			 Sites ::  0--1
+			 # states: 10			 # states: 10
+			 1 :  STACKHAM  Core Operators   1  
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKDESDES_COMP  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 3 :  STACKCREDES_COMP  Core Operators   3  
+			 2 :  STACKCRECREDES_COMP  Core Operators   2  
+			 1 :  STACKOVERLAP  Core Operators   1  
+
+			 Environment Block			 Sites ::  2--3
+			 # states: 10			 # states: 10
+
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 Solving wavefunction 
+			 Building Diagonal Hamiltonian 
+			 Done building diagonal hamiltonian 
+			 Number of elements in wavefunction :: 20  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->System                         - 0.0000    
+      |-->Envrionment                    - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   -  62 x 0.0000     = 0.0000    
+      |-->sys op                         -   1 x 0.0000     = 0.0000    
+      |-->env op                         -   1 x 0.0000     = 0.0000    
+			 Transforming previous wavefunction 
+			 Loading Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-0-1.0.0.tmp
+			 Loading Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state0.tmp
+			 Loading Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-2-3.0.state0.tmp
+			 Norm of wavefunction :: 1.000000000000
+		            iter   Root           Energy      Error        Time      FLOPS 
+		               1      0    -109.04614434   2.74e-10       0.00 (s)   1.245e+03
+
+ 			 assigning a total of 27 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 24 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-2.0.state_average.tmp
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-2.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-0-2.0.0.tmp
+			 Performing Renormalization 
+
+			 Total discarded weight 0.000000000000
+
+			 Transforming to new basis 
+**** STACK MEMORY REMAINING ***** 1.999992640000 GB
+Total walltime                           - 0.4141    
+  |-->Blocking (includes first sweep)    - 0.0436    
+      |-->diski                          - 0.0108    
+          |-->makeiter                   - 0.0006    
+          |-->allocop                    - 0.0005    
+          |-->rawdata                    - 0.0006    
+      |-->mpicomm                        - 0.0017    
+      |-->builditerators                 - 0.0038    
+  |-->Wavefunction Solution              - 0.0622    
+      |-->davidson/guesswf/diagonal      - 0.0452    
+          |-->guesswf                    - 0.0033    
+          |-->diagonal                   - 0.0101    
+          |-->davidson                   - 0.0289    
+      |-->makerotation(includes noise)   - 0.0160    
+          |-->Add noise                  - 0.0160    
+      |-->wave and rotation io           - 0.0063    
+  |-->Renormalisation                    - 0.0065    
+      |-->in parallel region             - 0.0051    
+  |-->Save block                         - 0.1914    
+      |-->rawdata                        - 0.0038    
+			 Total block energy for State [ 0 ] with 100 States :: -109.046144338578
+			 1 :  STACKHAM  Core Operators   1  
+			 3 :  STACKCRE  Core Operators   3  
+			 1 :  STACKDESDES_COMP  Core Operators   1  
+			 1 :  STACKCREDES_COMP  Core Operators   1  
+			 1 :  STACKCRECREDES_COMP  Core Operators   1  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.2-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-2.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-2.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  0--2
+			 # states: 3			 # states: 3
+
+			 Saving state 1
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Finished Sweep with 100 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -109.046144338578
+
+			 Largest Error for Sweep with 100 states is 0.000000000000
+			 M = 100     state = 0     Largest Discarded Weight = 0.000000000000  Sweep Energy = -109.046144338578 
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.030000000000
+			 Elapsed Sweep Wall Time (seconds): 0.040988000110
+			 Finished Sweep Iteration 19
+
+			 Sweep iteration ... 19 100 0.000000001000 0.000000000000 0.000100000000
+			 forward system starting size ... 1 2
+			 backward system starting size ... 1 2
+
+			 Starting sweep 19 in backwards direction
+			 ============================================================================ 
+			 Starting block is :: 
+			 Sites ::  3--3
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-3.3-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 0
+			 ============================
+			 Current direction is :: Backwards 
+			 Blocking and Decimating 
+			 dot with system 1
+
+			 Performing Blocking
+			 Restoring block of size 2 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.1-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 System  Block			 Sites ::  2--3
+			 # states: 10			 # states: 10
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+
+			 Environment Block			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 1 :  STACKHAM  Core Operators   1  
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKDESDES_COMP  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 3 :  STACKCREDES_COMP  Core Operators   3  
+			 2 :  STACKCRECREDES_COMP  Core Operators   2  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 Solving wavefunction 
+			 Building Diagonal Hamiltonian 
+			 Done building diagonal hamiltonian 
+			 Number of elements in wavefunction :: 20  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->System                         - 0.0000    
+      |-->Envrionment                    - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   -  62 x 0.0000     = 0.0000    
+      |-->sys op                         -   1 x 0.0000     = 0.0000    
+      |-->env op                         -   1 x 0.0000     = 0.0000    
+			 Transposing previous wavefunction
+			 Loading Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-0-2.0.0.tmp
+			 Norm of wavefunction :: 1.000000000000
+		            iter   Root           Energy      Error        Time      FLOPS 
+		               1      0    -109.04614434   2.74e-10       0.00 (s)   1.153e+03
+
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-2-3.0.state_average.tmp
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-2-3.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-2-3.0.0.tmp
+			 Performing Renormalization 
+
+			 Total discarded weight 0.000000000000
+
+			 Transforming to new basis 
+**** STACK MEMORY REMAINING ***** 1.999993624000 GB
+Total walltime                           - 0.4357    
+  |-->Blocking (includes first sweep)    - 0.0518    
+      |-->diski                          - 0.0115    
+          |-->makeiter                   - 0.0006    
+          |-->allocop                    - 0.0005    
+          |-->rawdata                    - 0.0007    
+      |-->mpicomm                        - 0.0017    
+      |-->builditerators                 - 0.0040    
+  |-->Wavefunction Solution              - 0.0637    
+      |-->davidson/guesswf/diagonal      - 0.0462    
+          |-->guesswf                    - 0.0036    
+          |-->diagonal                   - 0.0102    
+          |-->davidson                   - 0.0294    
+      |-->makerotation(includes noise)   - 0.0165    
+          |-->Add noise                  - 0.0165    
+      |-->wave and rotation io           - 0.0066    
+  |-->Renormalisation                    - 0.0068    
+      |-->in parallel region             - 0.0053    
+  |-->Save block                         - 0.2021    
+      |-->rawdata                        - 0.0040    
+			 Total block energy for State [ 0 ] with 100 States :: -109.046144338578
+			 1 :  STACKHAM  Core Operators   1  
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 2 :  STACKCRECREDES_COMP  Core Operators   2  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-2.3-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  2--3
+			 # states: 10			 # states: 10
+
+			 Saving state 1
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 1
+			 ============================
+			 Current direction is :: Backwards 
+			 Blocking and Decimating 
+			 dot with system 0
+
+			 Performing Blocking
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.0-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 System  Block			 Sites ::  2--3
+			 # states: 10			 # states: 10
+			 1 :  STACKHAM  Core Operators   1  
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKDESDES_COMP  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 3 :  STACKCREDES_COMP  Core Operators   3  
+			 2 :  STACKCRECREDES_COMP  Core Operators   2  
+			 1 :  STACKOVERLAP  Core Operators   1  
+
+			 Environment Block			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 Solving wavefunction 
+			 Building Diagonal Hamiltonian 
+			 Done building diagonal hamiltonian 
+			 Number of elements in wavefunction :: 20  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->System                         - 0.0000    
+      |-->Envrionment                    - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   -  62 x 0.0000     = 0.0000    
+      |-->sys op                         -   1 x 0.0000     = 0.0000    
+      |-->env op                         -   1 x 0.0000     = 0.0000    
+			 Transforming previous wavefunction 
+			 Loading Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-2-3.0.0.tmp
+			 Loading Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-2-3.0.state0.tmp
+			 Loading Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state0.tmp
+			 Norm of wavefunction :: 1.000000000000
+		            iter   Root           Energy      Error        Time      FLOPS 
+		               1      0    -109.04614434   2.74e-10       0.00 (s)   1.245e+03
+
+ 			 assigning a total of 27 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 24 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-1-3.0.state_average.tmp
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-1-3.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-1-3.0.0.tmp
+			 Performing Renormalization 
+
+			 Total discarded weight 0.000000000000
+
+			 Transforming to new basis 
+**** STACK MEMORY REMAINING ***** 1.999992640000 GB
+Total walltime                           - 0.4609    
+  |-->Blocking (includes first sweep)    - 0.0607    
+      |-->diski                          - 0.0121    
+          |-->makeiter                   - 0.0006    
+          |-->allocop                    - 0.0005    
+          |-->rawdata                    - 0.0007    
+      |-->mpicomm                        - 0.0025    
+      |-->builditerators                 - 0.0041    
+  |-->Wavefunction Solution              - 0.0657    
+      |-->davidson/guesswf/diagonal      - 0.0475    
+          |-->guesswf                    - 0.0038    
+          |-->diagonal                   - 0.0104    
+          |-->davidson                   - 0.0300    
+      |-->makerotation(includes noise)   - 0.0171    
+          |-->Add noise                  - 0.0171    
+      |-->wave and rotation io           - 0.0069    
+  |-->Renormalisation                    - 0.0071    
+      |-->in parallel region             - 0.0055    
+  |-->Save block                         - 0.2159    
+      |-->rawdata                        - 0.0042    
+			 Total block energy for State [ 0 ] with 100 States :: -109.046144338578
+			 1 :  STACKHAM  Core Operators   1  
+			 3 :  STACKCRE  Core Operators   3  
+			 1 :  STACKDESDES_COMP  Core Operators   1  
+			 1 :  STACKCREDES_COMP  Core Operators   1  
+			 1 :  STACKCRECREDES_COMP  Core Operators   1  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-1.3-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-1-3.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-1-3.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  1--3
+			 # states: 3			 # states: 3
+
+			 Saving state 1
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Finished Sweep with 100 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -109.046144338578
+
+			 Largest Error for Sweep with 100 states is 0.000000000000
+			 M = 100     state = 0     Largest Discarded Weight = 0.000000000000  Sweep Energy = -109.046144338578 
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.020000000000
+			 Elapsed Sweep Wall Time (seconds): 0.046312999912
+			 Finished Sweep Iteration 20
+
+			 Sweep iteration ... 20 100 0.000000001000 0.000000000000 0.000100000000
+			 forward system starting size ... 1 2
+			 backward system starting size ... 1 2
+
+			 Starting sweep 20 in forwards direction
+			 ============================================================================ 
+			 Starting block is :: 
+			 Sites ::  0--0
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.0-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 0
+			 ============================
+			 Current direction is :: Forwards 
+			 Blocking and Decimating 
+			 dot with system 1
+
+			 Performing Blocking
+			 Restoring block of size 2 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-2.3-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 System  Block			 Sites ::  0--1
+			 # states: 10			 # states: 10
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+
+			 Environment Block			 Sites ::  2--3
+			 # states: 10			 # states: 10
+
+			 1 :  STACKHAM  Core Operators   1  
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKDESDES_COMP  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 3 :  STACKCREDES_COMP  Core Operators   3  
+			 2 :  STACKCRECREDES_COMP  Core Operators   2  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 Solving wavefunction 
+			 Building Diagonal Hamiltonian 
+			 Done building diagonal hamiltonian 
+			 Number of elements in wavefunction :: 20  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->System                         - 0.0000    
+      |-->Envrionment                    - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   -  62 x 0.0000     = 0.0000    
+      |-->sys op                         -   1 x 0.0000     = 0.0000    
+      |-->env op                         -   1 x 0.0000     = 0.0000    
+			 Transposing previous wavefunction
+			 Loading Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-1-3.0.0.tmp
+			 Norm of wavefunction :: 1.000000000000
+		            iter   Root           Energy      Error        Time      FLOPS 
+		               1      0    -109.04614434   2.74e-10       0.00 (s)   1.153e+03
+
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state_average.tmp
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-0-1.0.0.tmp
+			 Performing Renormalization 
+
+			 Total discarded weight -0.000000000000
+
+			 Transforming to new basis 
+**** STACK MEMORY REMAINING ***** 1.999993624000 GB
+Total walltime                           - 0.4819    
+  |-->Blocking (includes first sweep)    - 0.0688    
+      |-->diski                          - 0.0128    
+          |-->makeiter                   - 0.0006    
+          |-->allocop                    - 0.0006    
+          |-->rawdata                    - 0.0007    
+      |-->mpicomm                        - 0.0025    
+      |-->builditerators                 - 0.0043    
+  |-->Wavefunction Solution              - 0.0672    
+      |-->davidson/guesswf/diagonal      - 0.0485    
+          |-->guesswf                    - 0.0040    
+          |-->diagonal                   - 0.0105    
+          |-->davidson                   - 0.0305    
+      |-->makerotation(includes noise)   - 0.0176    
+          |-->Add noise                  - 0.0176    
+      |-->wave and rotation io           - 0.0072    
+  |-->Renormalisation                    - 0.0074    
+      |-->in parallel region             - 0.0058    
+  |-->Save block                         - 0.2259    
+      |-->rawdata                        - 0.0043    
+			 Total block energy for State [ 0 ] with 100 States :: -109.046144338578
+			 1 :  STACKHAM  Core Operators   1  
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 2 :  STACKCRECREDES_COMP  Core Operators   2  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.1-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 Saving state 1
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 1
+			 ============================
+			 Current direction is :: Forwards 
+			 Blocking and Decimating 
+			 dot with system 0
+
+			 Performing Blocking
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-3.3-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 System  Block			 Sites ::  0--1
+			 # states: 10			 # states: 10
+			 1 :  STACKHAM  Core Operators   1  
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKDESDES_COMP  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 3 :  STACKCREDES_COMP  Core Operators   3  
+			 2 :  STACKCRECREDES_COMP  Core Operators   2  
+			 1 :  STACKOVERLAP  Core Operators   1  
+
+			 Environment Block			 Sites ::  2--3
+			 # states: 10			 # states: 10
+
+			 1 :  STACKHAM  Virtual Operators   1  
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKCRECREDES_COMP  Virtual Operators   2  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 Solving wavefunction 
+			 Building Diagonal Hamiltonian 
+			 Done building diagonal hamiltonian 
+			 Number of elements in wavefunction :: 20  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->System                         - 0.0000    
+      |-->Envrionment                    - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   -  62 x 0.0000     = 0.0000    
+      |-->sys op                         -   1 x 0.0000     = 0.0000    
+      |-->env op                         -   1 x 0.0000     = 0.0000    
+			 Transforming previous wavefunction 
+			 Loading Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-0-1.0.0.tmp
+			 Loading Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state0.tmp
+			 Loading Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-2-3.0.state0.tmp
+			 Norm of wavefunction :: 1.000000000000
+		            iter   Root           Energy      Error        Time      FLOPS 
+		               1      0    -109.04614434   2.74e-10       0.00 (s)   1.245e+03
+
+ 			 assigning a total of 27 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 24 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-2.0.state_average.tmp
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-2.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-0-2.0.0.tmp
+			 Performing Renormalization 
+
+			 Total discarded weight 0.000000000000
+
+			 Transforming to new basis 
+**** STACK MEMORY REMAINING ***** 1.999992640000 GB
+Total walltime                           - 0.4977    
+  |-->Blocking (includes first sweep)    - 0.0778    
+      |-->diski                          - 0.0134    
+          |-->makeiter                   - 0.0007    
+          |-->allocop                    - 0.0006    
+          |-->rawdata                    - 0.0008    
+      |-->mpicomm                        - 0.0033    
+      |-->builditerators                 - 0.0045    
+  |-->Wavefunction Solution              - 0.0691    
+      |-->davidson/guesswf/diagonal      - 0.0498    
+          |-->guesswf                    - 0.0042    
+          |-->diagonal                   - 0.0106    
+          |-->davidson                   - 0.0310    
+      |-->makerotation(includes noise)   - 0.0181    
+          |-->Add noise                  - 0.0181    
+      |-->wave and rotation io           - 0.0074    
+  |-->Renormalisation                    - 0.0077    
+      |-->in parallel region             - 0.0060    
+  |-->Save block                         - 0.2304    
+      |-->rawdata                        - 0.0044    
+			 Total block energy for State [ 0 ] with 100 States :: -109.046144338578
+			 1 :  STACKHAM  Core Operators   1  
+			 3 :  STACKCRE  Core Operators   3  
+			 1 :  STACKDESDES_COMP  Core Operators   1  
+			 1 :  STACKCREDES_COMP  Core Operators   1  
+			 1 :  STACKCRECREDES_COMP  Core Operators   1  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.2-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-2.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-2.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  0--2
+			 # states: 3			 # states: 3
+
+			 Saving state 1
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Finished Sweep with 100 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -109.046144338578
+
+			 Largest Error for Sweep with 100 states is 0.000000000000
+			 M = 100     state = 0     Largest Discarded Weight = 0.000000000000  Sweep Energy = -109.046144338578 
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.020000000000
+			 Elapsed Sweep Wall Time (seconds): 0.036827000091
+			 Finished Sweep Iteration 21
+			 Loading state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Restarting at sweep iteration: 21
+
+			 Restarting at block iterations: 0
+
+			 Sweep iteration ... 21 100 0.000000001000 0.000000000000 0.000100000000
+			 forward system starting size ... 1 2
+			 backward system starting size ... 1 2
+			 Starting renormalisation sweep in forwards direction
+			 ============================================================================ 
+			 Starting block is :: 
+			 Sites ::  0--0
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.0-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 0
+			 ----------------------------
+			 Current direction is :: Forwards 
+			 Blocking and Decimating 
+			 Performing Blocking
+			 System  Block			 Sites ::  0--1
+			 # states: 10			 # states: 10
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKDES  Virtual Operators   2  
+			 3 :  STACKDESDES  Virtual Operators   3  
+			 3 :  STACKDESCRE  Virtual Operators   3  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 4 :  RI_3_INDEX  Virtual Operators   4  
+			 5 :  RI_4_INDEX  Virtual Operators   5  
+			 Loading Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state_average.tmp
+			 Loading Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state_average.tmp
+			 Performing Renormalization 
+
+			 Transforming to new basis 
+Total walltime                           - 0.5112    
+  -->Blocking                            - 0.0779    
+  -->Wavefunction Solution               - 0.0498    
+  -->Add noise                           - 0.0181    
+  -->Renormalisation                     - 0.0081    
+mpicommunication                         - 0.0033    
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.1-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 saving state 2
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 1
+			 ----------------------------
+			 Current direction is :: Forwards 
+			 Blocking and Decimating 
+			 Performing Blocking
+			 System  Block			 Sites ::  0--2
+			 # states: 27			 # states: 27
+			 3 :  STACKCRE  Virtual Operators   3  
+			 6 :  STACKCRECRE  Virtual Operators   6  
+			 6 :  STACKCREDES  Virtual Operators   6  
+			 3 :  STACKDES  Virtual Operators   3  
+			 6 :  STACKDESDES  Virtual Operators   6  
+			 6 :  STACKDESCRE  Virtual Operators   6  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 10 :  RI_3_INDEX  Virtual Operators   10  
+			 15 :  RI_4_INDEX  Virtual Operators   15  
+			 Loading Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-2.0.state_average.tmp
+			 Loading Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-2.0.state_average.tmp
+			 Performing Renormalization 
+
+			 Transforming to new basis 
+Total walltime                           - 0.5223    
+  -->Blocking                            - 0.0781    
+  -->Wavefunction Solution               - 0.0498    
+  -->Add noise                           - 0.0181    
+  -->Renormalisation                     - 0.0086    
+mpicommunication                         - 0.0033    
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.2-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-2.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-2.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  0--2
+			 # states: 3			 # states: 3
+
+			 saving state 3
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+			 Finished Generate-Blocks Sweep. 
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.000000000000
+			 Elapsed Sweep Wall Time (seconds): 0.023307000054
+
+			 Sweep iteration ... 21 100 0.000000001000 0.000000000000 0.000100000000
+			 forward system starting size ... 1 2
+			 backward system starting size ... 1 2
+			 Starting renormalisation sweep in backwards direction
+			 ============================================================================ 
+			 Starting block is :: 
+			 Sites ::  3--3
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-3.3-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 0
+			 ----------------------------
+			 Current direction is :: Backwards 
+			 Blocking and Decimating 
+			 Restoring block of size 2 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.1-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Transposing previous wavefunction
+			 Loading Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-0-2.0.0.tmp
+			 Norm of wavefunction :: 1.000000000000
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+===========================================================================================
+Current NPDM sweep position = 1 of 2
+			 Sites ::  2--3
+			 # states: 10			 # states: 10
+
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKDES  Virtual Operators   2  
+			 3 :  STACKDESDES  Virtual Operators   3  
+			 3 :  STACKDESCRE  Virtual Operators   3  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 4 :  RI_3_INDEX  Virtual Operators   4  
+			 5 :  RI_4_INDEX  Virtual Operators   5  
+Doing pattern 1 of 15   (++.)()(.)
+Doing pattern 2 of 15   (++..)()()
+Doing pattern 3 of 15   (+..)()(+)
+Doing pattern 4 of 15   (+.)(+)(.)
+Doing pattern 5 of 15   (+..)(+)()
+Doing pattern 6 of 15   ()(++.)(.)
+Doing pattern 7 of 15   ()(++..)()
+Doing pattern 8 of 15   (+)(+.)(.)
+Doing pattern 9 of 15   (+.)(+.)()
+Doing pattern 10 of 15   (+)(+..)()
+Doing pattern 11 of 15   (++)(.)(.)
+Doing pattern 12 of 15   (++.)(.)()
+Doing pattern 13 of 15   (+.)(.)(+)
+Doing pattern 14 of 15   (+)(..)(+)
+Doing pattern 15 of 15   (++)(..)()
+===========================================================================================
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-2-3.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-2-3.0.0.tmp
+			 Transforming to new basis 
+			 Sites ::  2--3
+			 # states: 10			 # states: 10
+
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 2 :  STACKDES  Core Operators   2  
+			 3 :  STACKDESDES  Core Operators   3  
+			 3 :  STACKDESCRE  Core Operators   3  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 4 :  RI_3_INDEX  Core Operators   4  
+			 5 :  RI_4_INDEX  Core Operators   5  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+			 Sites ::  2--3
+			 # states: 10			 # states: 10
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-2.3-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 saving state 2
+
+			 Block Iteration :: 1
+			 ----------------------------
+			 Current direction is :: Backwards 
+			 Blocking and Decimating 
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-f-sites-0.0-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Transforming previous wavefunction 
+			 Loading Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-2-3.0.0.tmp
+			 Loading Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-2-3.0.state0.tmp
+			 Loading Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-0-1.0.state0.tmp
+			 Norm of wavefunction :: 1.000000000000
+ 			 assigning a total of 27 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 24 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+===========================================================================================
+Current NPDM sweep position = 2 of 2
+			 Sites ::  1--3
+			 # states: 27			 # states: 27
+
+			 3 :  STACKCRE  Virtual Operators   3  
+			 6 :  STACKCRECRE  Virtual Operators   6  
+			 6 :  STACKCREDES  Virtual Operators   6  
+			 3 :  STACKDES  Virtual Operators   3  
+			 6 :  STACKDESDES  Virtual Operators   6  
+			 6 :  STACKDESCRE  Virtual Operators   6  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 10 :  RI_3_INDEX  Virtual Operators   10  
+			 15 :  RI_4_INDEX  Virtual Operators   15  
+Doing pattern 1 of 19   ()()(++..)
+Doing pattern 2 of 19   (+)()(+..)
+Doing pattern 3 of 19   (++)()(..)
+Doing pattern 4 of 19   (+.)()(+.)
+Doing pattern 5 of 19   ()(+)(+..)
+Doing pattern 6 of 19   (+)(+)(..)
+Doing pattern 7 of 19   (+.)(+)(.)
+Doing pattern 8 of 19   ()(++)(..)
+Doing pattern 9 of 19   ()(++.)(.)
+Doing pattern 10 of 19   ()(++..)()
+Doing pattern 11 of 19   ()(+.)(+.)
+Doing pattern 12 of 19   (+)(+.)(.)
+Doing pattern 13 of 19   (+.)(+.)()
+Doing pattern 14 of 19   (+)(+..)()
+Doing pattern 15 of 19   (+)(.)(+.)
+Doing pattern 16 of 19   (++)(.)(.)
+Doing pattern 17 of 19   (+.)(.)(+)
+Doing pattern 18 of 19   (+)(..)(+)
+Doing pattern 19 of 19   (++)(..)()
+===========================================================================================
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Rotation-1-3.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/geomopt/scratch/node0//wave-1-3.0.0.tmp
+			 Transforming to new basis 
+			 Sites ::  1--3
+			 # states: 3			 # states: 3
+
+			 3 :  STACKCRE  Core Operators   3  
+			 6 :  STACKCRECRE  Core Operators   6  
+			 6 :  STACKCREDES  Core Operators   6  
+			 3 :  STACKDES  Core Operators   3  
+			 6 :  STACKDESDES  Core Operators   6  
+			 6 :  STACKDESCRE  Core Operators   6  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 10 :  RI_3_INDEX  Core Operators   10  
+			 15 :  RI_4_INDEX  Core Operators   15  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+			 Sites ::  1--3
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//Block-b-sites-1.3-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-1-3.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/geomopt/scratch/node0//StateInfo-backward-1-3.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 saving state 3
+Spin-orbital 2PDM trace = 12.000000000000
+Spatial      2PDM trace = 6.000000000000
+			 Elapsed Sweep CPU  Time (seconds): 0.050
+			 Elapsed Sweep Wall Time (seconds): 0.070
+			 Saving state /home/slee89/pyscf-374/examples/geomopt/scratch/node0//statefile.0.tmp
+
+
+			 BLOCK CPU  Time (seconds): 0.300
+			 BLOCK Wall Time (seconds): 0.597

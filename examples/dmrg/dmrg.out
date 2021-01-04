@@ -1,0 +1,597 @@
+Runing with 1 processors
+Block  Copyright (C) 2012  Garnet K.-L. Chan
+This program comes with ABSOLUTELY NO WARRANTY; for details see license file.
+This is free software, and you are welcome to redistribute it
+under certain conditions; see license file for details.
+Reading input file
+m_hf_occ_user integral
+/home/slee89/pyscf-374/examples/dmrg/scratch
+================
+The Fiedler routine for finding the orbital ordering has already been run.
+Using the reorder file /home/slee89/pyscf-374/examples/dmrg/scratch/node0//RestartReorder.dat
+================
+1 2 3 4 
+
+open orbs   :
+closed orbs :
+Initial HF occupancy guess: 1 1 1 1 0 0 0 0 
+Checking input for errors
+Summary of input
+----------------
+Total number of orbitals                           :   4
+Symmetry of the targeted wavefunctions             :   4:0:1
+Number of wavefunctions targeted                   :   2
+The weights of the wavefunctions                   :   5.00e-01  5.00e-01  
+Symmetry of the molecule                           :   d2h
+Irreducible representations of the orbitals        :   Ag  B1u  Ag  B1u  
+
+Schedule
+--------
+Iter       : # States              Davidson_tol          Random_noise        
+0          : 200                   1.00e-09              0.00e+00            
+Maximum sweep iterations                           :   24
+
+processor: 0  numthrds: 1  node name: pauling
+allocating 250000000 doubles 
+**** STACK MEMORY REMAINING ***** 2.000000000000 GB
+			 Loading state /home/slee89/pyscf-374/examples/dmrg/scratch/node0//statefile.0.tmp
+
+			 Restarting at sweep iteration: 24
+
+			 Restarting at block iterations: 0
+allocating 16 doubles 
+
+			 Sweep iteration ... 24 200 0.000000001000 0.000000000000 0.000100000000
+			 Using the one dot algorithm ... 
+			 forward system starting size ... 1 2
+			 backward system starting size ... 1 2
+			 Starting renormalisation sweep in backwards direction
+			 ============================================================================ 
+			 Starting block is :: 
+			 Sites ::  3--3
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//Block-b-sites-3.3-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state /home/slee89/pyscf-374/examples/dmrg/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 0
+			 ----------------------------
+			 Current direction is :: Backwards 
+			 Blocking and Decimating 
+			 Performing Blocking
+			 System  Block			 Sites ::  2--3
+			 # states: 10			 # states: 10
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKDES  Virtual Operators   2  
+			 3 :  STACKDESDES  Virtual Operators   3  
+			 3 :  STACKDESCRE  Virtual Operators   3  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 4 :  RI_3_INDEX  Virtual Operators   4  
+			 5 :  RI_4_INDEX  Virtual Operators   5  
+			 Loading Rotation Matrix :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//Rotation-2-3.0.state_average.tmp
+			 Loading Rotation Matrix :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//Rotation-2-3.0.state_average.tmp
+			 Performing Renormalization 
+
+			 Transforming to new basis 
+Total walltime                           - 0.1049    
+  -->Blocking                            - 0.0002    
+  -->Wavefunction Solution               - 0.0000    
+  -->Add noise                           - 0.0000    
+  -->Renormalisation                     - 0.0051    
+mpicommunication                         - 0.0000    
+			 Saving block file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//Block-b-sites-2.3-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  2--3
+			 # states: 10			 # states: 10
+
+			 saving state 2
+			 Saving state /home/slee89/pyscf-374/examples/dmrg/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 1
+			 ----------------------------
+			 Current direction is :: Backwards 
+			 Blocking and Decimating 
+			 Performing Blocking
+			 System  Block			 Sites ::  1--3
+			 # states: 25			 # states: 25
+			 3 :  STACKCRE  Virtual Operators   3  
+			 6 :  STACKCRECRE  Virtual Operators   6  
+			 6 :  STACKCREDES  Virtual Operators   6  
+			 3 :  STACKDES  Virtual Operators   3  
+			 6 :  STACKDESDES  Virtual Operators   6  
+			 6 :  STACKDESCRE  Virtual Operators   6  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 10 :  RI_3_INDEX  Virtual Operators   10  
+			 15 :  RI_4_INDEX  Virtual Operators   15  
+			 Loading Rotation Matrix :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//Rotation-1-3.0.state_average.tmp
+			 Loading Rotation Matrix :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//Rotation-1-3.0.state_average.tmp
+			 Performing Renormalization 
+
+			 Transforming to new basis 
+Total walltime                           - 0.1117    
+  -->Blocking                            - 0.0004    
+  -->Wavefunction Solution               - 0.0000    
+  -->Add noise                           - 0.0000    
+  -->Renormalisation                     - 0.0058    
+mpicommunication                         - 0.0000    
+			 Saving block file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//Block-b-sites-1.3-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//StateInfo-backward-1-3.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//StateInfo-backward-1-3.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Sites ::  1--3
+			 # states: 6			 # states: 6
+
+			 saving state 3
+			 Saving state /home/slee89/pyscf-374/examples/dmrg/scratch/node0//statefile.0.tmp
+			 Finished Generate-Blocks Sweep. 
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.010000000000
+			 Elapsed Sweep Wall Time (seconds): 0.049467000004
+
+			 Sweep iteration ... 24 200 0.000000001000 0.000000000000 0.000100000000
+			 Using the one dot algorithm ... 
+			 forward system starting size ... 1 2
+			 backward system starting size ... 1 2
+			 Starting renormalisation sweep in forwards direction
+			 ============================================================================ 
+			 Starting block is :: 
+			 Sites ::  0--0
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//Block-f-sites-0.0-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state /home/slee89/pyscf-374/examples/dmrg/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 0
+			 ----------------------------
+			 Current direction is :: Forwards 
+			 Blocking and Decimating 
+			 Restoring block of size 2 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//Block-b-sites-2.3-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Transposing previous wavefunction
+			 Loading Wavefunction /home/slee89/pyscf-374/examples/dmrg/scratch/node0//wave-1-3.0.0.tmp
+			 Norm of wavefunction :: 1.000000000000
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+===========================================================================================
+Current NPDM sweep position = 1 of 2
+			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKDES  Virtual Operators   2  
+			 3 :  STACKDESDES  Virtual Operators   3  
+			 3 :  STACKDESCRE  Virtual Operators   3  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 4 :  RI_3_INDEX  Virtual Operators   4  
+			 5 :  RI_4_INDEX  Virtual Operators   5  
+			 4 :  CreCreCre  Virtual Operators   4  
+			 4 :  CreCreDes  Virtual Operators   4  
+			 4 :  CreDesDes  Virtual Operators   4  
+			 4 :  CreDesCre  Virtual Operators   4  
+Doing pattern 1 of 33   (++..)()(+.)
+Doing pattern 2 of 33   (++..)()(.+)
+Doing pattern 3 of 33   (++.)(+)(..)
+Doing pattern 4 of 33   (++..)(+)(.)
+Doing pattern 5 of 33   (+..)(+)(+.)
+Doing pattern 6 of 33   (+..)(+)(.+)
+Doing pattern 7 of 33   (+.)(++)(..)
+Doing pattern 8 of 33   (+..)(++)(.)
+Doing pattern 9 of 33   (+)(++.)(..)
+Doing pattern 10 of 33   (+.)(++.)(.)
+Doing pattern 11 of 33   (+..)(++.)()
+Doing pattern 12 of 33   ()(++..)(+.)
+Doing pattern 13 of 33   (+)(++..)(.)
+Doing pattern 14 of 33   (+.)(++..)()
+Doing pattern 15 of 33   (++)(+.)(..)
+Doing pattern 16 of 33   (++.)(+.)(.)
+Doing pattern 17 of 33   (++..)(+.)()
+Doing pattern 18 of 33   (+.)(+.)(+.)
+Doing pattern 19 of 33   (+.)(+.)(.+)
+Doing pattern 20 of 33   (+..)(+.)(+)
+Doing pattern 21 of 33   (+)(+..)(+.)
+Doing pattern 22 of 33   (+)(+..)(.+)
+Doing pattern 23 of 33   (++)(+..)(.)
+Doing pattern 24 of 33   (++.)(+..)()
+Doing pattern 25 of 33   (+.)(+..)(+)
+Doing pattern 26 of 33   (++.)(.)(+.)
+Doing pattern 27 of 33   (++.)(.)(.+)
+Doing pattern 28 of 33   (++..)(.)(+)
+Doing pattern 29 of 33   (+..)(.)(++)
+Doing pattern 30 of 33   (++)(..)(+.)
+Doing pattern 31 of 33   (++)(..)(.+)
+Doing pattern 32 of 33   (++.)(..)(+)
+Doing pattern 33 of 33   (+.)(..)(++)
+===========================================================================================
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//Rotation-0-1.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/dmrg/scratch/node0//wave-0-1.0.0.tmp
+			 Transforming to new basis 
+			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 2 :  STACKDES  Core Operators   2  
+			 3 :  STACKDESDES  Core Operators   3  
+			 3 :  STACKDESCRE  Core Operators   3  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 4 :  RI_3_INDEX  Core Operators   4  
+			 5 :  RI_4_INDEX  Core Operators   5  
+			 4 :  CreCreCre  Core Operators   4  
+			 4 :  CreCreDes  Core Operators   4  
+			 4 :  CreDesDes  Core Operators   4  
+			 4 :  CreDesCre  Core Operators   4  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//Block-f-sites-0.1-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 saving state 2
+
+			 Block Iteration :: 1
+			 ----------------------------
+			 Current direction is :: Forwards 
+			 Blocking and Decimating 
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//Block-b-sites-3.3-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Transforming previous wavefunction 
+			 Loading Wavefunction /home/slee89/pyscf-374/examples/dmrg/scratch/node0//wave-0-1.0.0.tmp
+			 Loading Rotation Matrix :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//Rotation-0-1.0.state0.tmp
+			 Loading Rotation Matrix :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//Rotation-2-3.0.state0.tmp
+			 Norm of wavefunction :: 1.000000000000
+ 			 assigning a total of 25 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 22 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+===========================================================================================
+Current NPDM sweep position = 2 of 2
+			 Sites ::  0--2
+			 # states: 25			 # states: 25
+
+			 3 :  STACKCRE  Virtual Operators   3  
+			 6 :  STACKCRECRE  Virtual Operators   6  
+			 6 :  STACKCREDES  Virtual Operators   6  
+			 3 :  STACKDES  Virtual Operators   3  
+			 6 :  STACKDESDES  Virtual Operators   6  
+			 6 :  STACKDESCRE  Virtual Operators   6  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 10 :  RI_3_INDEX  Virtual Operators   10  
+			 15 :  RI_4_INDEX  Virtual Operators   15  
+			 10 :  CreCreCre  Virtual Operators   10  
+			 10 :  CreCreDes  Virtual Operators   10  
+			 10 :  CreDesDes  Virtual Operators   10  
+			 10 :  CreDesCre  Virtual Operators   10  
+Doing pattern 1 of 42   (++.)()(+..)
+Doing pattern 2 of 42   (+.)()(++..)
+Doing pattern 3 of 42   (+.+)()(+..)
+Doing pattern 4 of 42   (+..)()(++.)
+Doing pattern 5 of 42   (++.)(+)(..)
+Doing pattern 6 of 42   (+.)(+)(+..)
+Doing pattern 7 of 42   (+.+)(+)(..)
+Doing pattern 8 of 42   (+..)(+)(+.)
+Doing pattern 9 of 42   (+.)(++)(..)
+Doing pattern 10 of 42   (+..)(++)(.)
+Doing pattern 11 of 42   ()(++.)(+..)
+Doing pattern 12 of 42   (+)(++.)(..)
+Doing pattern 13 of 42   (+.)(++.)(.)
+Doing pattern 14 of 42   (+..)(++.)()
+Doing pattern 15 of 42   ()(++..)(+.)
+Doing pattern 16 of 42   (+)(++..)(.)
+Doing pattern 17 of 42   (+.)(++..)()
+Doing pattern 18 of 42   ()(+.)(++..)
+Doing pattern 19 of 42   (+)(+.)(+..)
+Doing pattern 20 of 42   (++)(+.)(..)
+Doing pattern 21 of 42   (++.)(+.)(.)
+Doing pattern 22 of 42   (+.)(+.)(+.)
+Doing pattern 23 of 42   (+.+)(+.)(.)
+Doing pattern 24 of 42   (+..)(+.)(+)
+Doing pattern 25 of 42   (+)(+..)(+.)
+Doing pattern 26 of 42   (++)(+..)(.)
+Doing pattern 27 of 42   (++.)(+..)()
+Doing pattern 28 of 42   (+.)(+..)(+)
+Doing pattern 29 of 42   (+.+)(+..)()
+Doing pattern 30 of 42   (+)(.)(++..)
+Doing pattern 31 of 42   (++)(.)(+..)
+Doing pattern 32 of 42   (+++)(.)(..)
+Doing pattern 33 of 42   (++.)(.)(+.)
+Doing pattern 34 of 42   (+.)(.)(++.)
+Doing pattern 35 of 42   (+.+)(.)(+.)
+Doing pattern 36 of 42   (+..)(.)(++)
+Doing pattern 37 of 42   (+)(..)(++.)
+Doing pattern 38 of 42   (++)(..)(+.)
+Doing pattern 39 of 42   (+++)(..)(.)
+Doing pattern 40 of 42   (++.)(..)(+)
+Doing pattern 41 of 42   (+.)(..)(++)
+Doing pattern 42 of 42   (+.+)(..)(+)
+===========================================================================================
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//Rotation-0-2.0.state0.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/dmrg/scratch/node0//wave-0-2.0.0.tmp
+			 Transforming to new basis 
+			 Sites ::  0--2
+			 # states: 3			 # states: 3
+
+			 3 :  STACKCRE  Core Operators   3  
+			 6 :  STACKCRECRE  Core Operators   6  
+			 6 :  STACKCREDES  Core Operators   6  
+			 3 :  STACKDES  Core Operators   3  
+			 6 :  STACKDESDES  Core Operators   6  
+			 6 :  STACKDESCRE  Core Operators   6  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 10 :  RI_3_INDEX  Core Operators   10  
+			 15 :  RI_4_INDEX  Core Operators   15  
+			 10 :  CreCreCre  Core Operators   10  
+			 10 :  CreCreDes  Core Operators   10  
+			 10 :  CreDesDes  Core Operators   10  
+			 10 :  CreDesCre  Core Operators   10  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+			 Sites ::  0--2
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//Block-f-sites-0.2-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//StateInfo-forward-0-2.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//StateInfo-forward-0-2.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 saving state 3
+Spatial      3PDM trace  = 24.000000000000
+Spatial      3PDM trace  = 24.000000000000
+Spatial      3PDM Energy = -4.223639830758
+			 Elapsed Sweep CPU  Time (seconds): 0.160
+			 Elapsed Sweep Wall Time (seconds): 0.216
+
+			 Sweep iteration ... 24 200 0.000000001000 0.000000000000 0.000100000000
+			 Using the one dot algorithm ... 
+			 forward system starting size ... 1 2
+			 backward system starting size ... 1 2
+			 Starting renormalisation sweep in forwards direction
+			 ============================================================================ 
+			 Starting block is :: 
+			 Sites ::  0--0
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//Block-f-sites-0.0-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//StateInfo-forward-0-0.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state /home/slee89/pyscf-374/examples/dmrg/scratch/node0//statefile.0.tmp
+
+			 Block Iteration :: 0
+			 ----------------------------
+			 Current direction is :: Forwards 
+			 Blocking and Decimating 
+			 Restoring block of size 2 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//Block-b-sites-2.3-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//StateInfo-backward-2-3.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Transposing previous wavefunction
+			 Loading Wavefunction /home/slee89/pyscf-374/examples/dmrg/scratch/node0//wave-1-3.0.1.tmp
+			 Norm of wavefunction :: 1.000000000000
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+===========================================================================================
+Current NPDM sweep position = 1 of 2
+			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 2 :  STACKCRE  Virtual Operators   2  
+			 3 :  STACKCRECRE  Virtual Operators   3  
+			 3 :  STACKCREDES  Virtual Operators   3  
+			 2 :  STACKDES  Virtual Operators   2  
+			 3 :  STACKDESDES  Virtual Operators   3  
+			 3 :  STACKDESCRE  Virtual Operators   3  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 4 :  RI_3_INDEX  Virtual Operators   4  
+			 5 :  RI_4_INDEX  Virtual Operators   5  
+			 4 :  CreCreCre  Virtual Operators   4  
+			 4 :  CreCreDes  Virtual Operators   4  
+			 4 :  CreDesDes  Virtual Operators   4  
+			 4 :  CreDesCre  Virtual Operators   4  
+Doing pattern 1 of 33   (++..)()(+.)
+Doing pattern 2 of 33   (++..)()(.+)
+Doing pattern 3 of 33   (++.)(+)(..)
+Doing pattern 4 of 33   (++..)(+)(.)
+Doing pattern 5 of 33   (+..)(+)(+.)
+Doing pattern 6 of 33   (+..)(+)(.+)
+Doing pattern 7 of 33   (+.)(++)(..)
+Doing pattern 8 of 33   (+..)(++)(.)
+Doing pattern 9 of 33   (+)(++.)(..)
+Doing pattern 10 of 33   (+.)(++.)(.)
+Doing pattern 11 of 33   (+..)(++.)()
+Doing pattern 12 of 33   ()(++..)(+.)
+Doing pattern 13 of 33   (+)(++..)(.)
+Doing pattern 14 of 33   (+.)(++..)()
+Doing pattern 15 of 33   (++)(+.)(..)
+Doing pattern 16 of 33   (++.)(+.)(.)
+Doing pattern 17 of 33   (++..)(+.)()
+Doing pattern 18 of 33   (+.)(+.)(+.)
+Doing pattern 19 of 33   (+.)(+.)(.+)
+Doing pattern 20 of 33   (+..)(+.)(+)
+Doing pattern 21 of 33   (+)(+..)(+.)
+Doing pattern 22 of 33   (+)(+..)(.+)
+Doing pattern 23 of 33   (++)(+..)(.)
+Doing pattern 24 of 33   (++.)(+..)()
+Doing pattern 25 of 33   (+.)(+..)(+)
+Doing pattern 26 of 33   (++.)(.)(+.)
+Doing pattern 27 of 33   (++.)(.)(.+)
+Doing pattern 28 of 33   (++..)(.)(+)
+Doing pattern 29 of 33   (+..)(.)(++)
+Doing pattern 30 of 33   (++)(..)(+.)
+Doing pattern 31 of 33   (++)(..)(.+)
+Doing pattern 32 of 33   (++.)(..)(+)
+Doing pattern 33 of 33   (+.)(..)(++)
+===========================================================================================
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//Rotation-0-1.0.state1.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/dmrg/scratch/node0//wave-0-1.0.1.tmp
+			 Transforming to new basis 
+			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 2 :  STACKCRE  Core Operators   2  
+			 3 :  STACKCRECRE  Core Operators   3  
+			 3 :  STACKCREDES  Core Operators   3  
+			 2 :  STACKDES  Core Operators   2  
+			 3 :  STACKDESDES  Core Operators   3  
+			 3 :  STACKDESCRE  Core Operators   3  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 4 :  RI_3_INDEX  Core Operators   4  
+			 5 :  RI_4_INDEX  Core Operators   5  
+			 4 :  CreCreCre  Core Operators   4  
+			 4 :  CreCreDes  Core Operators   4  
+			 4 :  CreDesDes  Core Operators   4  
+			 4 :  CreDesCre  Core Operators   4  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+			 Sites ::  0--1
+			 # states: 10			 # states: 10
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//Block-f-sites-0.1-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//StateInfo-forward-0-1.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 saving state 2
+
+			 Block Iteration :: 1
+			 ----------------------------
+			 Current direction is :: Forwards 
+			 Blocking and Decimating 
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//Block-b-sites-3.3-states-1.-1-integral0rank00.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+			 Loading state file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//StateInfo-backward-3-3.-1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Transforming previous wavefunction 
+			 Loading Wavefunction /home/slee89/pyscf-374/examples/dmrg/scratch/node0//wave-0-1.0.1.tmp
+			 Loading Rotation Matrix :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//Rotation-0-1.0.state1.tmp
+			 Loading Rotation Matrix :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//Rotation-2-3.0.state1.tmp
+			 Norm of wavefunction :: 1.000000000000
+ 			 assigning a total of 25 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 22 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+===========================================================================================
+Current NPDM sweep position = 2 of 2
+			 Sites ::  0--2
+			 # states: 25			 # states: 25
+
+			 3 :  STACKCRE  Virtual Operators   3  
+			 6 :  STACKCRECRE  Virtual Operators   6  
+			 6 :  STACKCREDES  Virtual Operators   6  
+			 3 :  STACKDES  Virtual Operators   3  
+			 6 :  STACKDESDES  Virtual Operators   6  
+			 6 :  STACKDESCRE  Virtual Operators   6  
+			 1 :  STACKOVERLAP  Virtual Operators   1  
+			 10 :  RI_3_INDEX  Virtual Operators   10  
+			 15 :  RI_4_INDEX  Virtual Operators   15  
+			 10 :  CreCreCre  Virtual Operators   10  
+			 10 :  CreCreDes  Virtual Operators   10  
+			 10 :  CreDesDes  Virtual Operators   10  
+			 10 :  CreDesCre  Virtual Operators   10  
+Doing pattern 1 of 42   (++.)()(+..)
+Doing pattern 2 of 42   (+.)()(++..)
+Doing pattern 3 of 42   (+.+)()(+..)
+Doing pattern 4 of 42   (+..)()(++.)
+Doing pattern 5 of 42   (++.)(+)(..)
+Doing pattern 6 of 42   (+.)(+)(+..)
+Doing pattern 7 of 42   (+.+)(+)(..)
+Doing pattern 8 of 42   (+..)(+)(+.)
+Doing pattern 9 of 42   (+.)(++)(..)
+Doing pattern 10 of 42   (+..)(++)(.)
+Doing pattern 11 of 42   ()(++.)(+..)
+Doing pattern 12 of 42   (+)(++.)(..)
+Doing pattern 13 of 42   (+.)(++.)(.)
+Doing pattern 14 of 42   (+..)(++.)()
+Doing pattern 15 of 42   ()(++..)(+.)
+Doing pattern 16 of 42   (+)(++..)(.)
+Doing pattern 17 of 42   (+.)(++..)()
+Doing pattern 18 of 42   ()(+.)(++..)
+Doing pattern 19 of 42   (+)(+.)(+..)
+Doing pattern 20 of 42   (++)(+.)(..)
+Doing pattern 21 of 42   (++.)(+.)(.)
+Doing pattern 22 of 42   (+.)(+.)(+.)
+Doing pattern 23 of 42   (+.+)(+.)(.)
+Doing pattern 24 of 42   (+..)(+.)(+)
+Doing pattern 25 of 42   (+)(+..)(+.)
+Doing pattern 26 of 42   (++)(+..)(.)
+Doing pattern 27 of 42   (++.)(+..)()
+Doing pattern 28 of 42   (+.)(+..)(+)
+Doing pattern 29 of 42   (+.+)(+..)()
+Doing pattern 30 of 42   (+)(.)(++..)
+Doing pattern 31 of 42   (++)(.)(+..)
+Doing pattern 32 of 42   (+++)(.)(..)
+Doing pattern 33 of 42   (++.)(.)(+.)
+Doing pattern 34 of 42   (+.)(.)(++.)
+Doing pattern 35 of 42   (+.+)(.)(+.)
+Doing pattern 36 of 42   (+..)(.)(++)
+Doing pattern 37 of 42   (+)(..)(++.)
+Doing pattern 38 of 42   (++)(..)(+.)
+Doing pattern 39 of 42   (+++)(..)(.)
+Doing pattern 40 of 42   (++.)(..)(+)
+Doing pattern 41 of 42   (+.)(..)(++)
+Doing pattern 42 of 42   (+.+)(..)(+)
+===========================================================================================
+			 Saving Rotation Matrix :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//Rotation-0-2.0.state1.tmp
+			 Saving Wavefunction /home/slee89/pyscf-374/examples/dmrg/scratch/node0//wave-0-2.0.1.tmp
+			 Transforming to new basis 
+			 Sites ::  0--2
+			 # states: 3			 # states: 3
+
+			 3 :  STACKCRE  Core Operators   3  
+			 6 :  STACKCRECRE  Core Operators   6  
+			 6 :  STACKCREDES  Core Operators   6  
+			 3 :  STACKDES  Core Operators   3  
+			 6 :  STACKDESDES  Core Operators   6  
+			 6 :  STACKDESCRE  Core Operators   6  
+			 1 :  STACKOVERLAP  Core Operators   1  
+			 10 :  RI_3_INDEX  Core Operators   10  
+			 15 :  RI_4_INDEX  Core Operators   15  
+			 10 :  CreCreCre  Core Operators   10  
+			 10 :  CreCreDes  Core Operators   10  
+			 10 :  CreDesDes  Core Operators   10  
+			 10 :  CreDesCre  Core Operators   10  
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+			 Sites ::  0--2
+			 # states: 3			 # states: 3
+
+			 Saving block file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//Block-f-sites-0.2-states-1.-1-integral0rank00.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//StateInfo-forward-0-2.-1.0.tmp
+			 Saving state file :: /home/slee89/pyscf-374/examples/dmrg/scratch/node0//StateInfo-forward-0-2.-1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 saving state 3
+Spatial      3PDM trace  = 24.000000000000
+Spatial      3PDM trace  = 24.000000000000
+Spatial      3PDM Energy = -3.857922522990
+			 Elapsed Sweep CPU  Time (seconds): 0.100
+			 Elapsed Sweep Wall Time (seconds): 0.134
+			 Saving state /home/slee89/pyscf-374/examples/dmrg/scratch/node0//statefile.0.tmp
+
+
+			 BLOCK CPU  Time (seconds): 0.350
+			 BLOCK Wall Time (seconds): 0.473

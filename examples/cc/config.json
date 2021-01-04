@@ -1,0 +1,24 @@
+{
+  "system": "chem",
+  "n_up": 4,
+  "n_dn": 4,
+  "eps_vars": [
+    1e-12
+  ],
+  "eps_vars_schedule": [
+    0.002,
+    0.001,
+    0.0005,
+    0.0002,
+    0.0001
+  ],
+  "chem": {
+    "point_group": "C1"
+  },
+  "get_1rdm_csv": true,
+  "get_2rdm_csv": false,
+  "var_only": true,
+  "s2": true,
+  "target_error": 5e-09,
+  "load_integrals_cache": true
+}

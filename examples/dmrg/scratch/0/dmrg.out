@@ -1,0 +1,2349 @@
+Block  Copyright (C) 2012  Garnet K.-L. Chan
+This program comes with ABSOLUTELY NO WARRANTY; for details see license file.
+This is free software, and you are welcome to redistribute it
+under certain conditions; see license file for details.
+Reading input file
+m_hf_occ_user integral
+================
+The Fiedler routine for finding the orbital ordering has already been run.
+Using the reorder file ./node0//RestartReorder.dat
+================
+1 2 3 4 
+open orbs   :
+closed orbs :
+Initial HF occupancy guess: 1 1 1 1 0 0 0 0 
+Checking input for errors
+Summary of input
+----------------
+Total number of orbitals                           :   4
+Symmetry of the targeted wavefunctions             :   4:0:1
+Number of wavefunctions targeted                   :   2
+The weights of the wavefunctions                   :   5.00e-01  5.00e-01  
+Symmetry of the molecule                           :   d2h
+Irreducible representations of the orbitals        :   Ag  B1u  Ag  B1u  Ag  B1u  Ag  B1u  
+
+Schedule
+--------
+Iter       : # States              Davidson_tol          Random_noise        
+0          : 100                   1.00e-04              1.00e-04            
+4          : 100                   1.00e-07              0.00e+00            
+Switching from twodot to onedot algorithm          :   4
+Maximum sweep iterations                           :   6
+
+**** STACK MEMORY REMAINING ***** 2.000000000000 GB
+
+			 Sweep iteration ... 0 100 0.000100000000 0.000100000000 0.000000000000
+			 Using the one dot algorithm ... 
+			 forward system starting size ... 1 2
+			 backward system starting size ... 1 2
+			 Saving state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.1.0.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-2.0.state1.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-2.1.0.tmp
+
+			 Sweep iteration ... 0 100 0.000100000000 0.000100000000 0.000000000000
+			 Using the one dot algorithm ... 
+			 forward system starting size ... 1 2
+			 backward system starting size ... 1 2
+			 Saving state file :: ./node0//StateInfo-backward-3-3.1.0.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+			 Saving state file :: ./node0//StateInfo-backward-2-3.1.0.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-1-3.0.state1.tmp
+			 Saving state file :: ./node0//StateInfo-backward-1-3.1.0.tmp
+
+			 Sweep iteration ... 0 100 0.000100000000 0.000100000000 0.000000000000
+			 Using the one dot algorithm ... 
+			 forward system starting size ... 1 2
+			 backward system starting size ... 1 2
+			 Starting sweep 0 in forwards direction
+			 ============================================================================ 
+
+			 Block Iteration :: 0
+			 ----------------------------
+			 Current direction is :: Forwards 
+			 Loading state file :: ./node0//StateInfo-backward-2-3.1.0.tmp
+			 Loading Wavefunction ./node0//wave-1-3.0.1.tmp
+			 Saving Wavefunction ./node0//wave-0-1.0.1.tmp
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.1.0.tmp
+
+			 Block Iteration :: 1
+			 ----------------------------
+			 Current direction is :: Forwards 
+			 Loading state file :: ./node0//StateInfo-backward-3-3.1.0.tmp
+			 Transforming previous wavefunction 
+			 Loading Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+			 Saving Wavefunction ./node0//wave-0-2.0.1.tmp
+ 			 assigning a total of 25 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 22 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: ./node0//Rotation-0-2.0.state1.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-2.1.0.tmp
+
+			 Sweep iteration ... 0 100 0.000100000000 0.000100000000 0.000000000000
+			 Using the one dot algorithm ... 
+			 forward system starting size ... 1 2
+			 backward system starting size ... 1 2
+			 Starting sweep 0 in backwards direction
+			 ============================================================================ 
+
+			 Block Iteration :: 0
+			 ----------------------------
+			 Current direction is :: Backwards 
+			 Loading state file :: ./node0//StateInfo-forward-0-1.1.0.tmp
+			 Loading Wavefunction ./node0//wave-0-2.0.1.tmp
+			 Saving Wavefunction ./node0//wave-2-3.0.1.tmp
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+			 Saving state file :: ./node0//StateInfo-backward-2-3.1.0.tmp
+
+			 Block Iteration :: 1
+			 ----------------------------
+			 Current direction is :: Backwards 
+			 Loading state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+			 Transforming previous wavefunction 
+			 Loading Wavefunction ./node0//wave-2-3.0.1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+			 Saving Wavefunction ./node0//wave-1-3.0.1.tmp
+ 			 assigning a total of 25 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 22 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: ./node0//Rotation-1-3.0.state1.tmp
+			 Saving state file :: ./node0//StateInfo-backward-1-3.1.0.tmp
+
+			 Sweep iteration ... 0 100 0.000100000000 0.000100000000 0.000000000000
+			 Using the one dot algorithm ... 
+			 forward system starting size ... 1 2
+			 backward system starting size ... 1 2
+			 Starting sweep 0 in forwards direction
+			 ============================================================================ 
+
+			 Block Iteration :: 0
+			 ----------------------------
+			 Current direction is :: Forwards 
+			 Loading state file :: ./node0//StateInfo-backward-2-3.1.0.tmp
+			 Loading Wavefunction ./node0//wave-1-3.0.1.tmp
+			 Saving Wavefunction ./node0//wave-0-1.0.1.tmp
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.1.0.tmp
+
+			 Block Iteration :: 1
+			 ----------------------------
+			 Current direction is :: Forwards 
+			 Loading state file :: ./node0//StateInfo-backward-3-3.1.0.tmp
+			 Transforming previous wavefunction 
+			 Loading Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+			 Saving Wavefunction ./node0//wave-0-2.0.1.tmp
+ 			 assigning a total of 25 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 22 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: ./node0//Rotation-0-2.0.state1.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-2.1.0.tmp
+Begin Vi subspace with i = 4
+
+			 Sweep iteration ... 0 100 0.000100000000 0.000100000000 0.000000000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+			 Saving block file :: ./node0//Block-f-sites-0.0-states110004.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.110004.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Building Sum Block 1507165484
+			 0 1 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CCD_SUM  Virtual Operators  
+			 2 :  CCD_CREDES_COMP  Virtual Operators  
+			 2 :  CCD_CRECRE_COMP  Virtual Operators  
+			 Loading Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: ./node0//Rotation-0-1.0.state110004.tmp
+			 Transforming to new basis 
+			 Saving block file :: ./node0//Block-f-sites-0.1-states110004.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.110004.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 2 :  STACKCRE  Core Operators  
+			 2 :  STACKDES  Core Operators  
+			 1 :  STACKOVERLAP  Core Operators  
+			 1 :  CCD_SUM  Core Operators  
+			 2 :  CCD_CREDES_COMP  Core Operators  
+			 2 :  CCD_CRECRE_COMP  Core Operators  
+			 Building Sum Block 441455726
+			 0 1 2 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CCD_SUM  Virtual Operators  
+			 1 :  CCD_CREDES_COMP  Virtual Operators  
+			 1 :  CCD_CRECRE_COMP  Virtual Operators  
+			 Loading Wavefunction ./node0//wave-0-2.0.1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-2.0.state1.tmp
+ 			 assigning a total of 33 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 26 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: ./node0//Rotation-0-2.0.state110004.tmp
+			 Transforming to new basis 
+			 Saving block file :: ./node0//Block-f-sites-0.2-states110004.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-2.110004.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-2.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 2 :  STACKCRE  Core Operators  
+			 2 :  STACKDES  Core Operators  
+			 1 :  STACKOVERLAP  Core Operators  
+			 1 :  CCD_SUM  Core Operators  
+			 1 :  CCD_CREDES_COMP  Core Operators  
+			 1 :  CCD_CRECRE_COMP  Core Operators  
+Start up time :0
+			 Sweep iteration ... 0 100 0.000100000000 0.000100000000 0.000000000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+			 Saving block file :: ./node0//Block-b-sites-3.3-states110004.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-3-3.110004.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-3-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Building Sum Block 661413373
+			 2 3 
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: ./node0//Block-f-sites-0.0-states110004.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-0.110004.0.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 322598144
+			 0 1 
+			 Building Sum Block 191727381
+			 0 1 2 3 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CCD_SUM  Virtual Operators  
+			 2 :  CCD_CREDES_COMP  Virtual Operators  
+			 2 :  CCD_CRECRE_COMP  Virtual Operators  
+			 Transposing previous wavefunction
+			 Loading Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.010036847317
+ 			 a total of 0 to be assigned 
+ 			 total norm: 0.010036847317  norm after truncation: 0.010036847317
+			 Saving Rotation Matrix :: ./node0//Rotation-2-3.0.state110004.tmp
+			 Saving Wavefunction ./node0//wave-2-3.0.1.tmp
+			 Saving Wavefunction ./node0//wave-2-3.0.110004.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.000633001328 0.000000000000 0.000000000000  0 timer 
+0.001160621643 makeops 
+0.000001907349 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.000618934631 0.000000000000 0.000000000000 0.000000000000 hmult
+0.000222444534 0.000001192093 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000002861023 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-b-sites-2.3-states110004.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-2-3.110004.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-2-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+
+			 Sweep iteration ... 1 100 0.000100000000 0.000100000000 0.000000000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+			 Saving block file :: ./node0//Block-f-sites-0.0-states110004.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.110004.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Building Sum Block 503215071
+			 0 1 
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: ./node0//Block-b-sites-3.3-states110004.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-backward-3-3.110004.0.tmp
+			 Loading state file :: ./node0//StateInfo-backward-3-3.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 857755698
+			 2 3 
+			 Building Sum Block 990840278
+			 0 1 2 3 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CCD_SUM  Virtual Operators  
+			 2 :  CCD_CREDES_COMP  Virtual Operators  
+			 2 :  CCD_CRECRE_COMP  Virtual Operators  
+			 Transposing previous wavefunction
+			 Loading Wavefunction ./node0//wave-2-3.0.1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.010036847317
+ 			 a total of 0 to be assigned 
+ 			 total norm: 0.010036847317  norm after truncation: 0.010036847317
+			 Saving Rotation Matrix :: ./node0//Rotation-0-1.0.state110004.tmp
+			 Saving Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Saving Wavefunction ./node0//wave-0-1.0.110004.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.001247882843 0.000000000000 0.000000000000  0 timer 
+0.001756191254 makeops 
+0.000001907349 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.001266002655 0.000000000000 0.000000000000 0.000000000000 hmult
+0.000328302383 0.000003337860 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000003814697 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-f-sites-0.1-states110004.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.110004.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+
+			 Sweep iteration ... 2 100 0.000100000000 0.000100000000 0.000000000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+			 Saving block file :: ./node0//Block-b-sites-3.3-states110004.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-3-3.110004.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-3-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Building Sum Block 69321138
+			 2 3 
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: ./node0//Block-f-sites-0.0-states110004.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-0.110004.0.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 633667098
+			 0 1 
+			 Building Sum Block 973817852
+			 0 1 2 3 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CCD_SUM  Virtual Operators  
+			 2 :  CCD_CREDES_COMP  Virtual Operators  
+			 2 :  CCD_CRECRE_COMP  Virtual Operators  
+			 Transposing previous wavefunction
+			 Loading Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.010036847317
+ 			 a total of 0 to be assigned 
+ 			 total norm: 0.010036847317  norm after truncation: 0.010036847317
+			 Saving Rotation Matrix :: ./node0//Rotation-2-3.0.state110004.tmp
+			 Saving Wavefunction ./node0//wave-2-3.0.1.tmp
+			 Saving Wavefunction ./node0//wave-2-3.0.110004.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.001886844635 0.000000000000 0.000000000000  0 timer 
+0.002294778824 makeops 
+0.000001907349 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.001817941666 0.000000000000 0.000000000000 0.000000000000 hmult
+0.000433444977 0.000004291534 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000004768372 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-b-sites-2.3-states110004.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-2-3.110004.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-2-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+
+			 Sweep iteration ... 3 100 0.000100000000 0.000100000000 0.000000000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+			 Saving block file :: ./node0//Block-f-sites-0.0-states110004.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.110004.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Building Sum Block 2105375475
+			 0 1 
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: ./node0//Block-b-sites-3.3-states110004.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-backward-3-3.110004.0.tmp
+			 Loading state file :: ./node0//StateInfo-backward-3-3.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 1167967104
+			 2 3 
+			 Building Sum Block 1939621786
+			 0 1 2 3 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CCD_SUM  Virtual Operators  
+			 2 :  CCD_CREDES_COMP  Virtual Operators  
+			 2 :  CCD_CRECRE_COMP  Virtual Operators  
+			 Transposing previous wavefunction
+			 Loading Wavefunction ./node0//wave-2-3.0.1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.010036847317
+ 			 a total of 0 to be assigned 
+ 			 total norm: 0.010036847317  norm after truncation: 0.010036847317
+			 Saving Rotation Matrix :: ./node0//Rotation-0-1.0.state110004.tmp
+			 Saving Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Saving Wavefunction ./node0//wave-0-1.0.110004.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.002545833588 0.000000000000 0.000000000000  0 timer 
+0.002822637558 makeops 
+0.000001907349 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.002360820770 0.000000000000 0.000000000000 0.000000000000 hmult
+0.000544548035 0.000004291534 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000005722046 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-f-sites-0.1-states110004.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.110004.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+
+			 Sweep iteration ... 4 100 0.000000100000 0.000000000000 0.000000000000
+			 Switching from two dot to one dot ... 
+			 forward system starting size ... 1 2
+			 backward system starting size ... 1 2
+			 Saving block file :: ./node0//Block-b-sites-3.3-states110004.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-3-3.110004.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-3-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Building Sum Block 129611070
+			 2 3 
+			 Restoring block of size 2 from previous iteration
+			 Restoring block file :: ./node0//Block-f-sites-0.1-states110004.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-1.110004.0.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-1.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 1394606851
+			 0 1 2 3 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CCD_SUM  Virtual Operators  
+			 2 :  CCD_CREDES_COMP  Virtual Operators  
+			 2 :  CCD_CRECRE_COMP  Virtual Operators  
+			 Transposing previous wavefunction
+			 Loading Wavefunction ./node0//wave-0-2.0.1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.009936847317
+ 			 a total of 3 to be assigned 
+ 			 total norm: 0.009936847317  norm after truncation: 0.009936847317
+			 Saving Rotation Matrix :: ./node0//Rotation-2-3.0.state110004.tmp
+			 Saving Wavefunction ./node0//wave-2-3.0.1.tmp
+			 Saving Wavefunction ./node0//wave-2-3.0.110004.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.004833936691 0.000000000000 0.000000000000  0 timer 
+0.003198623657 makeops 
+0.000002861023 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.002702951431 0.000000000000 0.000000000000 0.000000000000 hmult
+0.000614881516 0.000004291534 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000006675720 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-b-sites-2.3-states110004.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-2-3.110004.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-2-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: ./node0//Block-f-sites-0.0-states110004.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-0.110004.0.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 300266720
+			 0 1 
+			 Building Sum Block 1593586754
+			 0 1 2 3 
+			 Transforming previous wavefunction 
+			 Loading Wavefunction ./node0//wave-2-3.0.1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Building Sum Block 1895466034
+			 1 2 3 
+			 Building Sum Block 521225930
+			 0 1 2 3 
+			 Loading Rotation Matrix :: ./node0//Rotation-1-3.0.state1.tmp
+ 			 assigning a total of 22 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.009936847317
+ 			 a total of 18 to be assigned 
+ 			 total norm: 0.009936847317  norm after truncation: 0.009936847317
+			 Saving Rotation Matrix :: ./node0//Rotation-1-3.0.state110004.tmp
+			 Saving Wavefunction ./node0//wave-1-3.0.1.tmp
+			 Saving Wavefunction ./node0//wave-1-3.0.110004.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.006906986237 0.000000000000 0.000000000000  0 timer 
+0.003589391708 makeops 
+0.000004768372 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.003042936325 0.000000000000 0.000000000000 0.000000000000 hmult
+0.000749111176 0.000005245209 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000007629395 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-b-sites-1.3-states110004.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-1-3.110004.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-1-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+
+			 Sweep iteration ... 5 100 0.000000100000 0.000000000000 0.000000000000
+			 forward system starting size ... 1 2
+			 backward system starting size ... 1 2
+			 Saving block file :: ./node0//Block-f-sites-0.0-states110004.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.110004.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Building Sum Block 110278480
+			 0 1 
+			 Restoring block of size 2 from previous iteration
+			 Restoring block file :: ./node0//Block-b-sites-2.3-states110004.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-backward-2-3.110004.0.tmp
+			 Loading state file :: ./node0//StateInfo-backward-2-3.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 1483426158
+			 0 1 2 3 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CCD_SUM  Virtual Operators  
+			 2 :  CCD_CREDES_COMP  Virtual Operators  
+			 2 :  CCD_CRECRE_COMP  Virtual Operators  
+			 Transposing previous wavefunction
+			 Loading Wavefunction ./node0//wave-1-3.0.1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.009936847317
+ 			 a total of 3 to be assigned 
+ 			 total norm: 0.009936847317  norm after truncation: 0.009936847317
+			 Saving Rotation Matrix :: ./node0//Rotation-0-1.0.state110004.tmp
+			 Saving Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Saving Wavefunction ./node0//wave-0-1.0.110004.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.008965969086 0.000000000000 0.000000000000  0 timer 
+0.003954648972 makeops 
+0.000004768372 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.003381729126 0.000000000000 0.000000000000 0.000000000000 hmult
+0.000818014145 0.000005245209 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000008583069 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-f-sites-0.1-states110004.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.110004.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: ./node0//Block-b-sites-3.3-states110004.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-backward-3-3.110004.0.tmp
+			 Loading state file :: ./node0//StateInfo-backward-3-3.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 783715624
+			 2 3 
+			 Building Sum Block 114143444
+			 0 1 2 3 
+			 Transforming previous wavefunction 
+			 Loading Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Building Sum Block 257893836
+			 0 1 2 
+			 Building Sum Block 2036890637
+			 0 1 2 3 
+			 Loading Rotation Matrix :: ./node0//Rotation-0-2.0.state1.tmp
+ 			 assigning a total of 23 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.009936847317
+ 			 a total of 19 to be assigned 
+ 			 total norm: 0.009936847317  norm after truncation: 0.009936847317
+			 Saving Rotation Matrix :: ./node0//Rotation-0-2.0.state110004.tmp
+			 Saving Wavefunction ./node0//wave-0-2.0.1.tmp
+			 Saving Wavefunction ./node0//wave-0-2.0.110004.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.011023044586 0.000000000000 0.000000000000  0 timer 
+0.004366159439 makeops 
+0.000006675720 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.003728628159 0.000000000000 0.000000000000 0.000000000000 hmult
+0.000960111618 0.000006198883 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000010490417 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-f-sites-0.2-states110004.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-2.110004.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-2.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+Sweep time :0
+0.020000000000
+0.020000000000
+0.000000000000
+0.000000000000
+0.000000000000
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state110004.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-2.0.state110004.tmp
+			 Loading Wavefunction ./node0//wave-0-2.0.110004.tmp
+			 Sites ::  0--0
+			 # states: 3			 # states: 3
+
+0 out of 1  			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state110004.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state110004.tmp
+norm ops 
+			 Building Sum Block 1978758463
+			 0 1 
+			 Transforming to new basis 
+			 Building Sum Block 999507777
+			 0 1 2 
+			 Building Sum Block 131541535
+			 0 1 2 3 
+			 Loading Wavefunction ./node0//wave-0-2.0.110004.tmp
+			 Loading Wavefunction ./node0//wave-0-2.0.110004.tmp
+Calculate Expectation time :0
+Zero Energy: -3.857922522990
+Norm of contracted MPO on MPS : 0.009936847317
+Amplitude : 0.006847855664
+Ener(only CAS part) : -3.314907152063
+Energy : -2.653311010426
+Correction Energy: -0.008249005770
+Begin Vi subspace with i = 5
+
+			 Sweep iteration ... 0 100 0.000100000000 0.000100000000 0.000000000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+			 Saving block file :: ./node0//Block-f-sites-0.0-states110005.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.110005.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Building Sum Block 1371979610
+			 0 1 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CCD_SUM  Virtual Operators  
+			 2 :  CCD_CREDES_COMP  Virtual Operators  
+			 2 :  CCD_CRECRE_COMP  Virtual Operators  
+			 Loading Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: ./node0//Rotation-0-1.0.state110005.tmp
+			 Transforming to new basis 
+			 Saving block file :: ./node0//Block-f-sites-0.1-states110005.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.110005.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 2 :  STACKCRE  Core Operators  
+			 2 :  STACKDES  Core Operators  
+			 1 :  STACKOVERLAP  Core Operators  
+			 1 :  CCD_SUM  Core Operators  
+			 2 :  CCD_CREDES_COMP  Core Operators  
+			 2 :  CCD_CRECRE_COMP  Core Operators  
+			 Building Sum Block 611122547
+			 0 1 2 
+			 1 :  STACKCRE  Virtual Operators  
+			 1 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CCD_SUM  Virtual Operators  
+			 1 :  CCD_CREDES_COMP  Virtual Operators  
+			 1 :  CCD_CRECRE_COMP  Virtual Operators  
+			 Loading Wavefunction ./node0//wave-0-2.0.1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-2.0.state1.tmp
+ 			 assigning a total of 32 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 25 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: ./node0//Rotation-0-2.0.state110005.tmp
+			 Transforming to new basis 
+			 Saving block file :: ./node0//Block-f-sites-0.2-states110005.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-2.110005.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-2.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 1 :  STACKCRE  Core Operators  
+			 1 :  STACKDES  Core Operators  
+			 1 :  STACKOVERLAP  Core Operators  
+			 1 :  CCD_SUM  Core Operators  
+			 1 :  CCD_CREDES_COMP  Core Operators  
+			 1 :  CCD_CRECRE_COMP  Core Operators  
+Start up time :0
+			 Sweep iteration ... 0 100 0.000100000000 0.000100000000 0.000000000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+			 Saving block file :: ./node0//Block-b-sites-3.3-states110005.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-3-3.110005.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-3-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Building Sum Block 1216459107
+			 2 3 
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: ./node0//Block-f-sites-0.0-states110005.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-0.110005.0.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 307340730
+			 0 1 
+			 Building Sum Block 1910860741
+			 0 1 2 3 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CCD_SUM  Virtual Operators  
+			 2 :  CCD_CREDES_COMP  Virtual Operators  
+			 2 :  CCD_CRECRE_COMP  Virtual Operators  
+			 Transposing previous wavefunction
+			 Loading Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.015175326567
+ 			 a total of 0 to be assigned 
+ 			 total norm: 0.015175326567  norm after truncation: 0.015175326567
+			 Saving Rotation Matrix :: ./node0//Rotation-2-3.0.state110005.tmp
+			 Saving Wavefunction ./node0//wave-2-3.0.1.tmp
+			 Saving Wavefunction ./node0//wave-2-3.0.110005.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.011630058289 0.000000000000 0.000000000000  0 timer 
+0.006125926971 makeops 
+0.000006675720 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.004280805588 0.000000000000 0.000000000000 0.000000000000 hmult
+0.001301288605 0.000007152557 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000012636185 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-b-sites-2.3-states110005.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-2-3.110005.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-2-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+
+			 Sweep iteration ... 1 100 0.000100000000 0.000100000000 0.000000000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+			 Saving block file :: ./node0//Block-f-sites-0.0-states110005.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.110005.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Building Sum Block 1116953765
+			 0 1 
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: ./node0//Block-b-sites-3.3-states110005.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-backward-3-3.110005.0.tmp
+			 Loading state file :: ./node0//StateInfo-backward-3-3.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 2014536577
+			 2 3 
+			 Building Sum Block 1075439607
+			 0 1 2 3 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CCD_SUM  Virtual Operators  
+			 2 :  CCD_CREDES_COMP  Virtual Operators  
+			 2 :  CCD_CRECRE_COMP  Virtual Operators  
+			 Transposing previous wavefunction
+			 Loading Wavefunction ./node0//wave-2-3.0.1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.015175326567
+ 			 a total of 0 to be assigned 
+ 			 total norm: 0.015175326567  norm after truncation: 0.015175326567
+			 Saving Rotation Matrix :: ./node0//Rotation-0-1.0.state110005.tmp
+			 Saving Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Saving Wavefunction ./node0//wave-0-1.0.110005.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.012278079987 0.000000000000 0.000000000000  0 timer 
+0.006672620773 makeops 
+0.000007629395 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.004837751389 0.000000000000 0.000000000000 0.000000000000 hmult
+0.001410484314 0.000008106232 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000013589859 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-f-sites-0.1-states110005.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.110005.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+
+			 Sweep iteration ... 2 100 0.000100000000 0.000100000000 0.000000000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+			 Saving block file :: ./node0//Block-b-sites-3.3-states110005.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-3-3.110005.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-3-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Building Sum Block 1977352927
+			 2 3 
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: ./node0//Block-f-sites-0.0-states110005.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-0.110005.0.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 2089416841
+			 0 1 
+			 Building Sum Block 2055714253
+			 0 1 2 3 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CCD_SUM  Virtual Operators  
+			 2 :  CCD_CREDES_COMP  Virtual Operators  
+			 2 :  CCD_CRECRE_COMP  Virtual Operators  
+			 Transposing previous wavefunction
+			 Loading Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.015175326567
+ 			 a total of 0 to be assigned 
+ 			 total norm: 0.015175326567  norm after truncation: 0.015175326567
+			 Saving Rotation Matrix :: ./node0//Rotation-2-3.0.state110005.tmp
+			 Saving Wavefunction ./node0//wave-2-3.0.1.tmp
+			 Saving Wavefunction ./node0//wave-2-3.0.110005.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.012931108475 0.000000000000 0.000000000000  0 timer 
+0.007223129272 makeops 
+0.000007629395 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.005387783051 0.000000000000 0.000000000000 0.000000000000 hmult
+0.001522541046 0.000009059906 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000014543533 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-b-sites-2.3-states110005.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-2-3.110005.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-2-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+
+			 Sweep iteration ... 3 100 0.000100000000 0.000100000000 0.000000000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+			 Saving block file :: ./node0//Block-f-sites-0.0-states110005.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.110005.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Building Sum Block 1210929308
+			 0 1 
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: ./node0//Block-b-sites-3.3-states110005.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-backward-3-3.110005.0.tmp
+			 Loading state file :: ./node0//StateInfo-backward-3-3.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 524468440
+			 2 3 
+			 Building Sum Block 960308997
+			 0 1 2 3 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CCD_SUM  Virtual Operators  
+			 2 :  CCD_CREDES_COMP  Virtual Operators  
+			 2 :  CCD_CRECRE_COMP  Virtual Operators  
+			 Transposing previous wavefunction
+			 Loading Wavefunction ./node0//wave-2-3.0.1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.015175326567
+ 			 a total of 0 to be assigned 
+ 			 total norm: 0.015175326567  norm after truncation: 0.015175326567
+			 Saving Rotation Matrix :: ./node0//Rotation-0-1.0.state110005.tmp
+			 Saving Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Saving Wavefunction ./node0//wave-0-1.0.110005.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.013576030731 0.000000000000 0.000000000000  0 timer 
+0.007766246796 makeops 
+0.000008583069 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.005934953690 0.000000000000 0.000000000000 0.000000000000 hmult
+0.001631498337 0.000009059906 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000015497208 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-f-sites-0.1-states110005.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.110005.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+
+			 Sweep iteration ... 4 100 0.000000100000 0.000000000000 0.000000000000
+			 Switching from two dot to one dot ... 
+			 forward system starting size ... 1 2
+			 backward system starting size ... 1 2
+			 Saving block file :: ./node0//Block-b-sites-3.3-states110005.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-3-3.110005.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-3-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Building Sum Block 496748878
+			 2 3 
+			 Restoring block of size 2 from previous iteration
+			 Restoring block file :: ./node0//Block-f-sites-0.1-states110005.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-1.110005.0.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-1.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 1958881767
+			 0 1 2 3 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CCD_SUM  Virtual Operators  
+			 2 :  CCD_CREDES_COMP  Virtual Operators  
+			 2 :  CCD_CRECRE_COMP  Virtual Operators  
+			 Transposing previous wavefunction
+			 Loading Wavefunction ./node0//wave-0-2.0.1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.015075326567
+ 			 a total of 3 to be assigned 
+ 			 total norm: 0.015075326567  norm after truncation: 0.015075326567
+			 Saving Rotation Matrix :: ./node0//Rotation-2-3.0.state110005.tmp
+			 Saving Wavefunction ./node0//wave-2-3.0.1.tmp
+			 Saving Wavefunction ./node0//wave-2-3.0.110005.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.015681982040 0.000000000000 0.000000000000  0 timer 
+0.008136510849 makeops 
+0.000008583069 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.006290912628 0.000000000000 0.000000000000 0.000000000000 hmult
+0.001701593399 0.000010013580 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000016450882 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-b-sites-2.3-states110005.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-2-3.110005.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-2-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: ./node0//Block-f-sites-0.0-states110005.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-0.110005.0.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 1406335069
+			 0 1 
+			 Building Sum Block 803375075
+			 0 1 2 3 
+			 Transforming previous wavefunction 
+			 Loading Wavefunction ./node0//wave-2-3.0.1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Building Sum Block 1642634022
+			 1 2 3 
+			 Building Sum Block 1356430816
+			 0 1 2 3 
+			 Loading Rotation Matrix :: ./node0//Rotation-1-3.0.state1.tmp
+ 			 assigning a total of 23 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.015075326567
+ 			 a total of 19 to be assigned 
+ 			 total norm: 0.015075326567  norm after truncation: 0.015075326567
+			 Saving Rotation Matrix :: ./node0//Rotation-1-3.0.state110005.tmp
+			 Saving Wavefunction ./node0//wave-1-3.0.1.tmp
+			 Saving Wavefunction ./node0//wave-1-3.0.110005.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.017714977264 0.000000000000 0.000000000000  0 timer 
+0.008557558060 makeops 
+0.000008583069 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.006644964218 0.000000000000 0.000000000000 0.000000000000 hmult
+0.001843690872 0.000010013580 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000018596649 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-b-sites-1.3-states110005.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-1-3.110005.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-1-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+
+			 Sweep iteration ... 5 100 0.000000100000 0.000000000000 0.000000000000
+			 forward system starting size ... 1 2
+			 backward system starting size ... 1 2
+			 Saving block file :: ./node0//Block-f-sites-0.0-states110005.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.110005.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Building Sum Block 978462015
+			 0 1 
+			 Restoring block of size 2 from previous iteration
+			 Restoring block file :: ./node0//Block-b-sites-2.3-states110005.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-backward-2-3.110005.0.tmp
+			 Loading state file :: ./node0//StateInfo-backward-2-3.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 1146904309
+			 0 1 2 3 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CCD_SUM  Virtual Operators  
+			 2 :  CCD_CREDES_COMP  Virtual Operators  
+			 2 :  CCD_CRECRE_COMP  Virtual Operators  
+			 Transposing previous wavefunction
+			 Loading Wavefunction ./node0//wave-1-3.0.1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.015075326567
+ 			 a total of 3 to be assigned 
+ 			 total norm: 0.015075326567  norm after truncation: 0.015075326567
+			 Saving Rotation Matrix :: ./node0//Rotation-0-1.0.state110005.tmp
+			 Saving Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Saving Wavefunction ./node0//wave-0-1.0.110005.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.019876003265 0.000000000000 0.000000000000  0 timer 
+0.008959293365 makeops 
+0.000008583069 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.007036924362 0.000000000000 0.000000000000 0.000000000000 hmult
+0.001916408539 0.000010967255 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000019550323 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-f-sites-0.1-states110005.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.110005.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: ./node0//Block-b-sites-3.3-states110005.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-backward-3-3.110005.0.tmp
+			 Loading state file :: ./node0//StateInfo-backward-3-3.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 266585201
+			 2 3 
+			 Building Sum Block 379074286
+			 0 1 2 3 
+			 Transforming previous wavefunction 
+			 Loading Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Building Sum Block 2089261098
+			 0 1 2 
+			 Building Sum Block 378450401
+			 0 1 2 3 
+			 Loading Rotation Matrix :: ./node0//Rotation-0-2.0.state1.tmp
+ 			 assigning a total of 22 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.015075326567
+ 			 a total of 18 to be assigned 
+ 			 total norm: 0.015075326567  norm after truncation: 0.015075326567
+			 Saving Rotation Matrix :: ./node0//Rotation-0-2.0.state110005.tmp
+			 Saving Wavefunction ./node0//wave-0-2.0.1.tmp
+			 Saving Wavefunction ./node0//wave-0-2.0.110005.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.022171020508 0.000000000000 0.000000000000  0 timer 
+0.009356975555 makeops 
+0.000008583069 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.007380962372 0.000000000000 0.000000000000 0.000000000000 hmult
+0.002058744431 0.000010967255 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000020503998 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-f-sites-0.2-states110005.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-2.110005.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-2.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+Sweep time :0
+0.030000000000
+0.030000000000
+0.000000000000
+0.000000000000
+0.000000000000
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state110005.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-2.0.state110005.tmp
+			 Loading Wavefunction ./node0//wave-0-2.0.110005.tmp
+			 Sites ::  0--0
+			 # states: 3			 # states: 3
+
+0 out of 1  			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state110005.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state110005.tmp
+norm ops 
+			 Building Sum Block 252653604
+			 0 1 
+			 Transforming to new basis 
+			 Building Sum Block 52485793
+			 0 1 2 
+			 Building Sum Block 1658988673
+			 0 1 2 3 
+			 Loading Wavefunction ./node0//wave-0-2.0.110005.tmp
+			 Loading Wavefunction ./node0//wave-0-2.0.110005.tmp
+Calculate Expectation time :0
+Zero Energy: -3.857922522990
+Norm of contracted MPO on MPS : 0.015075326567
+Amplitude : 0.015264795848
+Ener(only CAS part) : -3.440511783098
+Energy : -2.864147987522
+Correction Energy: -0.015169765403
+Nevpt2 correction to the energy for state 0 in subspace Vi is -0.023418771173
+Nevpt2 Vi subspace perturber Amplitude : 0.022112651512
+Begin Va subspace with a = 6
+
+			 Sweep iteration ... 0 100 0.000100000000 0.000100000000 0.000000000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+			 Saving block file :: ./node0//Block-f-sites-0.0-states100006.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.100006.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Building Sum Block 1648838309
+			 0 1 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CDD_SUM  Virtual Operators  
+			 2 :  CDD_CREDES_COMP  Virtual Operators  
+			 2 :  CDD_DESDES_COMP  Virtual Operators  
+			 Loading Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+ 			 assigning a total of 8 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.923473449390
+ 			 a total of 0 to be assigned 
+ 			 total norm: 0.923473449390  norm after truncation: 0.923473449390
+			 Saving Rotation Matrix :: ./node0//Rotation-0-1.0.state100006.tmp
+			 Transforming to new basis 
+			 Saving block file :: ./node0//Block-f-sites-0.1-states100006.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.100006.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 2 :  STACKCRE  Core Operators  
+			 2 :  STACKDES  Core Operators  
+			 1 :  STACKOVERLAP  Core Operators  
+			 1 :  CDD_SUM  Core Operators  
+			 2 :  CDD_CREDES_COMP  Core Operators  
+			 2 :  CDD_DESDES_COMP  Core Operators  
+			 Building Sum Block 1203078570
+			 0 1 2 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CDD_SUM  Virtual Operators  
+			 1 :  CDD_CREDES_COMP  Virtual Operators  
+			 1 :  CDD_DESDES_COMP  Virtual Operators  
+			 Loading Wavefunction ./node0//wave-0-2.0.1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-2.0.state1.tmp
+ 			 assigning a total of 17 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.510338252343
+ 			 a total of 12 to be assigned 
+ 			 total norm: 0.510338252343  norm after truncation: 0.510338252343
+			 Saving Rotation Matrix :: ./node0//Rotation-0-2.0.state100006.tmp
+			 Transforming to new basis 
+			 Saving block file :: ./node0//Block-f-sites-0.2-states100006.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-2.100006.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-2.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 2 :  STACKCRE  Core Operators  
+			 2 :  STACKDES  Core Operators  
+			 1 :  STACKOVERLAP  Core Operators  
+			 1 :  CDD_SUM  Core Operators  
+			 1 :  CDD_CREDES_COMP  Core Operators  
+			 1 :  CDD_DESDES_COMP  Core Operators  
+Start up time :0
+			 Sweep iteration ... 0 100 0.000100000000 0.000100000000 0.000000000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+			 Saving block file :: ./node0//Block-b-sites-3.3-states100006.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-3-3.100006.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-3-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Building Sum Block 1270021942
+			 2 3 
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: ./node0//Block-f-sites-0.0-states100006.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-0.100006.0.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 19051268
+			 0 1 
+			 Building Sum Block 1570180905
+			 0 1 2 3 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CDD_SUM  Virtual Operators  
+			 2 :  CDD_CREDES_COMP  Virtual Operators  
+			 2 :  CDD_DESDES_COMP  Virtual Operators  
+			 Transposing previous wavefunction
+			 Loading Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+ 			 assigning a total of 8 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.016078394838
+ 			 a total of 0 to be assigned 
+ 			 total norm: 0.016078394838  norm after truncation: 0.016078394838
+			 Saving Rotation Matrix :: ./node0//Rotation-2-3.0.state100006.tmp
+			 Saving Wavefunction ./node0//wave-2-3.0.1.tmp
+			 Saving Wavefunction ./node0//wave-2-3.0.100006.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.022858142853 0.000000000000 0.000000000000  0 timer 
+0.011072397232 makeops 
+0.000008583069 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.007928848267 0.000000000000 0.000000000000 0.000000000000 hmult
+0.002408504486 0.000011920929 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000023603439 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-b-sites-2.3-states100006.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-2-3.100006.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-2-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+
+			 Sweep iteration ... 1 100 0.000100000000 0.000100000000 0.000000000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+			 Saving block file :: ./node0//Block-f-sites-0.0-states100006.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.100006.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Building Sum Block 825219844
+			 0 1 
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: ./node0//Block-b-sites-3.3-states100006.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-backward-3-3.100006.0.tmp
+			 Loading state file :: ./node0//StateInfo-backward-3-3.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 1441175894
+			 2 3 
+			 Building Sum Block 1245098906
+			 0 1 2 3 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CDD_SUM  Virtual Operators  
+			 2 :  CDD_CREDES_COMP  Virtual Operators  
+			 2 :  CDD_DESDES_COMP  Virtual Operators  
+			 Transposing previous wavefunction
+			 Loading Wavefunction ./node0//wave-2-3.0.1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+ 			 assigning a total of 8 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.016078394838
+ 			 a total of 0 to be assigned 
+ 			 total norm: 0.016078394838  norm after truncation: 0.016078394838
+			 Saving Rotation Matrix :: ./node0//Rotation-0-1.0.state100006.tmp
+			 Saving Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Saving Wavefunction ./node0//wave-0-1.0.100006.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.023494243622 0.000000000000 0.000000000000  0 timer 
+0.011616706848 makeops 
+0.000008583069 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.008461952209 0.000000000000 0.000000000000 0.000000000000 hmult
+0.002515792847 0.000011920929 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000024557114 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-f-sites-0.1-states100006.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.100006.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+
+			 Sweep iteration ... 2 100 0.000100000000 0.000100000000 0.000000000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+			 Saving block file :: ./node0//Block-b-sites-3.3-states100006.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-3-3.100006.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-3-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Building Sum Block 1205334524
+			 2 3 
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: ./node0//Block-f-sites-0.0-states100006.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-0.100006.0.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 550195510
+			 0 1 
+			 Building Sum Block 770712892
+			 0 1 2 3 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CDD_SUM  Virtual Operators  
+			 2 :  CDD_CREDES_COMP  Virtual Operators  
+			 2 :  CDD_DESDES_COMP  Virtual Operators  
+			 Transposing previous wavefunction
+			 Loading Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+ 			 assigning a total of 8 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.016078394838
+ 			 a total of 0 to be assigned 
+ 			 total norm: 0.016078394838  norm after truncation: 0.016078394838
+			 Saving Rotation Matrix :: ./node0//Rotation-2-3.0.state100006.tmp
+			 Saving Wavefunction ./node0//wave-2-3.0.1.tmp
+			 Saving Wavefunction ./node0//wave-2-3.0.100006.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.024133205414 0.000000000000 0.000000000000  0 timer 
+0.012148141861 makeops 
+0.000008583069 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.008990049362 0.000000000000 0.000000000000 0.000000000000 hmult
+0.002621650696 0.000011920929 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000025510788 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-b-sites-2.3-states100006.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-2-3.100006.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-2-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+
+			 Sweep iteration ... 3 100 0.000100000000 0.000100000000 0.000000000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+			 Saving block file :: ./node0//Block-f-sites-0.0-states100006.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.100006.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Building Sum Block 862256260
+			 0 1 
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: ./node0//Block-b-sites-3.3-states100006.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-backward-3-3.100006.0.tmp
+			 Loading state file :: ./node0//StateInfo-backward-3-3.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 255028528
+			 2 3 
+			 Building Sum Block 1117171151
+			 0 1 2 3 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CDD_SUM  Virtual Operators  
+			 2 :  CDD_CREDES_COMP  Virtual Operators  
+			 2 :  CDD_DESDES_COMP  Virtual Operators  
+			 Transposing previous wavefunction
+			 Loading Wavefunction ./node0//wave-2-3.0.1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+ 			 assigning a total of 8 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.016078394838
+ 			 a total of 0 to be assigned 
+ 			 total norm: 0.016078394838  norm after truncation: 0.016078394838
+			 Saving Rotation Matrix :: ./node0//Rotation-0-1.0.state100006.tmp
+			 Saving Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Saving Wavefunction ./node0//wave-0-1.0.100006.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.024813175201 0.000000000000 0.000000000000  0 timer 
+0.012678384781 makeops 
+0.000008583069 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.009521007538 0.000000000000 0.000000000000 0.000000000000 hmult
+0.002729654312 0.000011920929 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000027418137 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-f-sites-0.1-states100006.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.100006.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+
+			 Sweep iteration ... 4 100 0.000000100000 0.000000000000 0.000000000000
+			 Switching from two dot to one dot ... 
+			 forward system starting size ... 1 2
+			 backward system starting size ... 1 2
+			 Saving block file :: ./node0//Block-b-sites-3.3-states100006.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-3-3.100006.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-3-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Building Sum Block 1526393931
+			 2 3 
+			 Restoring block of size 2 from previous iteration
+			 Restoring block file :: ./node0//Block-f-sites-0.1-states100006.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-1.100006.0.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-1.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 944143084
+			 0 1 2 3 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CDD_SUM  Virtual Operators  
+			 2 :  CDD_CREDES_COMP  Virtual Operators  
+			 2 :  CDD_DESDES_COMP  Virtual Operators  
+			 Transposing previous wavefunction
+			 Loading Wavefunction ./node0//wave-0-2.0.1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+ 			 assigning a total of 8 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.015978394838
+ 			 a total of 1 to be assigned 
+ 			 total norm: 0.015978394838  norm after truncation: 0.015978394838
+			 Saving Rotation Matrix :: ./node0//Rotation-2-3.0.state100006.tmp
+			 Saving Wavefunction ./node0//wave-2-3.0.1.tmp
+			 Saving Wavefunction ./node0//wave-2-3.0.100006.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.026868104935 0.000000000000 0.000000000000  0 timer 
+0.013047218323 makeops 
+0.000008583069 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.009860038757 0.000000000000 0.000000000000 0.000000000000 hmult
+0.002814769745 0.000011920929 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000028610229 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-b-sites-2.3-states100006.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-2-3.100006.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-2-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: ./node0//Block-f-sites-0.0-states100006.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-0.100006.0.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 991905540
+			 0 1 
+			 Building Sum Block 1129827120
+			 0 1 2 3 
+			 Transforming previous wavefunction 
+			 Loading Wavefunction ./node0//wave-2-3.0.1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Building Sum Block 642124716
+			 1 2 3 
+			 Building Sum Block 735617552
+			 0 1 2 3 
+			 Loading Rotation Matrix :: ./node0//Rotation-1-3.0.state1.tmp
+ 			 assigning a total of 16 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.015978394838
+ 			 a total of 12 to be assigned 
+ 			 total norm: 0.015978394838  norm after truncation: 0.015978394838
+			 Saving Rotation Matrix :: ./node0//Rotation-1-3.0.state100006.tmp
+			 Saving Wavefunction ./node0//wave-1-3.0.1.tmp
+			 Saving Wavefunction ./node0//wave-1-3.0.100006.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.028895139694 0.000000000000 0.000000000000  0 timer 
+0.013434410095 makeops 
+0.000008583069 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.010199069977 0.000000000000 0.000000000000 0.000000000000 hmult
+0.002952814102 0.000011920929 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000029802322 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-b-sites-1.3-states100006.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-1-3.100006.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-1-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+
+			 Sweep iteration ... 5 100 0.000000100000 0.000000000000 0.000000000000
+			 forward system starting size ... 1 2
+			 backward system starting size ... 1 2
+			 Saving block file :: ./node0//Block-f-sites-0.0-states100006.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.100006.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Building Sum Block 1611429927
+			 0 1 
+			 Restoring block of size 2 from previous iteration
+			 Restoring block file :: ./node0//Block-b-sites-2.3-states100006.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-backward-2-3.100006.0.tmp
+			 Loading state file :: ./node0//StateInfo-backward-2-3.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 1760387741
+			 0 1 2 3 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CDD_SUM  Virtual Operators  
+			 2 :  CDD_CREDES_COMP  Virtual Operators  
+			 2 :  CDD_DESDES_COMP  Virtual Operators  
+			 Transposing previous wavefunction
+			 Loading Wavefunction ./node0//wave-1-3.0.1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+ 			 assigning a total of 8 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.015978394838
+ 			 a total of 1 to be assigned 
+ 			 total norm: 0.015978394838  norm after truncation: 0.015978394838
+			 Saving Rotation Matrix :: ./node0//Rotation-0-1.0.state100006.tmp
+			 Saving Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Saving Wavefunction ./node0//wave-0-1.0.100006.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.031025171280 0.000000000000 0.000000000000  0 timer 
+0.013810157776 makeops 
+0.000009536743 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.010555028915 0.000000000000 0.000000000000 0.000000000000 hmult
+0.003043889999 0.000011920929 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000031948090 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-f-sites-0.1-states100006.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.100006.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: ./node0//Block-b-sites-3.3-states100006.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-backward-3-3.100006.0.tmp
+			 Loading state file :: ./node0//StateInfo-backward-3-3.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 910369801
+			 2 3 
+			 Building Sum Block 275568993
+			 0 1 2 3 
+			 Transforming previous wavefunction 
+			 Loading Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Building Sum Block 980551685
+			 0 1 2 
+			 Building Sum Block 1935420543
+			 0 1 2 3 
+			 Loading Rotation Matrix :: ./node0//Rotation-0-2.0.state1.tmp
+ 			 assigning a total of 15 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.015978394838
+ 			 a total of 11 to be assigned 
+ 			 total norm: 0.015978394838  norm after truncation: 0.015978394838
+			 Saving Rotation Matrix :: ./node0//Rotation-0-2.0.state100006.tmp
+			 Saving Wavefunction ./node0//wave-0-2.0.1.tmp
+			 Saving Wavefunction ./node0//wave-0-2.0.100006.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.033129215240 0.000000000000 0.000000000000  0 timer 
+0.014230251312 makeops 
+0.000010490417 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.010906934738 0.000000000000 0.000000000000 0.000000000000 hmult
+0.003186941147 0.000011920929 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000033855438 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-f-sites-0.2-states100006.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-2.100006.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-2.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+Sweep time :0
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state100006.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-2.0.state100006.tmp
+			 Loading Wavefunction ./node0//wave-0-2.0.100006.tmp
+			 Sites ::  0--0
+			 # states: 3			 # states: 3
+
+0 out of 1  			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state100006.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state100006.tmp
+norm ops 
+			 Building Sum Block 473261089
+			 0 1 
+			 Transforming to new basis 
+			 Building Sum Block 194060911
+			 0 1 2 
+			 Building Sum Block 1465166629
+			 0 1 2 3 
+			 Loading Wavefunction ./node0//wave-0-2.0.100006.tmp
+			 Loading Wavefunction ./node0//wave-0-2.0.100006.tmp
+Calculate Expectation time :0
+Norm of contracted MPO on MPS : 0.015978394838
+Amplitude : 0.009011437011
+Ener(only CAS part) : -3.331155732275
+Energy : -2.526335516632
+Correction Energy: -0.011999512433
+Begin Va subspace with a = 7
+
+			 Sweep iteration ... 0 100 0.000100000000 0.000100000000 0.000000000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+			 Saving block file :: ./node0//Block-f-sites-0.0-states100007.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.100007.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Building Sum Block 2108235402
+			 0 1 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CDD_SUM  Virtual Operators  
+			 2 :  CDD_CREDES_COMP  Virtual Operators  
+			 2 :  CDD_DESDES_COMP  Virtual Operators  
+			 Loading Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+ 			 assigning a total of 8 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.833611316897
+ 			 a total of 0 to be assigned 
+ 			 total norm: 0.833611316897  norm after truncation: 0.833611316897
+			 Saving Rotation Matrix :: ./node0//Rotation-0-1.0.state100007.tmp
+			 Transforming to new basis 
+			 Saving block file :: ./node0//Block-f-sites-0.1-states100007.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.100007.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 2 :  STACKCRE  Core Operators  
+			 2 :  STACKDES  Core Operators  
+			 1 :  STACKOVERLAP  Core Operators  
+			 1 :  CDD_SUM  Core Operators  
+			 2 :  CDD_CREDES_COMP  Core Operators  
+			 2 :  CDD_DESDES_COMP  Core Operators  
+			 Building Sum Block 1870104452
+			 0 1 2 
+			 1 :  STACKCRE  Virtual Operators  
+			 1 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CDD_SUM  Virtual Operators  
+			 1 :  CDD_CREDES_COMP  Virtual Operators  
+			 1 :  CDD_DESDES_COMP  Virtual Operators  
+			 Loading Wavefunction ./node0//wave-0-2.0.1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-2.0.state1.tmp
+ 			 assigning a total of 17 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.591477091103
+ 			 a total of 11 to be assigned 
+ 			 total norm: 0.591477091103  norm after truncation: 0.591477091103
+			 Saving Rotation Matrix :: ./node0//Rotation-0-2.0.state100007.tmp
+			 Transforming to new basis 
+			 Saving block file :: ./node0//Block-f-sites-0.2-states100007.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-2.100007.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-2.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 1 :  STACKCRE  Core Operators  
+			 1 :  STACKDES  Core Operators  
+			 1 :  STACKOVERLAP  Core Operators  
+			 1 :  CDD_SUM  Core Operators  
+			 1 :  CDD_CREDES_COMP  Core Operators  
+			 1 :  CDD_DESDES_COMP  Core Operators  
+Start up time :0
+			 Sweep iteration ... 0 100 0.000100000000 0.000100000000 0.000000000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+			 Saving block file :: ./node0//Block-b-sites-3.3-states100007.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-3-3.100007.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-3-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Building Sum Block 212170121
+			 2 3 
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: ./node0//Block-f-sites-0.0-states100007.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-0.100007.0.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 142089732
+			 0 1 
+			 Building Sum Block 159746916
+			 0 1 2 3 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CDD_SUM  Virtual Operators  
+			 2 :  CDD_CREDES_COMP  Virtual Operators  
+			 2 :  CDD_DESDES_COMP  Virtual Operators  
+			 Transposing previous wavefunction
+			 Loading Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+ 			 assigning a total of 8 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.009690660198
+ 			 a total of 0 to be assigned 
+ 			 total norm: 0.009690660198  norm after truncation: 0.009690660198
+			 Saving Rotation Matrix :: ./node0//Rotation-2-3.0.state100007.tmp
+			 Saving Wavefunction ./node0//wave-2-3.0.1.tmp
+			 Saving Wavefunction ./node0//wave-2-3.0.100007.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.033846378326 0.000000000000 0.000000000000  0 timer 
+0.015787839890 makeops 
+0.000011682510 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.011471986771 0.000000000000 0.000000000000 0.000000000000 hmult
+0.003530025482 0.000013828278 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000036001205 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-b-sites-2.3-states100007.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-2-3.100007.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-2-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+
+			 Sweep iteration ... 1 100 0.000100000000 0.000100000000 0.000000000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+			 Saving block file :: ./node0//Block-f-sites-0.0-states100007.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.100007.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Building Sum Block 128304373
+			 0 1 
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: ./node0//Block-b-sites-3.3-states100007.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-backward-3-3.100007.0.tmp
+			 Loading state file :: ./node0//StateInfo-backward-3-3.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 843962283
+			 2 3 
+			 Building Sum Block 1931896286
+			 0 1 2 3 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CDD_SUM  Virtual Operators  
+			 2 :  CDD_CREDES_COMP  Virtual Operators  
+			 2 :  CDD_DESDES_COMP  Virtual Operators  
+			 Transposing previous wavefunction
+			 Loading Wavefunction ./node0//wave-2-3.0.1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+ 			 assigning a total of 8 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.009690660198
+ 			 a total of 0 to be assigned 
+ 			 total norm: 0.009690660198  norm after truncation: 0.009690660198
+			 Saving Rotation Matrix :: ./node0//Rotation-0-1.0.state100007.tmp
+			 Saving Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Saving Wavefunction ./node0//wave-0-1.0.100007.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.034536361694 0.000000000000 0.000000000000  0 timer 
+0.016377449036 makeops 
+0.000012874603 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.012031793594 0.000000000000 0.000000000000 0.000000000000 hmult
+0.003647089005 0.000013828278 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000037908554 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-f-sites-0.1-states100007.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.100007.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+
+			 Sweep iteration ... 2 100 0.000100000000 0.000100000000 0.000000000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+			 Saving block file :: ./node0//Block-b-sites-3.3-states100007.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-3-3.100007.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-3-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Building Sum Block 634906354
+			 2 3 
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: ./node0//Block-f-sites-0.0-states100007.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-0.100007.0.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 106857636
+			 0 1 
+			 Building Sum Block 1229888649
+			 0 1 2 3 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CDD_SUM  Virtual Operators  
+			 2 :  CDD_CREDES_COMP  Virtual Operators  
+			 2 :  CDD_DESDES_COMP  Virtual Operators  
+			 Transposing previous wavefunction
+			 Loading Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+ 			 assigning a total of 8 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.009690660198
+ 			 a total of 0 to be assigned 
+ 			 total norm: 0.009690660198  norm after truncation: 0.009690660198
+			 Saving Rotation Matrix :: ./node0//Rotation-2-3.0.state100007.tmp
+			 Saving Wavefunction ./node0//wave-2-3.0.1.tmp
+			 Saving Wavefunction ./node0//wave-2-3.0.100007.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.035239458084 0.000000000000 0.000000000000  0 timer 
+0.016940355301 makeops 
+0.000012874603 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.012588739395 0.000000000000 0.000000000000 0.000000000000 hmult
+0.003766059875 0.000014781952 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000038862228 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-b-sites-2.3-states100007.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-2-3.100007.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-2-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+
+			 Sweep iteration ... 3 100 0.000100000000 0.000100000000 0.000000000000
+			 forward system starting size ... 1 1
+			 backward system starting size ... 1 1
+			 Saving block file :: ./node0//Block-f-sites-0.0-states100007.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.100007.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Building Sum Block 167920769
+			 0 1 
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: ./node0//Block-b-sites-3.3-states100007.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-backward-3-3.100007.0.tmp
+			 Loading state file :: ./node0//StateInfo-backward-3-3.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 1949836862
+			 2 3 
+			 Building Sum Block 365014129
+			 0 1 2 3 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CDD_SUM  Virtual Operators  
+			 2 :  CDD_CREDES_COMP  Virtual Operators  
+			 2 :  CDD_DESDES_COMP  Virtual Operators  
+			 Transposing previous wavefunction
+			 Loading Wavefunction ./node0//wave-2-3.0.1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+ 			 assigning a total of 8 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.009690660198
+ 			 a total of 0 to be assigned 
+ 			 total norm: 0.009690660198  norm after truncation: 0.009690660198
+			 Saving Rotation Matrix :: ./node0//Rotation-0-1.0.state100007.tmp
+			 Saving Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Saving Wavefunction ./node0//wave-0-1.0.100007.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.035880327225 0.000000000000 0.000000000000  0 timer 
+0.017489910126 makeops 
+0.000013828278 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.013137817383 0.000000000000 0.000000000000 0.000000000000 hmult
+0.003880977631 0.000016927719 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000041007996 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-f-sites-0.1-states100007.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.100007.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+
+			 Sweep iteration ... 4 100 0.000000100000 0.000000000000 0.000000000000
+			 Switching from two dot to one dot ... 
+			 forward system starting size ... 1 2
+			 backward system starting size ... 1 2
+			 Saving block file :: ./node0//Block-b-sites-3.3-states100007.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-3-3.100007.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-3-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Building Sum Block 1930876616
+			 2 3 
+			 Restoring block of size 2 from previous iteration
+			 Restoring block file :: ./node0//Block-f-sites-0.1-states100007.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-1.100007.0.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-1.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 1387470752
+			 0 1 2 3 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CDD_SUM  Virtual Operators  
+			 2 :  CDD_CREDES_COMP  Virtual Operators  
+			 2 :  CDD_DESDES_COMP  Virtual Operators  
+			 Transposing previous wavefunction
+			 Loading Wavefunction ./node0//wave-0-2.0.1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+ 			 assigning a total of 8 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.009590660198
+ 			 a total of 1 to be assigned 
+ 			 total norm: 0.009590660198  norm after truncation: 0.009590660198
+			 Saving Rotation Matrix :: ./node0//Rotation-2-3.0.state100007.tmp
+			 Saving Wavefunction ./node0//wave-2-3.0.1.tmp
+			 Saving Wavefunction ./node0//wave-2-3.0.100007.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.038040161133 0.000000000000 0.000000000000  0 timer 
+0.017867565155 makeops 
+0.000013828278 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.013483762741 0.000000000000 0.000000000000 0.000000000000 hmult
+0.003955125809 0.000016927719 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000041961670 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-b-sites-2.3-states100007.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-2-3.100007.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-2-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: ./node0//Block-f-sites-0.0-states100007.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-0.100007.0.tmp
+			 Loading state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 260810031
+			 0 1 
+			 Building Sum Block 1667637637
+			 0 1 2 3 
+			 Transforming previous wavefunction 
+			 Loading Wavefunction ./node0//wave-2-3.0.1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Building Sum Block 586300908
+			 1 2 3 
+			 Building Sum Block 1497116077
+			 0 1 2 3 
+			 Loading Rotation Matrix :: ./node0//Rotation-1-3.0.state1.tmp
+ 			 assigning a total of 15 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.009590660198
+ 			 a total of 11 to be assigned 
+ 			 total norm: 0.009590660198  norm after truncation: 0.009590660198
+			 Saving Rotation Matrix :: ./node0//Rotation-1-3.0.state100007.tmp
+			 Saving Wavefunction ./node0//wave-1-3.0.1.tmp
+			 Saving Wavefunction ./node0//wave-1-3.0.100007.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.040105104446 0.000000000000 0.000000000000  0 timer 
+0.018284082413 makeops 
+0.000013828278 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.013830661774 0.000000000000 0.000000000000 0.000000000000 hmult
+0.004099369049 0.000018835068 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000043869019 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-b-sites-1.3-states100007.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-backward-1-3.100007.0.tmp
+			 Saving state file :: ./node0//StateInfo-backward-1-3.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+
+			 Sweep iteration ... 5 100 0.000000100000 0.000000000000 0.000000000000
+			 forward system starting size ... 1 2
+			 backward system starting size ... 1 2
+			 Saving block file :: ./node0//Block-f-sites-0.0-states100007.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.100007.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-0.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Building Sum Block 1538764638
+			 0 1 
+			 Restoring block of size 2 from previous iteration
+			 Restoring block file :: ./node0//Block-b-sites-2.3-states100007.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-backward-2-3.100007.0.tmp
+			 Loading state file :: ./node0//StateInfo-backward-2-3.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 1214363671
+			 0 1 2 3 
+			 2 :  STACKCRE  Virtual Operators  
+			 2 :  STACKDES  Virtual Operators  
+			 1 :  STACKOVERLAP  Virtual Operators  
+			 1 :  CDD_SUM  Virtual Operators  
+			 2 :  CDD_CREDES_COMP  Virtual Operators  
+			 2 :  CDD_DESDES_COMP  Virtual Operators  
+			 Transposing previous wavefunction
+			 Loading Wavefunction ./node0//wave-1-3.0.1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+ 			 assigning a total of 8 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.009590660198
+ 			 a total of 1 to be assigned 
+ 			 total norm: 0.009590660198  norm after truncation: 0.009590660198
+			 Saving Rotation Matrix :: ./node0//Rotation-0-1.0.state100007.tmp
+			 Saving Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Saving Wavefunction ./node0//wave-0-1.0.100007.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.042236089706 0.000000000000 0.000000000000  0 timer 
+0.018663167953 makeops 
+0.000014781952 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.014172792435 0.000000000000 0.000000000000 0.000000000000 hmult
+0.004178285599 0.000019788742 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000044822693 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-f-sites-0.1-states100007.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.100007.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-1.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+			 Restoring block of size 1 from previous iteration
+			 Restoring block file :: ./node0//Block-b-sites-3.3-states100007.1-integral0rank00.tmp
+			 Loading state file :: ./node0//StateInfo-backward-3-3.100007.0.tmp
+			 Loading state file :: ./node0//StateInfo-backward-3-3.1.0.tmp
+Read  0.0000    G of data in  0.0000     s
+			 Building Sum Block 1304409784
+			 2 3 
+			 Building Sum Block 352479470
+			 0 1 2 3 
+			 Transforming previous wavefunction 
+			 Loading Wavefunction ./node0//wave-0-1.0.1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state1.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-2-3.0.state1.tmp
+			 Norm of wavefunction :: 1.000000000000
+			 Building Sum Block 1795276674
+			 0 1 2 
+			 Building Sum Block 398416587
+			 0 1 2 3 
+			 Loading Rotation Matrix :: ./node0//Rotation-0-2.0.state1.tmp
+ 			 assigning a total of 16 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 0.009590660198
+ 			 a total of 12 to be assigned 
+ 			 total norm: 0.009590660198  norm after truncation: 0.009590660198
+			 Saving Rotation Matrix :: ./node0//Rotation-0-2.0.state100007.tmp
+			 Saving Wavefunction ./node0//wave-0-2.0.1.tmp
+			 Saving Wavefunction ./node0//wave-0-2.0.100007.tmp
+			 Performing Renormalization 
+			 Transforming to new basis 
+0.044425249100 0.000000000000 0.000000000000  0 timer 
+0.019069433212 makeops 
+0.000014781952 datatransfer 
+oneindexopmult   twoindexopmult   Hc  couplingcoeff
+0.014529943466 0.000000000000 0.000000000000 0.000000000000 hmult
+0.004326343536 0.000019788742 build block
+addnoise  S_0_opxop  S_1_opxop
+0.000000000000 0.000046968460 0.000000000000
+Total memory                             - 2.0000    
+  |-->Memory used                        - 0.0000    
+      |-->system                         - 0.0000    
+      |-->newSystem                      - 0.0000    
+      |-->Envrionment                    - 0.0000    
+      |-->newEnvrionment                 - 0.0000    
+  |-->Memory left                        - 2.0000    
+      |-->wavefunction                   - 0.0000    
+			 Saving block file :: ./node0//Block-f-sites-0.2-states100007.1-integral0rank00.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-2.100007.0.tmp
+			 Saving state file :: ./node0//StateInfo-forward-0-2.1.0.tmp
+Wrote  0.0000    G of data in  0.0000     s
+			 Saving state ./node0//statefile.0.tmp
+Sweep time :0
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state100007.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-2.0.state100007.tmp
+			 Loading Wavefunction ./node0//wave-0-2.0.100007.tmp
+			 Sites ::  0--0
+			 # states: 3			 # states: 3
+
+0 out of 1  			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state100007.tmp
+			 Loading Rotation Matrix :: ./node0//Rotation-0-1.0.state100007.tmp
+norm ops 
+			 Building Sum Block 550769696
+			 0 1 
+			 Transforming to new basis 
+			 Building Sum Block 692671650
+			 0 1 2 
+			 Building Sum Block 811579727
+			 0 1 2 3 
+			 Loading Wavefunction ./node0//wave-0-2.0.100007.tmp
+			 Loading Wavefunction ./node0//wave-0-2.0.100007.tmp
+Calculate Expectation time :0
+Norm of contracted MPO on MPS : 0.009590660198
+Amplitude : 0.003029570205
+Ener(only CAS part) : -3.192135372931
+Energy : -2.078685768003
+Correction Energy: -0.005390322660
+Nevpt2 correction to the energy for state 0 in subspace Va is -0.017389835093
+Nevpt2 Va subspace perturber Amplitude : 0.012041007216
+
+
+			 BLOCK CPU  Time (seconds): 0.240
+			 BLOCK Wall Time (seconds): 0.000

@@ -1,0 +1,16 @@
+{
+  "system": "chem",
+  "n_up": 4,
+  "n_dn": 4,
+  "eps_vars": [1.000000e+02, 1.000000e+01, 1.000000e+00, 1.000000e-01],
+  "eps_vars_schedule": [5.000000e+02, 5.000000e+01, 5.000000e+00, 5.000000e-01],
+  "var_only": true,
+  "time_sym": false,
+  "target_error": 1e-9,
+  "load_integrals_cache": false,
+  "chem": {
+    "point_group": "c1",
+    "occs_up": [ 0,1,2,3],
+    "occs_dn": [ 0,1,2,3]
+  }
+}

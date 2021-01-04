@@ -1,0 +1,198 @@
+#INFO: **** input file is /home/slee89/pyscf-374/examples/dmrg/01-dmrg_casscf_with_stackblock.py ****
+#!/usr/bin/env python
+#
+# Author: Qiming Sun <osirpt.sun@gmail.com>
+#
+
+'''
+Block (DMRG) program has two branches.  The OpenMP/MPI hybrid implementation
+Block-1.5 (stackblock) code is more efficient than the old pure MPI
+implementation Block-1.1 in both the computing time and memory footprint.
+This example shows how to input new defined keywords for stackblock program.
+
+Block-1.5 (stackblock) defines two new keywords memory and num_thrds.  The
+rest keywords are all compatible to the old Block program.
+'''
+
+from pyscf import lib
+from pyscf import gto
+from pyscf import scf
+from pyscf import mcscf
+from pyscf import dmrgscf
+
+import os
+from pyscf.dmrgscf import settings
+if 'SLURMD_NODENAME' in os.environ:  # slurm system
+    settings.MPIPREFIX = 'srun'
+elif 'PBS_NODEFILE' in os.environ:   # PBS system
+    settings.MPIPREFIX = 'mpirun'
+else:  # MPI on single node
+    settings.MPIPREFIX = 'mpirun -n 10'
+
+b = 1.2
+mol = gto.M(
+    verbose = 4,
+    atom = 'N 0 0 0; N 0 0 %f'%b,
+    basis = 'cc-pvdz',
+    symmetry = True,
+)
+mf = scf.RHF(mol)
+mf.kernel()
+
+#
+# Pass stackblock keywords memory and num_thrds to fcisolver attributes
+#
+mc = dmrgscf.DMRGSCF(mf, 8, 8, maxM=5)
+mc.fcisolver.memory = 4  # in GB
+mc.fcisolver.num_thrds = 8
+emc = mc.kernel()[0]
+print(emc)
+
+#mc = dmrgscf.DMRGSCF(mf, 8, 8)
+#mc.state_average_([0.5, 0.5])
+#mc.fcisolver.memory = 4  # in GB
+#mc.fcisolver.num_thrds = 8
+#mc.kernel()
+#print(mc.e_tot)
+
+
+#INFO: ******************** input file end ********************
+
+
+System: uname_result(system='Linux', node='pauling050', release='3.10.0-327.36.3.el7.x86_64', version='#1 SMP Thu Oct 20 04:56:07 EDT 2016', machine='x86_64', processor='x86_64')  Threads 36
+Python 3.7.4 (default, Aug 13 2019, 20:35:49) 
+[GCC 7.3.0]
+numpy 1.17.2  scipy 1.3.1
+Date: Fri Mar 27 11:37:00 2020
+PySCF version 1.7.1
+PySCF path  /home/slee89/pyscf-374/pyscf
+GIT HEAD      ref: refs/heads/master
+GIT master branch  738ace538cf3f8070703a05b42291b182a8efc0d
+
+[CONFIG] conf_file None
+[INPUT] verbose = 4
+[INPUT] num. atoms = 2
+[INPUT] num. electrons = 14
+[INPUT] charge = 0
+[INPUT] spin (= nelec alpha-beta = 2S) = 0
+[INPUT] symmetry True subgroup None
+[INPUT] Mole.unit = angstrom
+[INPUT]  1 N      0.000000000000   0.000000000000   0.000000000000 AA    0.000000000000   0.000000000000   0.000000000000 Bohr
+[INPUT]  2 N      0.000000000000   0.000000000000   1.200000000000 AA    0.000000000000   0.000000000000   2.267671349478 Bohr
+
+nuclear repulsion = 21.6080694459
+point group symmetry = Dooh
+num. orbitals of irrep A1g = 6
+num. orbitals of irrep E1gx = 3
+num. orbitals of irrep E1gy = 3
+num. orbitals of irrep A1u = 6
+num. orbitals of irrep E1uy = 3
+num. orbitals of irrep E1ux = 3
+num. orbitals of irrep E2gx = 1
+num. orbitals of irrep E2gy = 1
+num. orbitals of irrep E2uy = 1
+num. orbitals of irrep E2ux = 1
+number of shells = 10
+number of NR pGTOs = 52
+number of NR cGTOs = 28
+basis = cc-pvdz
+ecp = {}
+CPU time:         0.37
+
+
+******** <class 'pyscf.scf.hf_symm.SymAdaptedRHF'> ********
+method = SymAdaptedRHF-RHF
+initial guess = minao
+damping factor = 0
+level_shift factor = 0
+DIIS = <class 'pyscf.scf.diis.CDIIS'>
+diis_start_cycle = 1
+diis_space = 8
+SCF conv_tol = 1e-09
+SCF conv_tol_grad = None
+SCF max_cycles = 50
+direct_scf = True
+direct_scf_tol = 1e-13
+chkfile to save SCF result = /home/slee89/pyscf-374/examples/dmrg/tmpcg1atavu
+max_memory 4000 MB (current use 71 MB)
+Freeze 0 electrons in irreps []
+    14 free electrons in irreps A1g E1gx E1gy A1u E1uy E1ux E2gx E2gy E2uy E2ux
+Set gradient conv threshold to 3.16228e-05
+init E= -108.66592453301
+HOMO (A1g) = -0.362319032947156  LUMO (E1gx) = 0.0332103891978524
+cycle= 1 E= -108.891321627058  delta_E= -0.225  |g|= 0.304  |ddm|= 1.69
+HOMO (E1ux) = -0.614908525636475  LUMO (E1gx) = 0.0817082857779469
+cycle= 2 E= -108.912607725097  delta_E= -0.0213  |g|= 0.0711  |ddm|= 0.268
+HOMO (E1ux) = -0.564780066399274  LUMO (E1gy) = 0.127429374616612
+cycle= 3 E= -108.913961733218  delta_E= -0.00135  |g|= 0.0153  |ddm|= 0.0586
+HOMO (E1uy) = -0.568815120801102  LUMO (E1gx) = 0.124363234445159
+cycle= 4 E= -108.914051730914  delta_E= -9e-05  |g|= 0.000948  |ddm|= 0.0226
+HOMO (E1uy) = -0.568349521589324  LUMO (E1gy) = 0.124840750018989
+cycle= 5 E= -108.914051971126  delta_E= -2.4e-07  |g|= 0.000108  |ddm|= 0.00102
+HOMO (E1ux) = -0.568349741566266  LUMO (E1gy) = 0.124836315935463
+cycle= 6 E= -108.914051974998  delta_E= -3.87e-09  |g|= 1.12e-05  |ddm|= 0.000136
+HOMO (E1uy) = -0.568345210845284  LUMO (E1gy) = 0.124840410918839
+cycle= 7 E= -108.914051975051  delta_E= -5.27e-11  |g|= 1.49e-06  |ddm|= 2.99e-05
+HOMO (E1uy) = -0.568344951713553  LUMO (E1gy) = 0.124840503813137
+Extra cycle  E= -108.914051975052  delta_E= -8.53e-13  |g|= 4.35e-07  |ddm|= 2.84e-06
+converged SCF energy = -108.914051975052
+
+******** <class 'pyscf.mcscf.mc1step_symm.SymAdaptedCASSCF'> ********
+CAS (4e+4e, 8o), ncore = 3, nvir = 17
+max_cycle_macro = 50
+max_cycle_micro = 4
+conv_tol = 1e-07
+conv_tol_grad = None
+orbital rotation max_stepsize = 0.02
+augmented hessian ah_max_cycle = 30
+augmented hessian ah_conv_tol = 1e-12
+augmented hessian ah_linear dependence = 1e-14
+augmented hessian ah_level shift = 0
+augmented hessian ah_start_tol = 2.5
+augmented hessian ah_start_cycle = 3
+augmented hessian ah_grad_trust_region = 3
+kf_trust_region = 3
+kf_interval = 4
+ci_response_space = 4
+ci_grad_trust_region = 3
+with_dep4 0
+natorb = False
+canonicalization = True
+sorting_mo_energy = False
+ao2mo_level = 2
+chkfile = ./scratch/tmphseiwvgc
+max_memory 4000 MB (current use 88 MB)
+internal_rotation = False
+
+******** Block flags ********
+executable             = /home/slee89/opt/StackBlock/block.spin_adapted
+BLOCKEXE_COMPRESS_NEVPT= /home/slee89/opt/stackblock_nevpt_serial/stackblock/block.spin_adapted
+Block version          = 3.1.4
+mpiprefix              = mpirun -n 10
+scratchDirectory       = /home/slee89/pyscf-374/examples/dmrg/scratch
+integralFile           = ./FCIDUMP
+configFile             = ./dmrg.conf
+outputFile             = ./dmrg.out
+maxIter                = 26
+scheduleSweeps         = [0, 2, 4, 6, 8, 10]
+scheduleMaxMs          = [5, 5, 5, 5, 5, 5]
+scheduleTols           = [1e-05, 1.0000000000000002e-06, 1.0000000000000002e-07, 1.0000000000000002e-08, 1.0000000000000003e-09, 1e-09]
+scheduleNoises         = [5e-05, 5e-05, 5e-05, 5e-05, 5e-05, 0.0]
+twodot_to_onedot       = 14
+tol                    = 1e-09
+maxM                   = 5
+dmrg switch tol        = 0.001
+wfnsym                 = 1
+fullrestart            = False
+num_thrds              = 8
+memory                 = 4
+
+Active space CI wfn symmetry = A2g
+CASCI E = -109.005478866584  S^2 = 0.0000000
+Set conv_tol_grad to 0.000316228
+macro iter 1 (21 JK  4 micro), CASSCF E = -109.030688611438  dE = -0.025209745  S^2 = 0.0000000
+               |grad[o]|=0.0755  |grad[c]|= None  |ddm|=0.0203
+macro iter 2 (21 JK  4 micro), CASSCF E = -109.037749350451  dE = -0.007060739  S^2 = 0.0000000
+               |grad[o]|=0.0287  |grad[c]|= None  |ddm|=0.00719
+macro iter 3 (21 JK  4 micro), CASSCF E = -109.044575803613  dE = -0.0068264532  S^2 = 0.0000000
+               |grad[o]|=0.0218  |grad[c]|= None  |ddm|=0.00308

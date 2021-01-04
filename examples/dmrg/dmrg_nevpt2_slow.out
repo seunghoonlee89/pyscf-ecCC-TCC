@@ -1,0 +1,66 @@
+Active space CI wfn symmetry = B1g
+
+******** CASCI flags ********
+CAS (2e+2e, 4o), ncore = 2, nvir = 2
+natorb = False
+canonicalization = True
+sorting_mo_energy = False
+max_memory 4000 (MB)
+
+******** Block flags ********
+executable             = /home/slee89/opt/stackblocklatest/stackblock_stopt/TRIEdeterminant/block.spin_adapted
+BLOCKEXE_COMPRESS_NEVPT= /home/slee89/opt/stackblock_nevpt_serial/stackblock/block.spin_adapted
+Block version          = 3.1.4
+mpiprefix              = 
+scratchDirectory       = /home/slee89/pyscf-374/examples/dmrg/scratch
+integralFile           = ./FCIDUMP
+configFile             = ./dmrg.conf
+outputFile             = ./dmrg.out
+maxIter                = 24
+scheduleSweeps         = [0, 2, 4, 6, 8]
+scheduleMaxMs          = [200, 200, 200, 200, 200]
+scheduleTols           = [1e-05, 1.0000000000000002e-06, 1.0000000000000002e-07, 1.0000000000000002e-08, 1e-08]
+scheduleNoises         = [5e-05, 5e-05, 5e-05, 5e-05, 0.0]
+twodot_to_onedot       = 12
+tol                    = 1e-08
+maxM                   = 200
+dmrg switch tol        = 0.001
+wfnsym                 = 1
+fullrestart            = False
+num_thrds              = 1
+memory                 = None
+
+
+WARN: Mulitple states found in CASCI solver. First state is used to compute the natural orbitals in active space.
+
+Density matrix diagonal elements [1.96210889 1.893154   0.1098149  0.0349222 ]
+CASCI state 0  E = -4.22363983075831  E(CI) = -3.1657540007465  S^2 = 0.0000000
+CASCI state 1  E = -3.85792252299014  E(CI) = -2.80003669297833  S^2 = 0.0000000
+Use compressed mps perturber as an approximation
+DMRG-NEVPT
+Nevpt Energy:
+Sr Subspace:  E = -0.00425158000000
+Si Subspace:  E = -0.00489795000000
+Sr    (-1)',   E = -0.00425158000000
+Si    (+1)',   E = -0.00489795000000
+Sijrs (0)  ,   E = -0.00437716336005
+Sijr  (+1) ,   E = -0.00250877378533
+Srsi  (-1) ,   E = -0.00195214939162
+Srs   (-2) ,   E = -0.00286468655142
+Sij   (+2) ,   E = -0.00393225037160
+Sir   (0)' ,   E = -0.04077252160142
+Nevpt2 Energy = -0.065557075061440
+Use compressed mps perturber as an approximation
+DMRG-NEVPT
+Nevpt Energy:
+Sr Subspace:  E = -0.01738980000000
+Si Subspace:  E = -0.02341880000000
+Sr    (-1)',   E = -0.01738980000000
+Si    (+1)',   E = -0.02341880000000
+Sijrs (0)  ,   E = -0.00446469347266
+Sijr  (+1) ,   E = -0.00266762932902
+Srsi  (-1) ,   E = -0.00208690500322
+Srs   (-2) ,   E = -0.00650774301655
+Sij   (+2) ,   E = -0.00870710542398
+Sir   (0)' ,   E = -0.02614843626324
+Nevpt2 Energy = -0.091391112508680

@@ -1,0 +1,32 @@
+{
+  "config": {
+    "chem": {
+      "point_group": "C1"
+    },
+    "eps_vars": [
+      1e-12
+    ],
+    "eps_vars_schedule": [
+      0.002,
+      0.001,
+      0.0005,
+      0.0002,
+      0.0001
+    ],
+    "get_1rdm_csv": true,
+    "get_2rdm_csv": false,
+    "load_integrals_cache": true,
+    "n_dn": 4,
+    "n_up": 4,
+    "s2": true,
+    "system": "chem",
+    "target_error": 5e-09,
+    "var_only": true
+  },
+  "energy_hf": -28.673487513220568,
+  "energy_var": {
+    "1.00e-12": -28.789624118337926
+  },
+  "n_elecs": 8,
+  "s2": 2.4602247938654324e-13
+}

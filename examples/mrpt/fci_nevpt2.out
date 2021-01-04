@@ -1,0 +1,270 @@
+#INFO: **** input file is /home/slee89/pyscf-374/examples/mrpt/03-dmrg_nevpt2.py ****
+#!/usr/bin/env python
+# Copyright 2014-2018 The PySCF Developers. All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# Author: Sheng Guo <shengg@princeton.edu>
+#         Qiming Sun <osirpt.sun@gmail.com>
+#
+
+from pyscf import gto
+from pyscf import scf
+from pyscf import mcscf
+from pyscf import mrpt
+from pyscf import dmrgscf
+
+'''
+DMRG-CASCI then DMRG-NEVPT2 calculation.
+
+There are two NEVPT2 implementations available for DMRG Block program.  The slow
+version (default) strictly follows the formula presented in JCP, 117(2002), 9138
+in which the 4-particle density matrix is explictly computed.  Typically 26
+orbitals is the upper limit of the slow version due to the large requirements
+on the memory usage.  The fast version employs the so called MPS-pertuber
+technique.  It is able to handle much larger systems, up to about 30 orbitals.
+'''
+
+#
+# One can adjust the processor numbers for Block code on the runtime.
+#
+dmrgscf.settings.MPIPREFIX =''
+
+b = 1.4
+mol = gto.Mole()
+mol.build(
+    verbose = 4,
+    output = 'fci_nevpt2.out',
+    atom = [['H', (0.,0.,i-3.5)] for i in range(8)],
+    basis = 'sto-3g',
+#
+# Note if symmetry is specified, the molecule has to be placed on the proper
+# orientation to match the given symmetry.
+#
+    symmetry = 'd2h',
+)
+m = scf.RHF(mol)
+m.kernel()
+
+#
+# FCI-based CASCI + NEVPT2.  Two roots are computed.  mc.ci holds the two CI
+# wave functions.  Root ID needs to be specified for the state-specific NEVPT2
+# calculation.  By default the lowest root is computed.
+#
+mc = mcscf.CASCI(m, 4, 4)
+mc.fcisolver.nroots = 2
+
+mc.kernel()
+
+ci_nevpt_e1 = mrpt.NEVPT(mc, root=0).kernel()
+ci_nevpt_e2 = mrpt.NEVPT(mc, root=1).kernel()
+
+print('CI NEVPT = %.15g %.15g' % (ci_nevpt_e1, ci_nevpt_e2))
+
+#
+# By default, the orbitals are canonicalized after calling CASCI solver.  Save
+# the canonical MC orbitals for later use.  Althoug it's not necessary for this
+# example, we put here to demonstrate how to carry out CASCI calculation on
+# given orbitals (or as initial guess for CASSCF method) other than the
+# default HF canonical orbitals.  More examples of initial guess refers to
+# pyscf/mcscf/33-make_init_guess.
+#
+mc_orb = mc.mo_coeff
+
+##################################################
+#
+# DMRG-NEVPT2 slow version
+# 4-particle density matrix is explicitly computed.
+# Ref: S Guo, JCTC, 12 (2016), 1583
+#
+##################################################
+
+#
+# Call mol.build function to redirect the output to another file.
+#
+mol.build(output = 'dmrg_nevpt2_slow.out')
+
+mc = mcscf.CASCI(m, 4, 4)
+#
+# Use DMRGCI as the active space solver.  DMRGCI solver allows us to handle
+# ~ 50 active orbitals.
+#
+mc.fcisolver = dmrgscf.DMRGCI(mol, maxM=200)
+mc.fcisolver.nroots = 2
+mc.fcisolver.block_extra_keyword.append('mem 10 g')
+#mc.fcisolver.memory = 20000 
+#
+# Passing mc_orb to CASCI kernel function so that the CASCI calculation is
+# carried out with the given orbitals.  More examples refers to
+# pyscf/mcscf/62-make_init_guess
+#
+mc.kernel(mc_orb)
+
+#
+# The default DMRG-SC-NEVPT2 implementation is based on the 4-particle density matrix.
+# (Not available since Block-1.5)
+#
+#dmrg_nevpt_e1 = mrpt.NEVPT(mc,root=0).kernel()
+#dmrg_nevpt_e2 = mrpt.NEVPT(mc,root=1).kernel()
+#
+#print('DMRG NEVPT = %.15g %.15g' % (dmrg_nevpt_e1, dmrg_nevpt_e2))
+
+
+
+##################################################
+#
+# DMRG-NEVPT2 fast version
+# Use compressed MPS as perturber functions for SC-NEVPT2.
+# 4-particle density matrix is not computed.
+#
+##################################################
+
+#
+# Use compress_perturb function to initialize compressed perturber.
+# root=0 indicates that it's the perturber for ground state.
+#
+mps_nevpt_e1 = mrpt.NEVPT(mc,root=0).compress_approx(maxM=100).kernel()
+
+#
+# root=1 for first excited state.
+#
+nev = mrpt.NEVPT(mc,root=1).compress_approx(maxM=100)
+mps_nevpt_e2 = nev.kernel()
+
+print('MPS NEVPT correlation E = %.15g %.15g' % (mps_nevpt_e1, mps_nevpt_e2,))
+
+#INFO: ******************** input file end ********************
+
+
+System: uname_result(system='Linux', node='pauling', release='3.10.0-327.36.3.el7.x86_64', version='#1 SMP Thu Oct 20 04:56:07 EDT 2016', machine='x86_64', processor='x86_64')  Threads 56
+Python 3.7.4 (default, Aug 13 2019, 20:35:49) 
+[GCC 7.3.0]
+numpy 1.17.2  scipy 1.3.1
+Date: Mon Aug 31 04:17:10 2020
+PySCF version 1.7.1
+PySCF path  /home/slee89/pyscf-374/pyscf
+GIT HEAD      ref: refs/heads/master
+GIT master branch  b595d32fe712294031419ae742a818068914ec68
+
+[CONFIG] conf_file None
+[INPUT] verbose = 4
+[INPUT] num. atoms = 8
+[INPUT] num. electrons = 8
+[INPUT] charge = 0
+[INPUT] spin (= nelec alpha-beta = 2S) = 0
+[INPUT] symmetry D2h subgroup None
+[INPUT] Mole.unit = angstrom
+[INPUT]  1 H      0.000000000000   0.000000000000  -3.500000000000 AA    0.000000000000   0.000000000000  -6.614041435978 Bohr
+[INPUT]  2 H      0.000000000000   0.000000000000  -2.500000000000 AA    0.000000000000   0.000000000000  -4.724315311413 Bohr
+[INPUT]  3 H      0.000000000000   0.000000000000  -1.500000000000 AA    0.000000000000   0.000000000000  -2.834589186848 Bohr
+[INPUT]  4 H      0.000000000000   0.000000000000  -0.500000000000 AA    0.000000000000   0.000000000000  -0.944863062283 Bohr
+[INPUT]  5 H      0.000000000000   0.000000000000   0.500000000000 AA    0.000000000000   0.000000000000   0.944863062283 Bohr
+[INPUT]  6 H      0.000000000000   0.000000000000   1.500000000000 AA    0.000000000000   0.000000000000   2.834589186848 Bohr
+[INPUT]  7 H      0.000000000000   0.000000000000   2.500000000000 AA    0.000000000000   0.000000000000   4.724315311413 Bohr
+[INPUT]  8 H      0.000000000000   0.000000000000   3.500000000000 AA    0.000000000000   0.000000000000   6.614041435978 Bohr
+
+nuclear repulsion = 7.27240681292915
+point group symmetry = D2h
+num. orbitals of irrep Ag = 4
+num. orbitals of irrep B1u = 4
+number of shells = 8
+number of NR pGTOs = 24
+number of NR cGTOs = 8
+basis = sto-3g
+ecp = {}
+CPU time:         0.32
+
+
+******** <class 'pyscf.scf.hf_symm.SymAdaptedRHF'> ********
+method = SymAdaptedRHF-RHF
+initial guess = minao
+damping factor = 0
+level_shift factor = 0
+DIIS = <class 'pyscf.scf.diis.CDIIS'>
+diis_start_cycle = 1
+diis_space = 8
+SCF conv_tol = 1e-09
+SCF conv_tol_grad = None
+SCF max_cycles = 50
+direct_scf = True
+direct_scf_tol = 1e-13
+chkfile to save SCF result = /home/slee89/pyscf-374/examples/mrpt/tmpohd2qa69
+max_memory 4000 MB (current use 67 MB)
+Freeze 0 electrons in irreps []
+    8 free electrons in irreps Ag B1u
+Set gradient conv threshold to 3.16228e-05
+init E= -3.26875879582439
+HOMO (B1u) = -0.167671031010473  LUMO (Ag) = 0.100851241027118
+cycle= 1 E= -4.16396792620252  delta_E= -0.895  |g|= 0.107  |ddm|=    2
+HOMO (B1u) = -0.279568712571783  LUMO (Ag) = 0.162686184437996
+cycle= 2 E= -4.17284032004445  delta_E= -0.00887  |g|= 0.0393  |ddm|= 0.27
+HOMO (B1u) = -0.285347990029307  LUMO (Ag) = 0.180735931823748
+cycle= 3 E= -4.17431860430267  delta_E= -0.00148  |g|= 0.00768  |ddm|= 0.118
+HOMO (B1u) = -0.289655831102512  LUMO (Ag) = 0.180899400199596
+cycle= 4 E= -4.17436969605794  delta_E= -5.11e-05  |g|= 0.000421  |ddm|= 0.0278
+HOMO (B1u) = -0.28952804023738  LUMO (Ag) = 0.180835717486649
+cycle= 5 E= -4.17436980612513  delta_E= -1.1e-07  |g|= 8.47e-05  |ddm|= 0.000774
+HOMO (B1u) = -0.289545191270778  LUMO (Ag) = 0.180837240419322
+cycle= 6 E= -4.17436981034918  delta_E= -4.22e-09  |g|= 7.24e-06  |ddm|= 0.000189
+HOMO (B1u) = -0.289547452396069  LUMO (Ag) = 0.180839274655864
+cycle= 7 E= -4.17436981038899  delta_E= -3.98e-11  |g|= 4.48e-07  |ddm|= 2.11e-05
+HOMO (B1u) = -0.289547022020882  LUMO (Ag) = 0.180839066608277
+Extra cycle  E= -4.17436981038916  delta_E= -1.65e-13  |g|= 1.71e-07  |ddm|= 9.98e-07
+converged SCF energy = -4.17436981038916
+Active space CI wfn symmetry = Ag
+
+******** CASCI flags ********
+CAS (2e+2e, 4o), ncore = 2, nvir = 2
+natorb = False
+canonicalization = True
+sorting_mo_energy = False
+max_memory 4000 (MB)
+******** <class 'pyscf.fci.direct_spin1_symm.FCISolver'> ********
+max. cycles = 200
+conv_tol = 1e-08
+davidson only = True
+linear dependence = 1e-10
+level shift = 0.001
+max iter space = 12
+max_memory 4000 MB
+nroots = 2
+pspace_size = 0
+spin = None
+Input CI wfn symmetry = Ag
+
+WARN: Mulitple states found in CASCI solver. First state is used to compute the natural orbitals in active space.
+
+Density matrix diagonal elements [1.96211808 1.89315124 0.10980957 0.03492112]
+CASCI converged
+CASCI state 0  E = -4.22363983261928  E(CI) = -3.16575400260747  S^2 = 0.0000000
+CASCI state 1  E = -3.89562961102625  E(CI) = -2.83774378101444  S^2 = 1.9999999
+Density matrix diagonal elements [1.96211808 1.89315124 0.10980957 0.03492112]
+Sr    (-1)',   E = -0.00425187104906
+Si    (+1)',   E = -0.00489785315045
+Sijrs (0)  ,   E = -0.00437716321257
+Sijr  (+1) ,   E = -0.00250879007292
+Srsi  (-1) ,   E = -0.00195213656050
+Srs   (-2) ,   E = -0.00286469897339
+Sij   (+2) ,   E = -0.00393249425742
+Sir   (0)' ,   E = -0.04077211482214
+Nevpt2 Energy = -0.065557122098454
+Density matrix diagonal elements [1.23462551 1.73915697 0.76537455 0.26084297]
+Sr    (-1)',   E = -0.01521238963619
+Si    (+1)',   E = -0.02092265889855
+Sijrs (0)  ,   E = -0.00446654005704
+Sijr  (+1) ,   E = -0.00235785285617
+Srsi  (-1) ,   E = -0.00191878684848
+Srs   (-2) ,   E = -0.00384803505986
+Sij   (+2) ,   E = -0.00453388519888
+Sir   (0)' ,   E = -0.02732130836738
+Nevpt2 Energy = -0.080581456922538
