@@ -179,15 +179,25 @@ def energy(cc, t1=None, t2=None, eris=None):
 class ecRCCSD(ccsd.CCSD):
     '''restricted externally corrected CCSD
     '''
-    def kernel(self, nocc_corr, nvir_corr, nocc_cas, nvir_cas, ext_source="SHCI", t1=None, t2=None, eris=None, numzero=1E-12, coeff=None):
+    def kernel(self, nocc_corr, nvir_corr, nocc_cas, nvir_cas, ext_source="Arrow", t1=None, t2=None, eris=None, numzero=0.0, coeff=None, skip_idx=None):
 
         if coeff == None:
             import os
             # DUMP file for CI coeff 
-            if ext_source == "SHCI" or ext_source == "shci":
+            if ext_source == "Arrow" or ext_source == "ARROW" or ext_source == "arrow":
                 # TODO: to remove this (automatically generate CIcoeff_shci.out or t3, t4 files)
                 # TODO: get_CIcoef_SHCI.sh -> python script 
                 os.system('get_CIcoef_SHCI.sh output.dat > CIcoeff_shci.out')
+            
+                # TODO: nocc_ncorr, nvir_ncorr -> nocc_ncas, nvir_ncas
+                from pyscf.cc.fci_index import fci_index_nomem
+                idx = fci_index_nomem(nocc_cas, nvir_cas) 
+                from pyscf.cc.shci import shci_coeff 
+                self.coeff = shci_coeff("CIcoeff_shci.out", nocc_cas, nvir_cas, idx)
+            elif ext_source == "Dice" or ext_source == "DICE" or ext_source == "dice":
+                # TODO: to remove this (automatically generate CIcoeff_shci.out or t3, t4 files)
+                # TODO: get_CIcoef_SHCI.sh -> python script 
+                os.system('get_CIcoef_SHCI_Dice.sh %d %d output.dat > CIcoeff_shci.out'%(nocc_cas+nvir_cas, nocc_cas))
             
                 # TODO: nocc_ncorr, nvir_ncorr -> nocc_ncas, nvir_ncas
                 from pyscf.cc.fci_index import fci_index_nomem
@@ -202,8 +212,13 @@ class ecRCCSD(ccsd.CCSD):
                 idx = fci_index_nomem(nocc_cas, nvir_cas) 
                 from pyscf.cc.dmrg import dmrg_coeff 
                 self.coeff = dmrg_coeff("CIcoeff_dmrg.out", nocc_cas, nvir_cas, idx)
+            else:
+                assert(False)
         else:
             self.coeff = coeff
+
+        if skip_idx != None:
+            self.coeff.skip_idx = skip_idx 
 
         self.coeff.nocc_corr= nocc_corr
         self.coeff.nvir_corr= nvir_corr
@@ -218,6 +233,10 @@ class ecRCCSD(ccsd.CCSD):
         '''
         if eris is None:
             eris = self.ao2mo(self.mo_coeff)
+
+        #lsh test
+        #print('natural orb in', self.mo_coeff[:,4], self.mo_coeff[:,5], self.mo_coeff[:,6], self.mo_coeff[:,7], self.mo_coeff[:,8], self.mo_coeff[:,9])
+        #print(eris.mo_energy)
 
         return ccsd.CCSD.ccsd(self, t1=t1, t2=t2, eris=eris, ecCCSD=True, coeff=coeff, numzero=numzero)
 

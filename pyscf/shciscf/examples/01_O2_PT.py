@@ -21,6 +21,13 @@
 All output is deleted after the run to keep the directory neat. Comment out the
 cleanup section to view output files.
 """
+#import os
+#os.environ["TMPDIR"] = './'
+#os.environ["OMP_NUM_THREADS"] = '1'
+from pyscf.shciscf import settings
+settings.SHCIRUNTIMEDIR = './'
+settings.MPIPREFIX = ''
+
 import time
 
 from pyscf import gto, scf, mcscf, dmrgscf

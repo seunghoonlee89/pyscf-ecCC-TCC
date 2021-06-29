@@ -58,6 +58,10 @@ def h1e_for_cas(casci, mo_coeff=None, ncas=None, ncore=None):
 
     hcore = casci.get_hcore()
     energy_core = casci.energy_nuc()
+    #t1 = log.timer('hihi test1', *t1)
+    #lsh test
+    #corevhf = 0
+    #energy_core = 0
     if mo_core.size == 0:
         corevhf = 0
     else:
@@ -208,6 +212,7 @@ def get_fock(mc, mo_coeff=None, ci=None, eris=None, casdm1=None, verbose=None):
     Returns:
         Fock matrix
     '''
+    log = logger.new_logger(mc, verbose)
 
     if ci is None: ci = mc.ci
     if mo_coeff is None: mo_coeff = mc.mo_coeff
@@ -232,6 +237,7 @@ def get_fock(mc, mo_coeff=None, ci=None, eris=None, casdm1=None, verbose=None):
         dm_core = numpy.dot(mo_coeff[:,:ncore]*2, mo_coeff[:,:ncore].T)
         mocas = mo_coeff[:,ncore:nocc]
         dm = dm_core + reduce(numpy.dot, (mocas, casdm1, mocas.T))
+        #log.note('hihi test2')
         vj, vk = mc._scf.get_jk(mc.mol, dm)
         fock = mc.get_hcore() + vj-vk*.5
     return fock
@@ -519,6 +525,7 @@ def kernel(casci, mo_coeff=None, ci0=None, verbose=logger.NOTE):
 
     t1 = log.timer('FCI solver', *t1)
     e_cas = e_tot - energy_core
+    log.debug('cas energy = %.15g', e_cas)
     return e_tot, e_cas, fcivec
 
 
@@ -858,6 +865,7 @@ To enable the solvent model for CASCI, the following code needs to be called
 
         self.e_tot, self.e_cas, self.ci = \
                 kernel(self, mo_coeff, ci0=ci0, verbose=log)
+
 
         if self.canonicalization:
             self.canonicalize_(mo_coeff, self.ci,

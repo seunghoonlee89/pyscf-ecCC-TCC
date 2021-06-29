@@ -239,6 +239,12 @@ class ecRTCCSD(ccsd.CCSD):
 #?        assert(t2.dtype == np.double)
         return ccsd.CCSD.ccsd_t(self, t1, t2, eris, ecTCCSD=True, coeff=coeff)
 
+    def rccsd_t(self, coeff, t1=None, t2=None, eris=None):
+#?        # Note
+#?        assert(t1.dtype == np.double)
+#?        assert(t2.dtype == np.double)
+        return ccsd.CCSD.rccsd_t(self, t1, t2, eris, ecTCCSD=True, coeff=coeff)
+
     def density_fit(self, auxbasis=None, with_df=None):
         raise NotImplementedError
 

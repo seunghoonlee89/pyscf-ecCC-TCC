@@ -66,6 +66,9 @@ def kernel(mcc, eris, coeff, t1=None, t2=None):
     fvo = eris.fock[nocca:,:nocca]
     fVO = eris.fock[noccb:,:noccb]
 
+    #lsh test
+    #t_contrib = numpy.zeros((nocca,nocca,nocca,nvira,nvira,nvira)) 
+
     # denominator
     denom = 1.0
     denom+= 2.0*numpy.einsum('ia,ia', t1, t1)
@@ -84,6 +87,9 @@ def kernel(mcc, eris, coeff, t1=None, t2=None):
     v+= numpy.einsum('jkbc,ai->ijkabc', t2aa, fvo) * .5
     wvd = p6(w + v) / d3
     et = numpy.einsum('ijkabc,ijkabc', wvd.conj(), r)
+
+    #lsh test
+    #t_contrib = numpy.multiply(wvd.conj(), r) 
 
     # aaa denominator 
     y = numpy.einsum('ia,jb,kc->ijkabc', t1a, t1a, t1a)
@@ -114,6 +120,9 @@ def kernel(mcc, eris, coeff, t1=None, t2=None):
     w /= d3
     et += numpy.einsum('ijkabc,ijkabc', w.conj(), r)
 
+    #lsh test
+    #t_contrib = numpy.add(t_contrib, numpy.multiply(w.conj(), r)) 
+
     # baa denominator 
     y = numpy.einsum('IA,jb,kc->IjkAbc', t1b, t1a, t1a)
     y+= numpy.einsum('IA,jkbc->IjkAbc', t1b, t2aa)
@@ -123,15 +132,19 @@ def kernel(mcc, eris, coeff, t1=None, t2=None):
     y2= y2 + y2.transpose(0,2,1,3,5,4)
     denom+= numpy.einsum('ijkabc,ijkabc', w.conj(), y2)
 
+    #lsh test
+    #t_contrib /= denom 
+
     et *= .5
     denom *= .5
 
     print('denominator:', denom)
-    numzero = 1e-9
-    coeff.denom_t3(denom, t1a, t2aa, t2ab, numzero) 
-    coeff.denom_t4(denom, t1a, t2aa, t2ab, numzero) 
 
-    print('denominator:', denom)
+    coeff.denom_t3(denom, t1a, t2aa, t2ab, coeff.numzero) 
+    #numzero = 1e-9
+    #coeff.denom_t4(denom, t1a, t2aa, t2ab, numzero) 
+
+    print('denominator (external T3, T4):', denom)
     print('R-ecCCSD(T) correction = %.15g', et/denom)
 
     mem_now = lib.current_memory()[0]
@@ -139,6 +152,24 @@ def kernel(mcc, eris, coeff, t1=None, t2=None):
     log.debug('max_memory %d MB (%d MB in use)', max_memory, mem_now)
     cpu1 = log.timer_debug1('R-ecCCSD_slow', *cpu1)
     log.timer('R-ecCCSD(T)', *cpu0)
+
+    #lsh test
+#    t_contrib_sort = t_contrib.reshape(-1)
+#
+#    idx = numpy.argsort(-abs(t_contrib_sort))
+#    #print(t_contrib_sort[idx])
+#    for lt in range(nocca*nocca*nocca*nvira*nvira*nvira):
+#        l = idx[lt]
+#        #l = lt
+#        # lt = ((((i*nocca + j)*nocca + k)*nvria + a)*nvira + b)*nvira + c
+#        c = int(l % nvira)
+#        b = int(((l-c)/nvira) % nvira)
+#        a = int(((l-c)/nvira - b)/nvira % nvira )
+#        k = int((((l-c)/nvira - b)/nvira - a)/nvira % nocca)
+#        j = int(((((l-c)/nvira - b)/nvira - a)/nvira - k )/nocca % nocca)
+#        i = int((((((l-c)/nvira - b)/nvira - a)/nvira - k )/nocca - j)/nocca)
+#        denom_t = mo_ea[a+nocca] + mo_ea[b+nocca] + mo_ea[c+nocca] - mo_ea[i] - mo_ea[j] - mo_ea[k]
+#        if abs(t_contrib_sort[l]) > 1e-10: print (i+1,j+1,k+1,a+nocca+1,b+nocca+1,c+nocca+1, denom_t, t_contrib_sort[l])
 
     return et/denom
 

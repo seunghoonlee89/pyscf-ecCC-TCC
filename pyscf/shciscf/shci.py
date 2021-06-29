@@ -176,6 +176,7 @@ class SHCI(pyscf.lib.StreamObject):
 
         # TODO: Organize into pyscf and SHCI parameters
         # Standard SHCI Input parameters
+        self.printBestDeterminants = 1e6 
         self.davidsonTol = 5.e-5
         self.epsilon2 = 1.e-7
         self.epsilon2Large = 1000.
@@ -1031,6 +1032,9 @@ def writeSHCIConfFile(SHCI, nelec, Restart):
     f.write('epsilon2Large %g\n' % SHCI.epsilon2Large)
     f.write('targetError %g\n' % SHCI.targetError)
     f.write('sampleN %i\n' % SHCI.sampleN)
+
+    f.write('\nprintBestDeterminants %d\n' % SHCI.printBestDeterminants)
+    #f.write('\nprintBestDeterminants 1000\n')
 
     # Miscellaneous Keywords
     f.write('\n#misc\n')

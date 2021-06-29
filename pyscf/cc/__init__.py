@@ -82,20 +82,21 @@ from pyscf.cc import ec_ccsd_devel
 from pyscf.cc import rtccsd
 from pyscf.cc import tccsd
 from pyscf.cc import ec_tccsd
+from pyscf.cc import ec_tccsd_devel
 
-def CCSD(mf, frozen=None, mo_coeff=None, mo_occ=None, ecCCSD=False, ecCCSD_tmp=False, TCCSD=False, TCCSD_tmp=False, ecTCCSD=False):
+def CCSD(mf, frozen=None, mo_coeff=None, mo_occ=None, ecCCSD=False, ecCCSD_tmp=False, TCCSD=False, TCCSD_tmp=False, ecTCCSD=False, ecTCCSD_devel=False):
     __doc__ = ccsd.CCSD.__doc__
     if isinstance(mf, scf.uhf.UHF):
         return UCCSD(mf, frozen, mo_coeff, mo_occ)
     elif isinstance(mf, scf.ghf.GHF):
         return GCCSD(mf, frozen, mo_coeff, mo_occ)
     else:
-        return RCCSD(mf, frozen, mo_coeff, mo_occ, ecCCSD=ecCCSD, ecCCSD_tmp=ecCCSD_tmp, TCCSD=TCCSD, TCCSD_tmp=TCCSD_tmp, ecTCCSD=ecTCCSD)
+        return RCCSD(mf, frozen, mo_coeff, mo_occ, ecCCSD=ecCCSD, ecCCSD_tmp=ecCCSD_tmp, TCCSD=TCCSD, TCCSD_tmp=TCCSD_tmp, ecTCCSD=ecTCCSD, ecTCCSD_devel=ecTCCSD_devel)
 
 scf.hf.SCF.CCSD = CCSD
 
 
-def RCCSD(mf, frozen=None, mo_coeff=None, mo_occ=None, ecCCSD=False, ecCCSD_tmp=False, TCCSD=False, TCCSD_tmp=False, ecTCCSD=False):
+def RCCSD(mf, frozen=None, mo_coeff=None, mo_occ=None, ecCCSD=False, ecCCSD_tmp=False, TCCSD=False, TCCSD_tmp=False, ecTCCSD=False, ecTCCSD_devel=False):
     __doc__ = ccsd.CCSD.__doc__
     import numpy
     from pyscf import lib
@@ -132,6 +133,8 @@ def RCCSD(mf, frozen=None, mo_coeff=None, mo_occ=None, ecCCSD=False, ecCCSD_tmp=
 
     elif ecTCCSD:
         return ec_tccsd.ecRTCCSD(mf, frozen, mo_coeff, mo_occ)
+    elif ecTCCSD_devel:
+        return ec_tccsd_devel.ecRTCCSD(mf, frozen, mo_coeff, mo_occ)
 
     else:
         return ccsd.CCSD(mf, frozen, mo_coeff, mo_occ)

@@ -41,7 +41,9 @@ from pyscf import __config__
 BLKMIN = getattr(__config__, 'cc_ccsd_blkmin', 4)
 MEMORYMIN = getattr(__config__, 'cc_ccsd_memorymin', 2000)
 
-def update_amps(cc, t1, t2, t1f, t2f, eris):
+def update_amps(cc, t1, t2, eris):
+    t1f = cc.t1f
+    t2f = cc.t2f
     # Ref: Hirata et al., J. Chem. Phys. 120, 2581 (2004) Eqs.(35)-(36)
     #      Kioshita et al., J. Chem. Phys. 123, 074106 (2005)
     assert(isinstance(eris, ccsd._ChemistsERIs))
@@ -173,25 +175,50 @@ class RTCCSD(ccsd.CCSD):
 
     Ground-state CCSD is performed in optimized ccsd.CCSD and EOM is performed here.
     '''
-    def kernel(self, coeff, t1=None, t2=None, t3aaa=None, t3aab=None, t4=None, eris=None, mbpt2=False, numzero=1E-5):
-        return self.ccsd(coeff, t1, t2, t3aaa, t3aab, t4, eris, mbpt2, numzero)
-    def ccsd(self, coeff, t1=None, t2=None, t3aaa=None, t3aab=None, t4=None, eris=None, mbpt2=False, numzero=1E-5):
+    def kernel(self, nocc_corr, nvir_corr, nocc_cas, nvir_cas, ext_source="SHCI", t1=None, t2=None, eris=None, numzero=1E-12, coeff=None):
+        if coeff == None:
+            import os
+            # DUMP file for CI coeff 
+            if ext_source == "SHCI" or ext_source == "shci":
+                # TODO: to remove this (automatically generate CIcoeff_shci.out or t3, t4 files)
+                # TODO: get_CIcoef_SHCI.sh -> python script 
+                os.system('get_CIcoef_SHCI.sh output.dat > CIcoeff_shci.out')
+            
+                # TODO: nocc_ncorr, nvir_ncorr -> nocc_ncas, nvir_ncas
+                from pyscf.cc.fci_index import fci_index_nomem
+                idx = fci_index_nomem(nocc_cas, nvir_cas) 
+                from pyscf.cc.shci import shci_coeff 
+                self.coeff = shci_coeff("CIcoeff_shci.out", nocc_cas, nvir_cas, idx)
+            elif ext_source == "DMRG" or ext_source == "dmrg":
+                # TODO: to remove this (automatically generate CIcoeff_shci.out or t3, t4 files)
+                # TODO: get_CIcoef_SHCI.sh -> python script 
+                #os.system('get_CIcoef_DMRG.sh extractCI.out > CIcoeff_dmrg.out')
+                from pyscf.cc.fci_index import fci_index_nomem
+                idx = fci_index_nomem(nocc_cas, nvir_cas) 
+                from pyscf.cc.dmrg import dmrg_coeff 
+                self.coeff = dmrg_coeff("CIcoeff_dmrg.out", nocc_cas, nvir_cas, idx)
+        else:
+            self.coeff = coeff
+
+        self.coeff.nocc_corr= nocc_corr
+        self.coeff.nvir_corr= nvir_corr
+        self.coeff.nocc_cas = nocc_cas
+        self.coeff.nvir_cas = nvir_cas
+        self.coeff.nocc_iact= nocc_corr - nocc_cas 
+        self.coeff.nvir_iact= nvir_corr - nvir_cas 
+
+        return self.ccsd(self.coeff, t1, t2, eris, numzero)
+
+    def ccsd(self, coeff, t1=None, t2=None, eris=None, numzero=1E-5):
         '''Ground-state CCSD.
 
         Kwargs:
             mbpt2 : bool
                 Use one-shot MBPT2 approximation to CCSD.
         '''
-        if mbpt2:
-            pt = mp2.MP2(self._scf, self.frozen, self.mo_coeff, self.mo_occ)
-            self.e_corr, self.t2 = pt.kernel(eris=eris)
-            nocc, nvir = self.t2.shape[1:3]
-            self.t1 = np.zeros((nocc,nvir))
-            return self.e_corr, self.t1, self.t2
-
         if eris is None:
             eris = self.ao2mo(self.mo_coeff)
-        return ccsd.CCSD.ccsd(self, t1=t1, t2=t2, eris=eris, TCCSD=True, coeff=coeff, numzero=numzero)
+        return ccsd.CCSD.ccsd(self, t1=t1, t2=t2, eris=eris, TCCSD_tmp=True, coeff=coeff, numzero=numzero)
 
     def ao2mo(self, mo_coeff=None):
         nmo = self.nmo
@@ -231,11 +258,17 @@ class RTCCSD(ccsd.CCSD):
                                     verbose=self.verbose)
         return self.l1, self.l2
 
-    def ccsd_t(self, coeff, t1=None, t2=None, eris=None):
+    def ccsd_t(self, t1=None, t2=None, eris=None):
 #?        # Note
 #?        assert(t1.dtype == np.double)
 #?        assert(t2.dtype == np.double)
-        return ccsd.CCSD.ccsd_t(self, t1, t2, eris, TCCSD=True, coeff=coeff)
+        return ccsd.CCSD.ccsd_t(self, t1, t2, eris, TCCSD=True, coeff=self.coeff)
+
+    def rccsd_t(self, t1=None, t2=None, eris=None):
+#?        # Note
+#?        assert(t1.dtype == np.double)
+#?        assert(t2.dtype == np.double)
+        return ccsd.CCSD.rccsd_t(self, t1, t2, eris, TCCSD=True, coeff=self.coeff)
 
     def density_fit(self, auxbasis=None, with_df=None):
         raise NotImplementedError

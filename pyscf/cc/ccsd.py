@@ -86,14 +86,20 @@ def kernel(mycc, eris=None, t1=None, t2=None, max_cycle=50, tol=1e-8,
         log.info('cycle = %d  E_corr(CCSD) = %.15g  dE = %.9g  norm(t1,t2) = %.6g',
                  istep+1, eccsd, eccsd - eold, normt)
         cput1 = log.timer('CCSD iter', *cput1)
-        if abs(eccsd-eold) < tol and normt < tolnormt:
+        if mycc.iterative_damping < 1.0 and mycc.conv_opt2:
+            if abs(eccsd-eold) < tol or eccsd-eold > 0:
+                conv = True
+                break
+        elif abs(eccsd-eold) < tol and normt < tolnormt:
             conv = True
+            break
+        if abs(eccsd-eold) > 100:
             break
     log.timer('CCSD', *cput0)
     return conv, eccsd, t1, t2
 
 def ec_kernel(mycc, coeff, eris=None, t1=None, t2=None, max_cycle=50, tol=1e-8,
-           tolnormt=1e-6, verbose=None, numzero=1E-9):
+           tolnormt=1e-6, verbose=None, numzero=1e-9):
     log = logger.new_logger(mycc, verbose)
     if eris is None:
         eris = mycc.ao2mo(mycc.mo_coeff)
@@ -122,10 +128,14 @@ def ec_kernel(mycc, coeff, eris=None, t1=None, t2=None, max_cycle=50, tol=1e-8,
     #################
     if (not coeff.flagS) or (not coeff.flagD) or (not coeff.flagT): 
         coeff.get_SDT(0)
+        #coeff.get_SDT(0, numzero=numzero)
 
     #lsh test
     norm = numpy.square( coeff.Ref[0] )
     print ('        0 =', norm )
+    if numpy.square( coeff.Ref[0] ) < 1e-10:
+        return False, 0.0, numpy.zeros((nocc_corr,nvir_corr)), numpy.zeros((nocc_corr,nocc_corr,nvir_corr,nvir_corr))
+
     norm0 = norm
     norm += 2.0*numpy.sum(numpy.square ( coeff.S_a ))
     print ('   0S (S) =', norm,'(', norm-norm0,')')
@@ -148,8 +158,8 @@ def ec_kernel(mycc, coeff, eris=None, t1=None, t2=None, max_cycle=50, tol=1e-8,
     num_threads = lib.num_threads()
     print('num threads: ',num_threads)
     #if num_threads > 1:
-    coeff.c3_div_omp(num_threads) #TODO: to remove saving c3 but on-the-fly reading c3
-    coeff.c4_div_omp(num_threads)
+    coeff.c3_div_omp(num_threads, numzero=numzero) #TODO: to remove saving c3 but on-the-fly reading c3
+    coeff.c4_div_omp(num_threads, numzero=numzero)
         #coeff.del_df() #TODO: think about (T) correction
     #else:
         #coeff.del_df() 
@@ -167,11 +177,11 @@ def ec_kernel(mycc, coeff, eris=None, t1=None, t2=None, max_cycle=50, tol=1e-8,
         mycc.ci2cc = ci2cc_mem(nocc_corr, nvir_corr, nocc_cas, nvir_cas, nocc_iact, coeff.idx, coeff.Ref)
         ci2cc = mycc.ci2cc
         ci2cc.c1_to_t1(coeff.S_a.copy())
-        ci2cc.c2_to_t2(coeff.D_aa.copy(),coeff.D_ab.copy(),numzero=numzero)
+        ci2cc.c2_to_t2(coeff.D_aa.copy(),coeff.D_ab.copy())
 
         t2_t4c = numpy.zeros((nocc,nocc,nvir,nvir), dtype=numpy.float64)
         #if num_threads > 1:
-        coeff.get_t2t4c_omp_otf_mem(t2_t4c, eris_ovov, ci2cc, numzero, norm)
+        coeff.get_t2t4c_omp_otf_mem(t2_t4c, eris_ovov, ci2cc, norm)
         #else:
         #    coeff.get_t2t4c_otf_mem(t2_t4c, eris_ovov, ci2cc, numzero, norm)
 
@@ -182,7 +192,7 @@ def ec_kernel(mycc, coeff, eris=None, t1=None, t2=None, max_cycle=50, tol=1e-8,
         # t3 for t1 amplitude eqn
         t1_t3c = numpy.zeros((nocc,nvir), dtype=numpy.float64)
         #if num_threads > 1:
-        coeff.get_t1t3c_omp_mem(t1_t3c, eris_ovov, ci2cc, numzero) 
+        coeff.get_t1t3c_omp_mem(t1_t3c, eris_ovov, ci2cc) 
         #else:
         #    coeff.get_t1t3c(t1_t3c, eris_ovov, ci2cc, numzero, nocc_iact) 
    
@@ -265,6 +275,7 @@ def ec_kernel(mycc, coeff, eris=None, t1=None, t2=None, max_cycle=50, tol=1e-8,
 
     conv = False
     eold = 0
+    normt = 100
     if t1 is None and t2 is None:
         t1 = ci2cc.t1
         t2 = ci2cc.t2ab
@@ -309,7 +320,7 @@ def ec_kernel(mycc, coeff, eris=None, t1=None, t2=None, max_cycle=50, tol=1e-8,
             tmp3  = 2*einsum('kcld,ld->kc', eris_ovov, ci2cc.t1)
             tmp3 +=  -einsum('kdlc,ld->kc', eris_ovov, ci2cc.t1)
             tmp3 += np.asarray(fov).conj().copy()
-            coeff.get_t2t3c_omp_mem(t2_t3t4c, tmp1, tmp2, tmp3, ci2cc, numzero)
+            coeff.get_t2t3c_omp_mem(t2_t3t4c, tmp1, tmp2, tmp3, ci2cc)
 
 #        log.info('max_memory %d MB (current use %d MB)',
 #                 mycc.max_memory, lib.current_memory()[0])
@@ -355,14 +366,16 @@ def ec_kernel(mycc, coeff, eris=None, t1=None, t2=None, max_cycle=50, tol=1e-8,
                 tmp3  = 2*einsum('kcld,ld->kc', eris_ovov, t1)
                 tmp3 +=  -einsum('kdlc,ld->kc', eris_ovov, t1)
                 tmp3 += np.asarray(fov).conj().copy()
-                coeff.get_t2t3c_omp_mem(t2_t3t4c, tmp1, tmp2, tmp3, ci2cc, numzero)
+                coeff.get_t2t3c_omp_mem(t2_t3t4c, tmp1, tmp2, tmp3, ci2cc)
 #            log.info('max_memory %d MB (current use %d MB)',
 #                     mycc.max_memory, lib.current_memory()[0])
 #            cput1 = log.timer('extracting and contracting t3 for t2 eqn', *cput1)
 
         t1new, t2new = mycc.update_amps(t1, t2, t1_t3c, t2_t3t4c, eris)
         tmpvec = mycc.amplitudes_to_vector(t1new, t2new)
+        normt_tot = numpy.linalg.norm(tmpvec)
         tmpvec -= mycc.amplitudes_to_vector(t1, t2)
+        normtold = normt
         normt = numpy.linalg.norm(tmpvec)
         tmpvec = None
         if mycc.iterative_damping < 1.0:
@@ -374,11 +387,21 @@ def ec_kernel(mycc, coeff, eris=None, t1=None, t2=None, max_cycle=50, tol=1e-8,
         t1new = t2new = None
         t1, t2 = mycc.run_diis(t1, t2, istep, normt, eccsd-eold, adiis)
         eold, eccsd = eccsd, mycc.energy(t1, t2, eris)
-        log.info('cycle = %d  E_corr(ecCCSD) = %.15g  dE = %.9g  norm(t1,t2) = %.6g',
-                 istep+1, eccsd, eccsd - eold, normt)
-        cput1 = log.timer('ecCCSD iter', *cput1)
-        if abs(eccsd-eold) < tol and normt < tolnormt:
-            conv = True
+        if mycc.iterative_damping < 1.0 and mycc.conv_opt2:
+            log.info('cycle = %d  E_corr(ecCCSD) = %.15g  dE = %.9g  norm(t1,t2)/tot_norm = %.6g',
+                     istep+1, eccsd, eccsd - eold, normt/normt_tot)
+            cput1 = log.timer('ecCCSD iter', *cput1)
+            if abs(eccsd-eold) < tol or eccsd-eold > 0:
+                conv = True
+                break
+        else:
+            log.info('cycle = %d  E_corr(ecCCSD) = %.15g  dE = %.9g  norm(t1,t2) = %.6g',
+                     istep+1, eccsd, eccsd - eold, normt)
+            cput1 = log.timer('ecCCSD iter', *cput1)
+            if abs(eccsd-eold) < tol and normt < tolnormt:
+                conv = True
+                break
+        if abs(eccsd-eold) > 100:
             break
     log.info('max_memory %d MB (current use %d MB)',
              mycc.max_memory, lib.current_memory()[0])
@@ -922,6 +945,8 @@ def ec_kernel_devel(mycc, coeff, eris=None, t1=None, t2=None, t3aaa=None, t3aab=
         if abs(eccsd-eold) < tol and normt < tolnormt:
             conv = True
             break
+        if abs(eccsd-eold) > 100:
+            break
     log.info('max_memory %d MB (current use %d MB)',
              mycc.max_memory, lib.current_memory()[0])
     log.timer('ecCCSD', *cput0)
@@ -1203,11 +1228,318 @@ def ect_kernel(mycc, coeff, eris=None, t1=None, t2=None, t3aaa=None, t3aab=None,
         if abs(ectccsd-eold) < tol and normt < tolnormt:
             conv = True
             break
+        if abs(eccsd-eold) > 100:
+            break
     log.timer('ecTCCSD', *cput0)
 
 #lsh test
 #    conv=False; ectccsd=0.0;
     return conv, ectccsd, t1, t2
+
+def ect_kernel_devel(mycc, coeff, eris=None, t1=None, t2=None, max_cycle=50, tol=1e-8,
+           tolnormt=1e-6, verbose=None, numzero=1E-9):
+    log = logger.new_logger(mycc, verbose)
+    if eris is None:
+        eris = mycc.ao2mo(mycc.mo_coeff)
+
+    dbg = False 
+
+    cput1 = cput0 = (time.clock(), time.time())
+    nocc = eris.nocc
+    nmo  = eris.fock.shape[0]
+    nvir = nmo - nocc
+    assert nocc == coeff.nocc_corr and nvir == coeff.nvir_corr
+
+    nocc_corr = coeff.nocc_corr
+    nvir_corr = coeff.nvir_corr
+    nocc_cas  = coeff.nocc_cas 
+    nvir_cas  = coeff.nvir_cas 
+    nocc_iact = coeff.nocc_iact
+
+    fov = eris.fock[:nocc,nocc:].copy()
+    eris_ooov = np.asarray(eris.ovoo).transpose(2,3,0,1)
+    eris_ovov = np.asarray(eris.ovvo).transpose(0,1,3,2).copy()
+    eris_ovvv = np.asarray(eris.ovvv)
+ 
+    #################
+    # read CI coeff #
+    #################
+    if (not coeff.flagS) or (not coeff.flagD) or (not coeff.flagT): 
+        coeff.get_SDT(0)
+
+    #lsh test
+    norm = numpy.square( coeff.Ref[0] )
+    print ('        0 =', norm )
+    norm0 = norm
+    norm += 2.0*numpy.sum(numpy.square ( coeff.S_a ))
+    print ('   0S (S) =', norm,'(', norm-norm0,')')
+    norm0S = norm
+    norm += 2.0*numpy.sum(numpy.square ( coeff.D_aa ))
+    norm += numpy.sum(numpy.square ( coeff.D_ab ))
+    print ('  0SD (D) =', norm,'(', norm-norm0S,')')
+    norm0SD = norm
+    norm += 2.0*numpy.sum(numpy.square ( coeff.T_aaa ))
+    norm += 2.0*numpy.sum(numpy.square ( coeff.T_aab ))
+    print (' 0SDT (T) =', norm,'(', norm-norm0SD,')')
+
+#    log.info('max_memory %d MB (current use %d MB)',
+#             mycc.max_memory, lib.current_memory()[0])
+#    cput1 = log.timer('reading SDT CI coeff                    ', *cput1)
+
+    ########################
+    # div files for c3, c4 #
+    ########################
+    num_threads = lib.num_threads()
+    print('num threads: ',num_threads)
+    #if num_threads > 1:
+    coeff.c3_div_omp(num_threads) #TODO: to remove saving c3 but on-the-fly reading c3
+    coeff.c4_div_omp(num_threads)
+        #coeff.del_df() #TODO: think about (T) correction
+    #else:
+        #coeff.del_df() 
+#    log.info('max_memory %d MB (current use %d MB)',
+#             mycc.max_memory, lib.current_memory()[0])
+#    cput1 = log.timer('dividing c3 and c4 files                ', *cput1)
+
+    if mycc.restart <= 0 and mycc.onthefly:  
+        ########################
+        # extract and contract #
+        ########################
+        # t4 for t2 amplitude eqn
+        assert not coeff.interm_norm_S and not coeff.interm_norm_D
+        coeff.interm_norm(T=False, Q=False)
+        mycc.ci2cc = ci2cc_mem(nocc_corr, nvir_corr, nocc_cas, nvir_cas, nocc_iact, coeff.idx, coeff.Ref)
+        ci2cc = mycc.ci2cc
+        ci2cc.c1_to_t1(coeff.S_a.copy())
+        ci2cc.c2_to_t2(coeff.D_aa.copy(),coeff.D_ab.copy())
+
+        t2_t4c = numpy.zeros((nocc,nocc,nvir,nvir), dtype=numpy.float64)
+        #if num_threads > 1:
+        coeff.get_t2t4c_omp_otf_mem(t2_t4c, eris_ovov, ci2cc, norm)
+        #else:
+        #    coeff.get_t2t4c_otf_mem(t2_t4c, eris_ovov, ci2cc, numzero, norm)
+
+#        log.info('max_memory %d MB (current use %d MB)',
+#                 mycc.max_memory, lib.current_memory()[0])
+#        cput1 = log.timer('extracting and contracting t4 for t2 eqn', *cput1)
+
+        # t3 for t1 amplitude eqn
+        t1_t3c = numpy.zeros((nocc,nvir), dtype=numpy.float64)
+        #if num_threads > 1:
+        coeff.get_t1t3c_omp_mem(t1_t3c, eris_ovov, ci2cc) 
+        #else:
+        #    coeff.get_t1t3c(t1_t3c, eris_ovov, ci2cc, numzero, nocc_iact) 
+   
+#        log.info('max_memory %d MB (current use %d MB)',
+#                 mycc.max_memory, lib.current_memory()[0])
+#        cput1 = log.timer('extracting and contracting t3 for t1 eqn', *cput1)
+
+    elif mycc.restart <= 0 and not mycc.onthefly:  
+        raise NotImplementedError
+#        ########################
+#        # extract and contract #
+#        ########################
+#        # t4 for t2 amplitude eqn
+#        assert not coeff.interm_norm_S and not coeff.interm_norm_D \
+#           and not coeff.interm_norm_T
+#        coeff.interm_norm(Q=False)
+#        mycc.ci2cc = fci_to_cc_c(nocc, nvir, coeff.idx, coeff.Ref)
+#        ci2cc = mycc.ci2cc
+#        ci2cc.c1_to_t1(coeff.S_a.copy())
+#        ci2cc.c2_to_t2(coeff.D_aa.copy(),coeff.D_ab.copy())
+#        ci2cc.c3_to_t3(coeff.T_aaa.copy(), coeff.T_aab.copy(),numzero=numzero)
+#
+#        t2_t4c = numpy.zeros((nocc,nocc,nvir,nvir), dtype=numpy.float64)
+#
+#        if num_threads > 1:
+#            coeff.get_t2t4c_omp(t2_t4c, eris_ovov, ci2cc, numzero, mycc.nc, norm)
+#        else:
+#            coeff.get_t2t4c(t2_t4c, eris_ovov, ci2cc, numzero, mycc.nc, norm)
+#
+#        log.info('max_memory %d MB (current use %d MB)',
+#                 mycc.max_memory, lib.current_memory()[0])
+#        cput1 = log.timer('extracting and contracting t4 for t2 eqn', *cput1)
+#
+#        # t3 for t1 amplitude eqn
+#        t1_t3c =0.5*einsum('kcld,iklacd->ia', eris_ovov, ci2cc.t3aaa)
+#        t1_t3c+=0.5*einsum('kcld,iklacd->ia', eris_ovov, ci2cc.t3aab)
+#        t1_t3c+=0.5*einsum('kcld,ilkadc->ia', eris_ovov, ci2cc.t3aab)
+#        t1_t3c+=0.5*einsum('kcld,klicda->ia', eris_ovov, ci2cc.t3aab)
+#
+#        log.info('max_memory %d MB (current use %d MB)',
+#                 mycc.max_memory, lib.current_memory()[0])
+#        cput1 = log.timer('extracting and contracting t3 for t1 eqn', *cput1)
+
+    elif mycc.restart == 1:  
+        raise NotImplementedError
+#        mycc.ci2cc = fci_to_cc_c(nocc, nvir, coeff.idx, coeff.Ref)
+#        ci2cc = mycc.ci2cc
+#        ci2cc.read_t3aab()
+#        t1_t3c = ci2cc.read_t1_t3c()
+#        t2_t4c = ci2cc.read_t2_t4c()
+#
+#        cput1 = log.timer('reading t amplitude c                   ', *cput1)
+#        log.info('max_memory %d MB (current use %d MB after gen t amplitude)',
+#                 mycc.max_memory, lib.current_memory()[0])
+
+    #TODO: need to be updated
+    # save t1_t3c, t2_t4c, t3aab in csv file
+    if mycc.restart == -1:
+        raise NotImplementedError
+#        import pandas as pd
+#        from pandas import DataFrame
+#        data_t1_t3c    = {'t1_t3c': t1_t3c.reshape(nocc*nvir)}
+#        data_t1_t3c_df = DataFrame(data_t1_t3c)
+#        data_t2_t4c    = {'t2_t4c': t2_t4c.reshape(nocc*nocc*nvir*nvir)}
+#        data_t2_t4c_df = DataFrame(data_t2_t4c)
+#        data_t3aab     = {'t3aab': ci2cc.t3aab.reshape(nocc*nocc*nocc*nvir*nvir*nvir)}
+#        data_t3aab_df  = DataFrame(data_t3aab)
+#
+#        data_t1_t3c_df.to_csv('t1_t3c.csv')
+#        data_t2_t4c_df.to_csv('t2_t4c.csv')
+#        data_t3aab_df.to_csv ('t3aab.csv')
+ 
+    if isinstance(mycc.diis, lib.diis.DIIS):
+        adiis = mycc.diis
+    elif mycc.diis:
+        adiis = lib.diis.DIIS(mycc, mycc.diis_file, incore=mycc.incore_complete)
+        adiis.space = mycc.diis_space
+    else:
+        adiis = None
+
+    conv = False
+    eold = 0
+    normt = 100
+    if t1 is None and t2 is None:
+        t1 = ci2cc.t1
+        t2 = ci2cc.t2ab
+    elif t2 is None:
+        t2 = ci2cc.t2ab
+    eccsd = mycc.energy(t1, t2, eris)
+    log.info('Init E_corr(ecCCSD) = %.15g', eccsd)
+
+    ###########################
+    # extract and contracting #
+    ###########################
+    if mycc.t3_0_t1_0_approx:
+        # t3 for t2 amplitude eqn with extracted t1 
+        if not mycc.onthefly:
+            t2_t3t4c = t2_t4c.copy()
+            t3tmp = ci2cc.t3aab.copy() + ci2cc.t3aab.transpose(0,2,1,3,5,4).copy() 
+            tmp2  = einsum('kdlc,id->kilc', eris_ovov, ci2cc.t1)
+            tmp2 += np.asarray(eris_ooov).conj().copy()
+            t2_t3t4c -= einsum('kilc,lkjcab->ijab', tmp2, t3tmp)
+            tmp2  = einsum('kdlc,jd->kjlc', eris_ovov, ci2cc.t1)
+            tmp2 += np.asarray(eris_ooov).conj().copy()
+            t2_t3t4c -= einsum('kjlc,likcab->ijab', tmp2, t3tmp)
+       
+            tmp2  = -einsum('kcld,lb->kcbd', eris_ovov, ci2cc.t1)
+            tmp2 +=  eris_ovvv.conj().copy()
+            t2_t3t4c+= einsum('kcbd,kijcad->ijab', tmp2, t3tmp)
+            tmp2  = -einsum('kcld,la->kcad', eris_ovov, ci2cc.t1)
+            tmp2 += eris_ovvv.conj().copy()
+            t2_t3t4c+= einsum('kcad,kijcdb->ijab', tmp2, t3tmp)
+        
+            tmp2  = 2*einsum('kcld,ld->kc', eris_ovov, ci2cc.t1)
+            tmp2 +=  -einsum('kdlc,ld->kc', eris_ovov, ci2cc.t1)
+            tmp2 += np.asarray(fov).conj().copy()
+            t2_t3t4c+=  einsum('kc,kijcab->ijab', tmp2, t3tmp)
+    
+        elif mycc.onthefly:
+            t2_t3t4c = t2_t4c.copy() 
+            tmp1  = einsum('kdlc,id->kilc', eris_ovov, ci2cc.t1)
+            tmp1 += eris_ooov.conj().copy()
+            tmp2  = -einsum('kcld,la->kcad', eris_ovov, ci2cc.t1)
+            tmp2 +=  eris_ovvv.conj().copy()
+            tmp3  = 2*einsum('kcld,ld->kc', eris_ovov, ci2cc.t1)
+            tmp3 +=  -einsum('kdlc,ld->kc', eris_ovov, ci2cc.t1)
+            tmp3 += np.asarray(fov).conj().copy()
+            coeff.get_t2t3c_omp_mem(t2_t3t4c, tmp1, tmp2, tmp3, ci2cc)
+
+#        log.info('max_memory %d MB (current use %d MB)',
+#                 mycc.max_memory, lib.current_memory()[0])
+#        cput1 = log.timer('extracting and contracting t3 for t2 eqn', *cput1)
+
+    t1f, t2f = coeff.tcc_tcas_idx()
+
+#    #lsh dbg
+#    mycc.t1_t3c = t1_t3c
+#    mycc.t2_t4c = t2_t4c
+#    mycc.t2_t3t4c = t2_t3t4c
+
+    for istep in range(max_cycle):
+        if not mycc.t3_0_t1_0_approx:
+            ###########################
+            # extract and contracting #
+            ###########################
+            # t3 for t2 amplitude eqn with relaxed t1 
+            if not mycc.onthefly:
+                t3tmp = ci2cc.t3aab.copy() + ci2cc.t3aab.transpose(0,2,1,3,5,4).copy() 
+                tmp2  = einsum('kdlc,id->kilc', eris_ovov, t1)
+                tmp2 += np.asarray(eris_ooov).conj().copy()
+                t2_t3t4c  = t2_t4c -einsum('kilc,lkjcab->ijab', tmp2, t3tmp)
+                tmp2  = einsum('kdlc,jd->kjlc', eris_ovov, t1)
+                tmp2 += np.asarray(eris_ooov).conj().copy()
+                t2_t3t4c -= einsum('kjlc,likcab->ijab', tmp2, t3tmp)
+    
+                tmp2  = -einsum('kcld,lb->kcbd', eris_ovov, t1)
+                tmp2 += eris_ovvv.conj().copy()
+                t2_t3t4c+= einsum('kcbd,kijcad->ijab', tmp2, t3tmp)
+                tmp2  = -einsum('kcld,la->kcad', eris_ovov, t1)
+                tmp2 += eris_ovvv.conj().copy()
+                t2_t3t4c+= einsum('kcad,kijcdb->ijab', tmp2, t3tmp)
+            
+                tmp2  = 2*einsum('kcld,ld->kc', eris_ovov, t1)
+                tmp2 +=  -einsum('kdlc,ld->kc', eris_ovov, t1)
+                tmp2 += np.asarray(fov).conj().copy()
+                t2_t3t4c+=  einsum('kc,kijcab->ijab', tmp2, t3tmp)
+            elif mycc.onthefly:
+                t2_t3t4c = t2_t4c.copy() 
+                tmp1  = einsum('kdlc,id->kilc', eris_ovov, t1)
+                tmp1 += eris_ooov.conj().copy()
+                tmp2  = -einsum('kcld,la->kcad', eris_ovov, t1)
+                tmp2 +=  eris_ovvv.conj().copy()
+                tmp3  = 2*einsum('kcld,ld->kc', eris_ovov, t1)
+                tmp3 +=  -einsum('kdlc,ld->kc', eris_ovov, t1)
+                tmp3 += np.asarray(fov).conj().copy()
+                coeff.get_t2t3c_omp_mem(t2_t3t4c, tmp1, tmp2, tmp3, ci2cc)
+#            log.info('max_memory %d MB (current use %d MB)',
+#                     mycc.max_memory, lib.current_memory()[0])
+#            cput1 = log.timer('extracting and contracting t3 for t2 eqn', *cput1)
+
+        t1new, t2new = mycc.update_amps(t1, t2, t1_t3c, t2_t3t4c, t1f, t2f, eris)
+        tmpvec = mycc.amplitudes_to_vector(t1new, t2new)
+        tmpvec -= mycc.amplitudes_to_vector(t1, t2)
+        normtold = normt
+        normt = numpy.linalg.norm(tmpvec)
+        tmpvec = None
+        if mycc.iterative_damping < 1.0:
+            alpha = mycc.iterative_damping
+            t1new = (1-alpha) * t1 + alpha * t1new
+            t2new *= alpha
+            t2new += (1-alpha) * t2
+        t1, t2 = t1new, t2new
+        t1new = t2new = None
+        t1, t2 = mycc.run_diis(t1, t2, istep, normt, eccsd-eold, adiis)
+        eold, eccsd = eccsd, mycc.energy(t1, t2, eris)
+        log.info('cycle = %d  E_corr(ecTCCSD) = %.15g  dE = %.9g  norm(t1,t2) = %.6g',
+                 istep+1, eccsd, eccsd - eold, normt)
+        cput1 = log.timer('ecTCCSD iter', *cput1)
+        if mycc.iterative_damping < 1.0 and mycc.conv_opt2:
+            if abs(eccsd-eold) < tol or eccsd-eold > 0:
+                conv = True
+                break
+        else:
+            if abs(eccsd-eold) < tol and normt < tolnormt:
+                conv = True
+                break
+        if abs(eccsd-eold) > 100:
+            break
+    log.info('max_memory %d MB (current use %d MB)',
+             mycc.max_memory, lib.current_memory()[0])
+    log.timer('ecTCCSD', *cput0)
+
+    return conv, eccsd, t1, t2
 
 #lsh
 def tcc_kernel(mycc, coeff, eris=None, t1=None, t2=None, t3aaa=None, t3aab=None, t4=None, ci2cc=None, max_cycle=50, tol=1e-8,
@@ -1456,9 +1788,24 @@ def tcc_kernel_new(mycc, coeff, eris=None, t1=None, t2=None, max_cycle=50, tol=1
         log.info('cycle = %d  E_corr(TCCSD) = %.15g  dE = %.9g  norm(t1,t2) = %.6g',
                  istep+1, tccsd, tccsd - eold, normt)
         cput1 = log.timer('TCCSD iter', *cput1)
-        if abs(tccsd-eold) < tol and normt < tolnormt:
-            conv = True
+
+#        if abs(tccsd-eold) < tol and normt < tolnormt:
+#            conv = True
+#            break
+#        if abs(tccsd-eold) > 100:
+#            break
+
+        if mycc.iterative_damping < 1.0 and mycc.conv_opt2:
+            if abs(tccsd-eold) < tol or tccsd-eold > 0:
+                conv = True
+                break
+        else:
+            if abs(tccsd-eold) < tol and normt < tolnormt:
+                conv = True
+                break
+        if abs(tccsd-eold) > 100:
             break
+
     log.timer('TCCSD', *cput0)
 
     return conv, tccsd, t1, t2
@@ -1742,6 +2089,8 @@ def ec_kernel_slow(mycc, coeff, eris=None, t1=None, t2=None, t3aaa=None, t3aab=N
         cput1 = log.timer('ecCCSD iter', *cput1)
         if abs(eccsd-eold) < tol and normt < tolnormt:
             conv = True
+            break
+        if abs(eccsd-eold) > 100:
             break
     log.timer('ecCCSD', *cput0)
 
@@ -2570,6 +2919,7 @@ http://sunqm.net/pyscf/code-rule.html#api-rules for the details of API conventio
         self.scale_correct   = False 
         self.extract_thresh  = False 
         self.t3_0_t1_0_approx= True 
+        self.conv_opt2       = False 
 
         self.nocc_corr = None
         self.nvir_corr = None
@@ -2699,7 +3049,7 @@ http://sunqm.net/pyscf/code-rule.html#api-rules for the details of API conventio
 
     def kernel(self, t1=None, t2=None, eris=None):
         return self.ccsd(t1, t2, eris)
-    def ccsd(self, t1=None, t2=None, eris=None, ecCCSD=False, ecCCSD_devel=False, TCCSD=False, TCCSD_tmp=False, ecTCCSD=False, coeff=None, numzero=1E-9):
+    def ccsd(self, t1=None, t2=None, eris=None, ecCCSD=False, ecCCSD_devel=False, TCCSD=False, TCCSD_tmp=False, ecTCCSD=False, ecTCCSD_devel=False, coeff=None, numzero=1E-9):
         assert(self.mo_coeff is not None)
         assert(self.mo_occ is not None)
 
@@ -2740,6 +3090,11 @@ http://sunqm.net/pyscf/code-rule.html#api-rules for the details of API conventio
                   ect_kernel(self, coeff, eris, t1, t2, max_cycle=self.max_cycle,
                            tol=self.conv_tol, tolnormt=self.conv_tol_normt,
                            verbose=self.verbose, numzero=numzero)
+        elif ecTCCSD_devel:
+            self.converged, self.e_corr, self.t1, self.t2 = \
+                  ect_kernel_devel(self, coeff, eris, t1, t2, max_cycle=self.max_cycle,
+                           tol=self.conv_tol, tolnormt=self.conv_tol_normt,
+                           verbose=self.verbose, numzero=numzero)
         else:
             self.converged, self.e_corr, self.t1, self.t2 = \
                     kernel(self, eris, t1, t2, max_cycle=self.max_cycle,
@@ -2777,7 +3132,7 @@ http://sunqm.net/pyscf/code-rule.html#api-rules for the details of API conventio
                                    verbose=self.verbose)
         return self.l1, self.l2
 
-    def ccsd_t(self, t1=None, t2=None, eris=None, ecCCSD=False, ecCCSD_devel=False, coeff=None, TCCSD=False, TCCSD_tmp=False, ecTCCSD=False):
+    def ccsd_t(self, t1=None, t2=None, eris=None, ecCCSD=False, ecCCSD_devel=False, coeff=None, TCCSD=False, TCCSD_tmp=False, ecTCCSD=False, ecTCCSD_devel=False):
         if ecCCSD:
             from pyscf.cc import ec_ccsd_t 
             if t1 is None: t1 = self.t1.copy()
@@ -2800,7 +3155,9 @@ http://sunqm.net/pyscf/code-rule.html#api-rules for the details of API conventio
             if eris is None: eris = self.ao2mo(self.mo_coeff)
 
             #t1f, t2f = coeff.tcc_tcas_idx()
-            t1f, t2f = coeff.ectcc_tcas_idx()
+            #t1f, t2f = coeff.ectcc_tcas_idx()
+            t1f = self.t1f
+            t2f = self.t2f 
             t1 = t1 * (1-t1f)
             t2 = t2 * (1-t2f)
             return ccsd_t.kernel(self, eris, t1, t2, self.verbose)
@@ -2826,6 +3183,15 @@ http://sunqm.net/pyscf/code-rule.html#api-rules for the details of API conventio
             t1 = t1 * (1-t1f)
             t2 = t2 * (1-t2f)
             return ecccsd_t_slow.kernel(self, eris, coeff, t1, t2, self.verbose, ecTCCSD=True)
+        if ecTCCSD_devel:
+            from pyscf.cc import ec_ccsd_t 
+            if t1 is None: t1 = self.t1.copy()
+            if t2 is None: t2 = self.t2.copy()
+            if eris is None: eris = self.ao2mo(self.mo_coeff)
+            t1f, t2f = coeff.tcc_tcas_idx()
+            t1 = t1 * (1-t1f)
+            t2 = t2 * (1-t2f)
+            return ec_ccsd_t.kernel(self, eris, self.coeff, t1, t2, self.verbose)
         else:
             from pyscf.cc import ccsd_t
             if t1 is None: t1 = self.t1
@@ -2833,7 +3199,7 @@ http://sunqm.net/pyscf/code-rule.html#api-rules for the details of API conventio
             if eris is None: eris = self.ao2mo(self.mo_coeff)
             return ccsd_t.kernel(self, eris, t1, t2, self.verbose)
 
-    def rccsd_t(self, t1=None, t2=None, eris=None, ecCCSD=False, coeff=None):
+    def rccsd_t(self, t1=None, t2=None, eris=None, ecCCSD=False, TCCSD=False, ecTCCSD_devel=False, coeff=None):
 #        from pyscf.cc import renorm_ccsd_t_slow
 #        if t1 is None: t1 = self.t1
 #        if t2 is None: t2 = self.t2
@@ -2845,6 +3211,24 @@ http://sunqm.net/pyscf/code-rule.html#api-rules for the details of API conventio
             if t1 is None: t1 = self.t1.copy()
             if t2 is None: t2 = self.t2.copy()
             if eris is None: eris = self.ao2mo(self.mo_coeff)
+            return renorm_ecccsd_t_slow.kernel(self, eris, coeff, t1, t2)
+        elif TCCSD:
+            from pyscf.cc import renorm_uccsd_t_slow
+            if t1 is None: t1 = self.t1
+            if t2 is None: t2 = self.t2
+            if eris is None: eris = self.ao2mo(self.mo_coeff)
+            t1f, t2f = coeff.tcc_tcas_idx()
+            t1 = t1 * (1-t1f)
+            t2 = t2 * (1-t2f)
+            return renorm_uccsd_t_slow.kernel(self, eris, t1, t2)
+        elif ecTCCSD_devel:
+            from pyscf.cc import renorm_ecccsd_t_slow
+            if t1 is None: t1 = self.t1.copy()
+            if t2 is None: t2 = self.t2.copy()
+            if eris is None: eris = self.ao2mo(self.mo_coeff)
+            t1f, t2f = coeff.tcc_tcas_idx()
+            t1 = t1 * (1-t1f)
+            t2 = t2 * (1-t2f)
             return renorm_ecccsd_t_slow.kernel(self, eris, coeff, t1, t2)
         else:
             from pyscf.cc import renorm_uccsd_t_slow
@@ -3056,12 +3440,24 @@ class _ChemistsERIs:
             mo_coeff = mycc.mo_coeff
         self.mo_coeff = mo_coeff = _mo_without_core(mycc, mo_coeff)
 
+#        #lsh test
+#        print("mo_coeff")
+#        print(self.mo_coeff)
+
 # Note: Recomputed fock matrix and HF energy since SCF may not be fully converged.
         dm = mycc._scf.make_rdm1(mycc.mo_coeff, mycc.mo_occ)
         vhf = mycc._scf.get_veff(mycc.mol, dm)
         fockao = mycc._scf.get_fock(vhf=vhf, dm=dm)
         self.fock = reduce(numpy.dot, (mo_coeff.conj().T, fockao, mo_coeff))
+
+#        #lsh test
+#        print("fock")
+#        print(self.fock)
         self.e_hf = mycc._scf.energy_tot(dm=dm, vhf=vhf)
+
+#        #lsh test
+#        print("e_hf")
+#        print(self.e_hf)
         nocc = self.nocc = mycc.nocc
         self.mol = mycc.mol
 
@@ -3072,7 +3468,11 @@ class _ChemistsERIs:
         # of Slater determinants.
         mo_e = self.mo_energy = self.fock.diagonal().real
 
+#        #lsh test
+        print("mo_e")
         print(mo_e)
+
+        #print(mo_e)
         try:
             gap = abs(mo_e[:nocc,None] - mo_e[None,nocc:]).min()
             if gap < 1e-5:

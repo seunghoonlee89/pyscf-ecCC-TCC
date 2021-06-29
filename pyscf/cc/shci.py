@@ -19,6 +19,8 @@ class shci_coeff:
         self.top_w_idx = [] 
         self.top_w_typ = "" 
         self.top_w     = 0.0 
+        self.numzero = 0.0 
+        self.skip_idx= None 
 
         self.nocc_corr= None
         self.nvir_corr= None
@@ -519,10 +521,11 @@ class shci_coeff:
 #                   self.top_w_idx = [i, j, a, b] 
 #                   self.top_w_typ = typ 
 
-    def get_SDT(self, nc):
+    def get_SDT(self, nc, numzero=1e-9):
         self.flagS = True 
         self.flagD = True
         self.flagT = True
+        self.numzero = numzero
 
         self.nc = nc
 
@@ -611,7 +614,7 @@ class shci_coeff:
 #               #lsh test
 #               if i == 1 and j == 2 and k == 3 \
 #              and a == 0 and b == 2 and c == 4:
-               if True: 
+               if abs(float(self.data.loc[idet,"7"])) > numzero: 
                    ijkabc = self.idx.T(i, j, k, a, b, c) 
                    parity = self.parity_ci_to_cc(i+j+k, 3)
                    det_str[i] = 'b'
@@ -640,7 +643,7 @@ class shci_coeff:
                #lsh test
 #               if i == 2 and j == 3 and k == 3 \
 #              and a == 0 and b == 1 and c == 1:
-               if True: 
+               if abs(float(self.data.loc[idet,"7"])) > numzero: 
                    ijab = self.idx.D(i, j, a, b) 
                    kc   = self.idx.S(k, c) 
                    parity  = self.parity_ci_to_cc(i+j, 2)
@@ -1304,7 +1307,7 @@ class shci_coeff:
                           ctypes.c_int(self.nocc),ctypes.c_int(self.nvir),
                           ctypes.c_double(numzero),ctypes.c_double(self.Ref[0])) 
 
-    def get_t2t3c_omp_mem(self, t2_t3t4c, tmp1, tmp2, tmp3, ci2cc, numzero):
+    def get_t2t3c_omp_mem(self, t2_t3t4c, tmp1, tmp2, tmp3, ci2cc, numzero=1e-9):
         _ccsd.libcc.t2t3c_shci_omp(t2_t3t4c.ctypes.data_as(ctypes.c_void_p),
                           ci2cc.t1.ctypes.data_as(ctypes.c_void_p),
                           ci2cc.t2aa.ctypes.data_as(ctypes.c_void_p),
@@ -1317,11 +1320,60 @@ class shci_coeff:
                           ctypes.c_double(numzero),ctypes.c_double(self.Ref[0])) 
 
 
-    def c4_div_omp(self, num_threads):
+    def c4_div_omp(self, num_threads, numzero=0.0):
         df_tot = self.data 
         dfaabb = df_tot[df_tot['typ'] == 'aabb']
         dfaaab = df_tot[df_tot['typ'] == 'aaab']
-        df = pd.concat([dfaabb, dfaaab])
+
+        dfaabb['1'] = dfaabb['1'].map(lambda d: int(d))
+        dfaabb['2'] = dfaabb['2'].map(lambda d: int(d))
+        dfaabb['3'] = dfaabb['3'].map(lambda d: int(d))
+        dfaabb['4'] = dfaabb['4'].map(lambda d: int(d))
+        dfaabb['5'] = dfaabb['5'].map(lambda d: int(d))
+        dfaabb['6'] = dfaabb['6'].map(lambda d: int(d))
+        dfaabb['7'] = dfaabb['7'].map(lambda d: int(d))
+        dfaabb['8'] = dfaabb['8'].map(lambda d: int(d))
+        dfaabb['9'] = dfaabb['9'].map(lambda d: float(d))
+        dfaaab['1'] = dfaaab['1'].map(lambda d: int(d))
+        dfaaab['2'] = dfaaab['2'].map(lambda d: int(d))
+        dfaaab['3'] = dfaaab['3'].map(lambda d: int(d))
+        dfaaab['4'] = dfaaab['4'].map(lambda d: int(d))
+        dfaaab['5'] = dfaaab['5'].map(lambda d: int(d))
+        dfaaab['6'] = dfaaab['6'].map(lambda d: int(d))
+        dfaaab['7'] = dfaaab['7'].map(lambda d: int(d))
+        dfaaab['8'] = dfaaab['8'].map(lambda d: int(d))
+        dfaaab['9'] = dfaaab['9'].map(lambda d: float(d))
+
+        if self.skip_idx == None:
+            dfaabb = dfaabb[abs(dfaabb['9']) > numzero]
+            dfaaab = dfaaab[abs(dfaaab['9']) > numzero]
+            df = pd.concat([dfaabb, dfaaab])
+        else:
+            list_df = []
+            for idx in self.skip_idx:
+                tmp1 = dfaabb['1'] == idx[0]
+                tmp2 = dfaabb['2'] == idx[1]
+                tmp3 = dfaabb['3'] == idx[2]
+                tmp4 = dfaabb['4'] == idx[3]
+                tmp5 = dfaabb['5'] == idx[4]
+                tmp6 = dfaabb['6'] == idx[5]
+                tmp7 = dfaabb['7'] == idx[6]
+                tmp8 = dfaabb['8'] == idx[7]
+
+                list_df.append( dfaabb[tmp1&tmp2&tmp3&tmp4&tmp5&tmp6&tmp7&tmp8] )
+                tmp1 = dfaaab['1'] == idx[0]
+                tmp2 = dfaaab['2'] == idx[1]
+                tmp3 = dfaaab['3'] == idx[2]
+                tmp4 = dfaaab['4'] == idx[3]
+                tmp5 = dfaaab['5'] == idx[4]
+                tmp6 = dfaaab['6'] == idx[5]
+                tmp7 = dfaaab['7'] == idx[6]
+                tmp8 = dfaaab['8'] == idx[7]
+
+                list_df.append( dfaaab[tmp1&tmp2&tmp3&tmp4&tmp5&tmp6&tmp7&tmp8] )
+            df = pd.concat(list_df)
+
+
         for j in range(8):
             js = str(j+1)
             df[js] = df[js].map(lambda d: int(d))
@@ -1374,7 +1426,7 @@ class shci_coeff:
                           ctypes.c_double(numzero),ctypes.c_double(self.Ref[0]),
                           ctypes.c_double(norm)) 
 
-    def get_t2t4c_omp_otf_mem(self, t2t4c, e2ovov, ci2cc, numzero, norm):
+    def get_t2t4c_omp_otf_mem(self, t2t4c, e2ovov, ci2cc, norm, numzero=1e-9):
         _ccsd.libcc.t2t4c_shci_omp_otf_mem(t2t4c.ctypes.data_as(ctypes.c_void_p),
                           ci2cc.t1.ctypes.data_as(ctypes.c_void_p),
                           ci2cc.t2aa.ctypes.data_as(ctypes.c_void_p),
@@ -1496,12 +1548,18 @@ class shci_coeff:
 
         print('=== END contracting t4 amplitudes ===')
 
-    def c3_div_omp(self, num_threads):
+    def c3_div_omp(self, num_threads, numzero=0.0):
 
         df_tot = self.data 
         
         dfaab = df_tot[df_tot['typ'] == 'aab']
         dfaaa = df_tot[df_tot['typ'] == 'aaa']
+
+        dfaab['7'] = dfaab['7'].map(lambda d: float(d))
+        dfaaa['7'] = dfaaa['7'].map(lambda d: float(d))
+        dfaab = dfaab[abs(dfaab['7']) > numzero]
+        dfaaa = dfaaa[abs(dfaaa['7']) > numzero]
+
         df = pd.concat([dfaab, dfaaa])
         for j in range(6):
             js = str(j+1)
@@ -1557,7 +1615,7 @@ class shci_coeff:
                           ctypes.c_double(numzero),ctypes.c_double(self.Ref[0]),
                           ctypes.c_double(norm)) 
 
-    def get_t1t3c_omp_mem(self, t1t3c, e2ovov, ci2cc, numzero):
+    def get_t1t3c_omp_mem(self, t1t3c, e2ovov, ci2cc, numzero=1e-9):
         #norm0SD = norm
         norm = 0.0 
         _ccsd.libcc.t1t3c_shci_omp(t1t3c.ctypes.data_as(ctypes.c_void_p),
@@ -1673,26 +1731,28 @@ class shci_coeff:
             typ = self.typ_det[idet]
 
             if (typ == "aaa"):
-               i = int(self.data.loc[idet,"1"]) + nc
-               j = int(self.data.loc[idet,"2"]) + nc
-               k = int(self.data.loc[idet,"3"]) + nc
-               a = int(self.data.loc[idet,"4"]) - nocc_cas
-               b = int(self.data.loc[idet,"5"]) - nocc_cas
-               c = int(self.data.loc[idet,"6"]) - nocc_cas
-
-               asgn_zero_t6(self.Paaa, i, j, k, a, b, c)
-               ncount_aaa += 1
+               if abs(float(self.data.loc[idet,"7"])) > self.numzero:
+                   i = int(self.data.loc[idet,"1"]) + nc
+                   j = int(self.data.loc[idet,"2"]) + nc
+                   k = int(self.data.loc[idet,"3"]) + nc
+                   a = int(self.data.loc[idet,"4"]) - nocc_cas
+                   b = int(self.data.loc[idet,"5"]) - nocc_cas
+                   c = int(self.data.loc[idet,"6"]) - nocc_cas
+    
+                   asgn_zero_t6(self.Paaa, i, j, k, a, b, c)
+                   ncount_aaa += 1
 
             elif (typ == "abb"):
-               i = int(self.data.loc[idet,"1"]) + nc
-               a = int(self.data.loc[idet,"2"]) - nocc_cas
-               j = int(self.data.loc[idet,"3"]) + nc
-               k = int(self.data.loc[idet,"4"]) + nc
-               b = int(self.data.loc[idet,"5"]) - nocc_cas
-               c = int(self.data.loc[idet,"6"]) - nocc_cas
-
-               asgn_zero_t1_2(self.Pabb, i, j, k, a, b, c)
-               ncount_abb += 1
+               if abs(float(self.data.loc[idet,"7"])) > self.numzero:
+                   i = int(self.data.loc[idet,"1"]) + nc
+                   a = int(self.data.loc[idet,"2"]) - nocc_cas
+                   j = int(self.data.loc[idet,"3"]) + nc
+                   k = int(self.data.loc[idet,"4"]) + nc
+                   b = int(self.data.loc[idet,"5"]) - nocc_cas
+                   c = int(self.data.loc[idet,"6"]) - nocc_cas
+    
+                   asgn_zero_t1_2(self.Pabb, i, j, k, a, b, c)
+                   ncount_abb += 1
 
         print ('n_aaa, n_abb=', ncount_aaa, ncount_abb)
 
@@ -1826,13 +1886,14 @@ class shci_coeff:
         for idet in range(self.num_det):
             typ = self.typ_det[idet]
             if (typ == "aaa"):
-               i = int(self.data.loc[idet,"1"]) + nc
-               j = int(self.data.loc[idet,"2"]) + nc
-               k = int(self.data.loc[idet,"3"]) + nc
-               a = int(self.data.loc[idet,"4"]) - nocc_cas
-               b = int(self.data.loc[idet,"5"]) - nocc_cas
-               c = int(self.data.loc[idet,"6"]) - nocc_cas
-               asgn_zero_t6(w, i, j, k, a, b, c)
+               if abs(float(self.data.loc[idet,"7"])) > self.numzero:
+                   i = int(self.data.loc[idet,"1"]) + nc
+                   j = int(self.data.loc[idet,"2"]) + nc
+                   k = int(self.data.loc[idet,"3"]) + nc
+                   a = int(self.data.loc[idet,"4"]) - nocc_cas
+                   b = int(self.data.loc[idet,"5"]) - nocc_cas
+                   c = int(self.data.loc[idet,"6"]) - nocc_cas
+                   asgn_zero_t6(w, i, j, k, a, b, c)
 
     def exclude_tbaa(self, w):
         nc = self.nocc_iact
@@ -1846,13 +1907,14 @@ class shci_coeff:
         for idet in range(self.num_det):
             typ = self.typ_det[idet]
             if (typ == "abb"):
-               i = int(self.data.loc[idet,"1"]) + nc
-               a = int(self.data.loc[idet,"2"]) - nocc_cas
-               j = int(self.data.loc[idet,"3"]) + nc
-               k = int(self.data.loc[idet,"4"]) + nc
-               b = int(self.data.loc[idet,"5"]) - nocc_cas
-               c = int(self.data.loc[idet,"6"]) - nocc_cas
-               asgn_zero_t1_2(w, i, j, k, a, b, c)
+               if abs(float(self.data.loc[idet,"7"])) > self.numzero:
+                   i = int(self.data.loc[idet,"1"]) + nc
+                   a = int(self.data.loc[idet,"2"]) - nocc_cas
+                   j = int(self.data.loc[idet,"3"]) + nc
+                   k = int(self.data.loc[idet,"4"]) + nc
+                   b = int(self.data.loc[idet,"5"]) - nocc_cas
+                   c = int(self.data.loc[idet,"6"]) - nocc_cas
+                   asgn_zero_t1_2(w, i, j, k, a, b, c)
 
     def get_paaa_paab(self):
         self.Paaa = numpy.full((self.nocc_cas,self.nocc_cas,self.nocc_cas,self.nvir_cas,self.nvir_cas,self.nvir_cas), 1.0)
@@ -1912,26 +1974,28 @@ class shci_coeff:
         for idet in range(self.num_det):
             typ = self.typ_det[idet]
             if (typ == "aaa"):
-               i = int(self.data.loc[idet,"1"])
-               j = int(self.data.loc[idet,"2"])
-               k = int(self.data.loc[idet,"3"])
-               a = int(self.data.loc[idet,"4"]) - (self.nocc_cas)
-               b = int(self.data.loc[idet,"5"]) - (self.nocc_cas)
-               c = int(self.data.loc[idet,"6"]) - (self.nocc_cas)
-
-               asgn_zero_t6(self.Paaa, i, j, k, a, b, c)
-               ncount_aaa += 1
+               if abs(float(self.data.loc[idet,"7"])) > self.numzero:
+                   i = int(self.data.loc[idet,"1"])
+                   j = int(self.data.loc[idet,"2"])
+                   k = int(self.data.loc[idet,"3"])
+                   a = int(self.data.loc[idet,"4"]) - (self.nocc_cas)
+                   b = int(self.data.loc[idet,"5"]) - (self.nocc_cas)
+                   c = int(self.data.loc[idet,"6"]) - (self.nocc_cas)
+    
+                   asgn_zero_t6(self.Paaa, i, j, k, a, b, c)
+                   ncount_aaa += 1
 
             elif (typ == "aab"):
-               i = int(self.data.loc[idet,"1"]) 
-               j = int(self.data.loc[idet,"2"]) 
-               a = int(self.data.loc[idet,"3"]) - (self.nocc_cas) 
-               b = int(self.data.loc[idet,"4"]) - (self.nocc_cas) 
-               k = int(self.data.loc[idet,"5"]) 
-               c = int(self.data.loc[idet,"6"]) - (self.nocc_cas) 
-
-               asgn_zero_t2_1(self.Paab, i, j, k, a, b, c)
-               ncount_aab += 1
+               if abs(float(self.data.loc[idet,"7"])) > self.numzero:
+                   i = int(self.data.loc[idet,"1"]) 
+                   j = int(self.data.loc[idet,"2"]) 
+                   a = int(self.data.loc[idet,"3"]) - (self.nocc_cas) 
+                   b = int(self.data.loc[idet,"4"]) - (self.nocc_cas) 
+                   k = int(self.data.loc[idet,"5"]) 
+                   c = int(self.data.loc[idet,"6"]) - (self.nocc_cas) 
+    
+                   asgn_zero_t2_1(self.Paab, i, j, k, a, b, c)
+                   ncount_aab += 1
 
         print ('n_aaa, n_aab=', ncount_aaa, ncount_aab)
 
@@ -1995,26 +2059,28 @@ class shci_coeff:
             typ = self.typ_det[idet]
 
             if (typ == "aaa"):
-               i = int(self.data.loc[idet,"1"])
-               j = int(self.data.loc[idet,"2"])
-               k = int(self.data.loc[idet,"3"])
-               a = int(self.data.loc[idet,"4"]) - (self.nocc_cas)
-               b = int(self.data.loc[idet,"5"]) - (self.nocc_cas)
-               c = int(self.data.loc[idet,"6"]) - (self.nocc_cas)
-
-               asgn_zero_t6(self.Paaa, i, j, k, a, b, c)
-               ncount_aaa += 1
+               if abs(float(self.data.loc[idet,"7"])) > self.numzero:
+                   i = int(self.data.loc[idet,"1"])
+                   j = int(self.data.loc[idet,"2"])
+                   k = int(self.data.loc[idet,"3"])
+                   a = int(self.data.loc[idet,"4"]) - (self.nocc_cas)
+                   b = int(self.data.loc[idet,"5"]) - (self.nocc_cas)
+                   c = int(self.data.loc[idet,"6"]) - (self.nocc_cas)
+    
+                   asgn_zero_t6(self.Paaa, i, j, k, a, b, c)
+                   ncount_aaa += 1
 
             elif (typ == "abb"):
-               i = int(self.data.loc[idet,"1"]) 
-               a = int(self.data.loc[idet,"2"]) - (self.nocc_cas) 
-               j = int(self.data.loc[idet,"3"]) 
-               k = int(self.data.loc[idet,"4"]) 
-               b = int(self.data.loc[idet,"5"]) - (self.nocc_cas) 
-               c = int(self.data.loc[idet,"6"]) - (self.nocc_cas) 
-
-               asgn_zero_t1_2(self.Pabb, i, j, k, a, b, c)
-               ncount_abb += 1
+               if abs(float(self.data.loc[idet,"7"])) > self.numzero:
+                   i = int(self.data.loc[idet,"1"]) 
+                   a = int(self.data.loc[idet,"2"]) - (self.nocc_cas) 
+                   j = int(self.data.loc[idet,"3"]) 
+                   k = int(self.data.loc[idet,"4"]) 
+                   b = int(self.data.loc[idet,"5"]) - (self.nocc_cas) 
+                   c = int(self.data.loc[idet,"6"]) - (self.nocc_cas) 
+    
+                   asgn_zero_t1_2(self.Pabb, i, j, k, a, b, c)
+                   ncount_abb += 1
 
         print ('n_aaa, n_abb=', ncount_aaa, ncount_abb)
 
@@ -2045,23 +2111,25 @@ class shci_coeff:
         for idet in range(self.num_det):
             typ = self.typ_det[idet]
             if (typ == "aaa"):
-               i = int(self.data.loc[idet,"1"])
-               j = int(self.data.loc[idet,"2"])
-               k = int(self.data.loc[idet,"3"])
-               a = int(self.data.loc[idet,"4"]) - nocc
-               b = int(self.data.loc[idet,"5"]) - nocc
-               c = int(self.data.loc[idet,"6"]) - nocc
-               self.Paaa[T(i, j, k, a, b, c)] = 0.0 
-               ncount_aaa += 1
+               if abs(float(self.data.loc[idet,"7"])) > self.numzero:
+                   i = int(self.data.loc[idet,"1"])
+                   j = int(self.data.loc[idet,"2"])
+                   k = int(self.data.loc[idet,"3"])
+                   a = int(self.data.loc[idet,"4"]) - nocc
+                   b = int(self.data.loc[idet,"5"]) - nocc
+                   c = int(self.data.loc[idet,"6"]) - nocc
+                   self.Paaa[T(i, j, k, a, b, c)] = 0.0 
+                   ncount_aaa += 1
             elif (typ == "abb"):
-               i = int(self.data.loc[idet,"1"]) 
-               a = int(self.data.loc[idet,"2"]) - nocc
-               j = int(self.data.loc[idet,"3"])
-               k = int(self.data.loc[idet,"4"])
-               b = int(self.data.loc[idet,"5"]) - nocc
-               c = int(self.data.loc[idet,"6"]) - nocc
-               self.Pbaa[S(i,a)][D(j,k,b,c)] = 0.0
-               ncount_baa += 1
+               if abs(float(self.data.loc[idet,"7"])) > self.numzero:
+                   i = int(self.data.loc[idet,"1"]) 
+                   a = int(self.data.loc[idet,"2"]) - nocc
+                   j = int(self.data.loc[idet,"3"])
+                   k = int(self.data.loc[idet,"4"])
+                   b = int(self.data.loc[idet,"5"]) - nocc
+                   c = int(self.data.loc[idet,"6"]) - nocc
+                   self.Pbaa[S(i,a)][D(j,k,b,c)] = 0.0
+                   ncount_baa += 1
 
         print ('n_aaa, n_baa=', ncount_aaa, ncount_baa)
 
@@ -2664,4 +2732,90 @@ class shci_coeff:
                                 asgn_val_t1_2(pabb_f,i,j,k,a,b,c,pbaa[SDidx(ia,jkbc)]) 
 
         return paaa_f, pabb_f 
+
+    #tmp
+    def align_phase(self, dmrg):
+        dS = int(self.nocc * self.nvir) 
+        dD = int(self.nocc*(self.nocc-1)*self.nvir*(self.nvir-1)/4) 
+        dT = int(self.nocc*(self.nocc-1)*(self.nocc-2)*self.nvir*(self.nvir-1)*(self.nvir-2)/36) 
+#        dQ = len(self.idx.idx4.keys())
+        print('dS, dD, dT =',dS,dD,dT)
+
+        nex = self.nocc * self.nvir
+#        self.Ref    = numpy.zeros((1), dtype=numpy.float64)
+#
+#        self.S_a    = numpy.zeros((dS), dtype=numpy.float64)
+#        self.D_aa   = numpy.zeros((dD), dtype=numpy.float64)
+#        self.D_ab   = numpy.zeros((dS,dS), dtype=numpy.float64)
+#        self.T_aaa  = numpy.zeros((dT), dtype=numpy.float64)
+#        self.T_aab  = numpy.zeros((dD,dS), dtype=numpy.float64)
+#        self.Q_aaab = numpy.zeros((dT,dS), dtype=numpy.float64)
+#        self.Q_aabb = numpy.zeros((dD,dD), dtype=numpy.float64)
+
+        print('ref sign', self.Ref[0], dmrg.Ref[0])
+        s_dmrg = 1.0
+        if dmrg.Ref[0] < 0: s_dmrg = -1.0
+        self.Ref[0] = s_dmrg * abs( self.Ref[0] )
+        print('ref sign', self.Ref[0], dmrg.Ref[0], s_dmrg)
+
+
+        for i in range(dS):
+            s_dmrg = 1.0
+            if abs(dmrg.S_a[i]) < 1e-8:
+                s_dmrg = 0.0
+            else:
+                if dmrg.S_a[i] < 0: s_dmrg = -1.0
+            self.S_a[i] = s_dmrg * abs( self.S_a[i] )
+
+        for i in range(dD):
+            s_dmrg = 1.0
+            if abs(dmrg.D_aa[i]) < 1e-8:
+                s_dmrg = 0.0
+            else:
+                if dmrg.D_aa[i] < 0: s_dmrg = -1.0
+            self.D_aa[i] = s_dmrg * abs( self.D_aa[i] )
+
+        for i in range(dS):
+            for j in range(dS):
+                s_dmrg = 1.0
+                if abs(dmrg.D_ab[i][j]) < 1e-8:
+                    s_dmrg = 0.0
+                else:
+                    if dmrg.D_ab[i][j] < 0: s_dmrg = -1.0
+                self.D_ab[i][j] = s_dmrg * abs( self.D_ab[i][j] )
+
+        for i in range(dT):
+            s_dmrg = 1.0
+            if abs(dmrg.T_aaa[i]) < 1e-8:
+                s_dmrg = 0.0
+            else:
+                if dmrg.T_aaa[i] < 0: s_dmrg = -1.0
+            self.T_aaa[i] = s_dmrg * abs( self.T_aaa[i] )
+
+        for i in range(dD):
+            for j in range(dS):
+                s_dmrg = 1.0
+                if abs(dmrg.T_aab[i][j]) < 1e-8:
+                    s_dmrg = 0.0
+                else:
+                    if dmrg.T_aab[i][j] < 0: s_dmrg = -1.0
+                self.T_aab[i][j] = s_dmrg * abs( self.T_aab[i][j] )
+
+        for i in range(dT):
+            for j in range(dS):
+                s_dmrg = 1.0
+                if abs(dmrg.Q_aaab[i][j]) < 1e-8:
+                    s_dmrg = 0.0
+                else:
+                    if dmrg.Q_aaab[i][j] < 0: s_dmrg = -1.0
+                self.Q_aaab[i][j] = s_dmrg * abs( self.Q_aaab[i][j] )
+
+        for i in range(dD):
+            for j in range(dD):
+                s_dmrg = 1.0
+                if abs(dmrg.Q_aabb[i][j]) < 1e-8:
+                    s_dmrg = 0.0
+                else:
+                    if dmrg.Q_aabb[i][j] < 0: s_dmrg = -1.0
+                self.Q_aabb[i][j] = s_dmrg * abs( self.Q_aabb[i][j] )
 

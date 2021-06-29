@@ -142,7 +142,8 @@ def kernel(mcc, eris, coeff, t1=None, t2=None, verbose=logger.NOTE, ecTCCSD=Fals
         k = int((((l-c)/nvira - b)/nvira - a)/nvira % nocca)
         j = int(((((l-c)/nvira - b)/nvira - a)/nvira - k )/nocca % nocca)
         i = int((((((l-c)/nvira - b)/nvira - a)/nvira - k )/nocca - j)/nocca)
-        print (i+1,j+1,k+1,a+nocca+1,b+nocca+1,c+nocca+1, t_contrib_sort[l])
+        denom = mo_ea[a+nocca] + mo_ea[b+nocca] + mo_ea[c+nocca] - mo_ea[i] - mo_ea[j] - mo_ea[k]
+        if abs(t_contrib_sort[l]) > 1e-10: print (i+1,j+1,k+1,a+nocca+1,b+nocca+1,c+nocca+1, denom, t_contrib_sort[l]*0.5)
 
 
 #    # bba
