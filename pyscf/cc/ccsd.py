@@ -34,7 +34,7 @@ from pyscf.ao2mo import _ao2mo
 from pyscf.cc import _ccsd
 from pyscf.mp.mp2 import get_nocc, get_nmo, get_frozen_mask, _mo_without_core
 from pyscf import __config__
-from pyscf.cc.fci_index import fci_index, fci_coeff, fci_index_c
+from pyscf.cc.fci_index import fci_index, fci_index_c
 from pyscf.cc.fci_to_cc import fci_to_cc, fci_to_cc_c, ci2cc_mem
 import numpy as np
 einsum = lib.einsum

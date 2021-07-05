@@ -1,0 +1,423 @@
+Runing with 1 processors
+Reading input file
+m_hf_occ_user canonical
+./
+================
+The Fiedler routine for finding the orbital ordering has already been run.
+Using the reorder file .//node0//RestartReorder.dat
+================
+1 2 3 4 5 6 
+
+open orbs   :
+closed orbs :
+Initial HF occupancy guess: 1 1 1 1 1 1 0 0 0 0 0 0 
+Checking input for errors
+Summary of input
+----------------
+Total number of orbitals                           :   6
+Symmetry of the targeted wavefunctions             :   6:0:1
+Number of wavefunctions targeted                   :   1
+Symmetry of the molecule                           :   c1
+
+Schedule
+--------
+Iter       : # States              Davidson_tol          Random_noise        
+0          : 5000                  1.000000e-05          5.000000e-05        
+2          : 5000                  1.000000e-08          0.000000e+00        
+Maximum sweep iterations                           :   6
+
+
+			 Sweep iteration ... 0 5000 0.000010000000 0.000050000000 0.000000000000
+			 Using the one dot algorithm ... 
+			 forward system starting size ... 1 4
+			 backward system starting size ... 1 4
+			 Saving state file :: .//node0//StateInfo-forward-0-0.0.0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-0-1.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-forward-0-1.0.0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-0-2.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-forward-0-2.0.0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-0-3.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-forward-0-3.0.0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-0-4.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-forward-0-4.0.0.tmp
+
+			 Sweep iteration ... 0 5000 0.000010000000 0.000050000000 0.000000000000
+			 Using the one dot algorithm ... 
+			 forward system starting size ... 1 4
+			 backward system starting size ... 1 4
+			 Saving state file :: .//node0//StateInfo-backward-5-5.0.0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-4-5.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-backward-4-5.0.0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-3-5.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-backward-3-5.0.0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-2-5.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-backward-2-5.0.0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-1-5.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-backward-1-5.0.0.tmp
+
+			 Sweep iteration ... 0 5000 0.000010000000 0.000050000000 0.000000000000
+			 Using the one dot algorithm ... 
+			 forward system starting size ... 1 4
+			 backward system starting size ... 1 4
+			 Starting sweep 0 in forwards direction
+			 ============================================================================ 
+			 Saving state file :: .//node0//StateInfo-forward-0-0.0.0.tmp
+
+			 Block Iteration :: 0
+			 ----------------------------
+			 Current direction is :: Forwards 
+			 Loading state file :: .//node0//StateInfo-backward-2-5.0.0.tmp
+			 Loading Wavefunction .//node0//wave-1-5.0.0.tmp
+			 Saving Wavefunction .//node0//wave-0-1.0.0.tmp
+			 total states using dm and quanta 10 0
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: .//node0//Rotation-0-1.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-forward-0-1.0.0.tmp
+
+			 Block Iteration :: 1
+			 ----------------------------
+			 Current direction is :: Forwards 
+			 Loading state file :: .//node0//StateInfo-backward-3-5.0.0.tmp
+			 Transforming previous wavefunction 
+			 Loading Wavefunction .//node0//wave-0-1.0.0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-0-1.0.state0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-2-5.0.state0.tmp
+			 Saving Wavefunction .//node0//wave-0-2.0.0.tmp
+			 total states using dm and quanta 35 0
+ 			 assigning a total of 35 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: .//node0//Rotation-0-2.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-forward-0-2.0.0.tmp
+
+			 Block Iteration :: 2
+			 ----------------------------
+			 Current direction is :: Forwards 
+			 Loading state file :: .//node0//StateInfo-backward-4-5.0.0.tmp
+			 Transforming previous wavefunction 
+			 Loading Wavefunction .//node0//wave-0-2.0.0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-0-2.0.state0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-3-5.0.state0.tmp
+			 Saving Wavefunction .//node0//wave-0-3.0.0.tmp
+			 total states using dm and quanta 110 0
+ 			 assigning a total of 110 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 100 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: .//node0//Rotation-0-3.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-forward-0-3.0.0.tmp
+
+			 Block Iteration :: 3
+			 ----------------------------
+			 Current direction is :: Forwards 
+			 Loading state file :: .//node0//StateInfo-backward-5-5.0.0.tmp
+			 Transforming previous wavefunction 
+			 Loading Wavefunction .//node0//wave-0-3.0.0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-0-3.0.state0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-4-5.0.state0.tmp
+			 Saving Wavefunction .//node0//wave-0-4.0.0.tmp
+			 total states using dm and quanta 27 0
+ 			 assigning a total of 27 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 24 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: .//node0//Rotation-0-4.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-forward-0-4.0.0.tmp
+
+			 Sweep iteration ... 0 5000 0.000010000000 0.000050000000 0.000000000000
+			 Using the one dot algorithm ... 
+			 forward system starting size ... 1 4
+			 backward system starting size ... 1 4
+			 Starting sweep 0 in backwards direction
+			 ============================================================================ 
+			 Saving state file :: .//node0//StateInfo-backward-5-5.0.0.tmp
+
+			 Block Iteration :: 0
+			 ----------------------------
+			 Current direction is :: Backwards 
+			 Loading state file :: .//node0//StateInfo-forward-0-3.0.0.tmp
+			 Loading Wavefunction .//node0//wave-0-4.0.0.tmp
+			 Saving Wavefunction .//node0//wave-4-5.0.0.tmp
+			 total states using dm and quanta 10 0
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: .//node0//Rotation-4-5.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-backward-4-5.0.0.tmp
+
+			 Block Iteration :: 1
+			 ----------------------------
+			 Current direction is :: Backwards 
+			 Loading state file :: .//node0//StateInfo-forward-0-2.0.0.tmp
+			 Transforming previous wavefunction 
+			 Loading Wavefunction .//node0//wave-4-5.0.0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-4-5.0.state0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-0-3.0.state0.tmp
+			 Saving Wavefunction .//node0//wave-3-5.0.0.tmp
+			 total states using dm and quanta 35 0
+ 			 assigning a total of 35 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: .//node0//Rotation-3-5.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-backward-3-5.0.0.tmp
+
+			 Block Iteration :: 2
+			 ----------------------------
+			 Current direction is :: Backwards 
+			 Loading state file :: .//node0//StateInfo-forward-0-1.0.0.tmp
+			 Transforming previous wavefunction 
+			 Loading Wavefunction .//node0//wave-3-5.0.0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-3-5.0.state0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-0-2.0.state0.tmp
+			 Saving Wavefunction .//node0//wave-2-5.0.0.tmp
+			 total states using dm and quanta 110 0
+ 			 assigning a total of 110 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 100 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: .//node0//Rotation-2-5.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-backward-2-5.0.0.tmp
+
+			 Block Iteration :: 3
+			 ----------------------------
+			 Current direction is :: Backwards 
+			 Loading state file :: .//node0//StateInfo-forward-0-0.0.0.tmp
+			 Transforming previous wavefunction 
+			 Loading Wavefunction .//node0//wave-2-5.0.0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-2-5.0.state0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-0-1.0.state0.tmp
+			 Saving Wavefunction .//node0//wave-1-5.0.0.tmp
+			 total states using dm and quanta 27 0
+ 			 assigning a total of 27 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 24 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: .//node0//Rotation-1-5.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-backward-1-5.0.0.tmp
+
+			 Sweep iteration ... 0 5000 0.000010000000 0.000050000000 0.000000000000
+			 Using the one dot algorithm ... 
+			 forward system starting size ... 1 4
+			 backward system starting size ... 1 4
+			 Starting sweep 0 in forwards direction
+			 ============================================================================ 
+			 Saving state file :: .//node0//StateInfo-forward-0-0.0.0.tmp
+
+			 Block Iteration :: 0
+			 ----------------------------
+			 Current direction is :: Forwards 
+			 Loading state file :: .//node0//StateInfo-backward-2-5.0.0.tmp
+			 Loading Wavefunction .//node0//wave-1-5.0.0.tmp
+			 Saving Wavefunction .//node0//wave-0-1.0.0.tmp
+			 total states using dm and quanta 10 0
+ 			 assigning a total of 10 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: .//node0//Rotation-0-1.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-forward-0-1.0.0.tmp
+
+			 Block Iteration :: 1
+			 ----------------------------
+			 Current direction is :: Forwards 
+			 Loading state file :: .//node0//StateInfo-backward-3-5.0.0.tmp
+			 Transforming previous wavefunction 
+			 Loading Wavefunction .//node0//wave-0-1.0.0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-0-1.0.state0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-2-5.0.state0.tmp
+			 Saving Wavefunction .//node0//wave-0-2.0.0.tmp
+			 total states using dm and quanta 35 0
+ 			 assigning a total of 35 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 0 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: .//node0//Rotation-0-2.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-forward-0-2.0.0.tmp
+
+			 Block Iteration :: 2
+			 ----------------------------
+			 Current direction is :: Forwards 
+			 Loading state file :: .//node0//StateInfo-backward-4-5.0.0.tmp
+			 Transforming previous wavefunction 
+			 Loading Wavefunction .//node0//wave-0-2.0.0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-0-2.0.state0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-3-5.0.state0.tmp
+			 Saving Wavefunction .//node0//wave-0-3.0.0.tmp
+			 total states using dm and quanta 110 0
+ 			 assigning a total of 110 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 100 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: .//node0//Rotation-0-3.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-forward-0-3.0.0.tmp
+
+			 Block Iteration :: 3
+			 ----------------------------
+			 Current direction is :: Forwards 
+			 Loading state file :: .//node0//StateInfo-backward-5-5.0.0.tmp
+			 Transforming previous wavefunction 
+			 Loading Wavefunction .//node0//wave-0-3.0.0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-0-3.0.state0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-4-5.0.state0.tmp
+			 Saving Wavefunction .//node0//wave-0-4.0.0.tmp
+			 total states using dm and quanta 27 0
+ 			 assigning a total of 27 states using the dm alone 
+ 			 assigning a total of 0 states using quanta selection  for a norm of 1.000000000000
+ 			 a total of 24 to be assigned 
+ 			 total norm: 1.000000000000  norm after truncation: 1.000000000000
+			 Saving Rotation Matrix :: .//node0//Rotation-0-4.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-forward-0-4.0.0.tmp
+
+			 Sweep iteration ... 0 5000 0.000010000000 0.000050000000 0.000000000000
+			 Using the one dot algorithm ... 
+			 forward system starting size ... 1 4
+			 backward system starting size ... 1 4
+			 Saving state file :: .//node0//StateInfo-forward-0-0.0.0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-0-1.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-forward-0-1.0.0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-0-2.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-forward-0-2.0.0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-0-3.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-forward-0-3.0.0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-0-4.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-forward-0-4.0.0.tmp
+
+			 Sweep iteration ... 0 5000 0.000010000000 0.000050000000 0.000000000000
+			 Using the one dot algorithm ... 
+			 forward system starting size ... 1 4
+			 backward system starting size ... 1 4
+			 Saving state file :: .//node0//StateInfo-backward-5-5.0.0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-4-5.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-backward-4-5.0.0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-3-5.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-backward-3-5.0.0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-2-5.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-backward-2-5.0.0.tmp
+			 Loading Rotation Matrix :: .//node0//Rotation-1-5.0.state0.tmp
+			 Saving state file :: .//node0//StateInfo-backward-1-5.0.0.tmp
+Sites: 0 1 
+			 Total number of Quanta and States : 10 10
+			 States per Quantum :: 	0:0:A =  1, 1:1:A =  1, 2:0:A =  1, 1:1:A =  1, 2:0:A =  1, 2:2:A =  1, 3:1:A =  1, 2:0:A =  1, 3:1:A =  1, 4:0:A =  1, 
+
+			 Total number of Quanta and States : 6 10
+			 States per Quantum :: 	0:0:A =  1, 1:1:A =  2, 2:0:A =  3, 2:2:A =  1, 3:1:A =  2, 4:0:A =  1, 
+
+			 Loading Rotation Matrix :: .//node0//Rotation-0-1.0.state0.tmp
+			 Total number of Quanta and States : 6 10
+			 States per Quantum :: 	0:0:A =  1, 1:1:A =  2, 2:0:A =  3, 2:2:A =  1, 3:1:A =  2, 4:0:A =  1, 
+
+			 Total number of Quanta and States : 6 10
+			 States per Quantum :: 	0:0:A =  1, 1:1:A =  2, 2:0:A =  3, 2:2:A =  1, 3:1:A =  2, 4:0:A =  1, 
+
+			 Total number of Quanta and States : 6 10
+			 States per Quantum :: 	0:0:A =  1, 1:1:A =  2, 2:0:A =  3, 2:2:A =  1, 3:1:A =  2, 4:0:A =  1, 
+
+Sites: 0 1 2 
+			 Total number of Quanta and States : 21 35
+			 States per Quantum :: 	0:0:A =  1, 1:1:A =  1, 2:0:A =  1, 1:1:A =  2, 2:0:A =  2, 2:2:A =  2, 3:1:A =  2, 2:0:A =  3, 3:1:A =  3, 4:0:A =  3, 2:2:A =  1, 3:1:A =  1, 3:3:A =  1, 4:2:A =  1, 3:1:A =  2, 4:0:A =  2, 4:2:A =  2, 5:1:A =  2, 4:0:A =  1, 5:1:A =  1, 6:0:A =  1, 
+
+			 Total number of Quanta and States : 10 35
+			 States per Quantum :: 	0:0:A =  1, 1:1:A =  3, 2:0:A =  6, 2:2:A =  3, 3:1:A =  8, 3:3:A =  1, 4:0:A =  6, 4:2:A =  3, 5:1:A =  3, 6:0:A =  1, 
+
+			 Loading Rotation Matrix :: .//node0//Rotation-0-2.0.state0.tmp
+			 Total number of Quanta and States : 10 35
+			 States per Quantum :: 	0:0:A =  1, 1:1:A =  3, 2:0:A =  6, 2:2:A =  3, 3:1:A =  8, 3:3:A =  1, 4:0:A =  6, 4:2:A =  3, 5:1:A =  3, 6:0:A =  1, 
+
+			 Total number of Quanta and States : 10 35
+			 States per Quantum :: 	0:0:A =  1, 1:1:A =  3, 2:0:A =  6, 2:2:A =  3, 3:1:A =  8, 3:3:A =  1, 4:0:A =  6, 4:2:A =  3, 5:1:A =  3, 6:0:A =  1, 
+
+			 Total number of Quanta and States : 10 35
+			 States per Quantum :: 	0:0:A =  1, 1:1:A =  3, 2:0:A =  6, 2:2:A =  3, 3:1:A =  8, 3:3:A =  1, 4:0:A =  6, 4:2:A =  3, 5:1:A =  3, 6:0:A =  1, 
+
+Sites: 0 1 2 3 
+			 Total number of Quanta and States : 28 110
+			 States per Quantum :: 	0:0:A =  1, 1:1:A =  1, 2:0:A =  1, 1:1:A =  3, 2:0:A =  3, 2:2:A =  3, 3:1:A =  3, 2:0:A =  6, 3:1:A =  6, 4:0:A =  6, 2:2:A =  3, 3:1:A =  3, 3:3:A =  3, 4:2:A =  3, 3:1:A =  8, 4:0:A =  8, 4:2:A =  8, 5:1:A =  8, 3:3:A =  1, 4:2:A =  1, 4:0:A =  6, 5:1:A =  6, 6:0:A =  6, 4:2:A =  3, 5:1:A =  3, 5:1:A =  3, 6:0:A =  3, 6:0:A =  1, 
+
+			 Total number of Quanta and States : 10 110
+			 States per Quantum :: 	0:0:A =  1, 1:1:A =  4, 2:0:A =  10, 2:2:A =  6, 3:1:A =  20, 3:3:A =  4, 4:0:A =  20, 4:2:A =  15, 5:1:A =  20, 6:0:A =  10, 
+
+			 Loading Rotation Matrix :: .//node0//Rotation-0-3.0.state0.tmp
+			 Total number of Quanta and States : 6 10
+			 States per Quantum :: 	2:0:A =  1, 3:1:A =  2, 4:0:A =  3, 4:2:A =  1, 5:1:A =  2, 6:0:A =  1, 
+
+			 Total number of Quanta and States : 10 110
+			 States per Quantum :: 	0:0:A =  1, 1:1:A =  4, 2:0:A =  10, 2:2:A =  6, 3:1:A =  20, 3:3:A =  4, 4:0:A =  20, 4:2:A =  15, 5:1:A =  20, 6:0:A =  10, 
+
+			 Total number of Quanta and States : 6 10
+			 States per Quantum :: 	2:0:A =  1, 3:1:A =  2, 4:0:A =  3, 4:2:A =  1, 5:1:A =  2, 6:0:A =  1, 
+
+Sites: 0 1 2 3 4 
+			 Total number of Quanta and States : 15 27
+			 States per Quantum :: 	2:0:A =  1, 3:1:A =  1, 4:0:A =  1, 3:1:A =  2, 4:0:A =  2, 4:2:A =  2, 5:1:A =  2, 4:0:A =  3, 5:1:A =  3, 6:0:A =  3, 4:2:A =  1, 5:1:A =  1, 5:1:A =  2, 6:0:A =  2, 6:0:A =  1, 
+
+			 Total number of Quanta and States : 6 27
+			 States per Quantum :: 	2:0:A =  1, 3:1:A =  3, 4:0:A =  6, 4:2:A =  3, 5:1:A =  8, 6:0:A =  6, 
+
+			 Loading Rotation Matrix :: .//node0//Rotation-0-4.0.state0.tmp
+			 Total number of Quanta and States : 3 3
+			 States per Quantum :: 	4:0:A =  1, 5:1:A =  1, 6:0:A =  1, 
+
+			 Total number of Quanta and States : 6 27
+			 States per Quantum :: 	2:0:A =  1, 3:1:A =  3, 4:0:A =  6, 4:2:A =  3, 5:1:A =  8, 6:0:A =  6, 
+
+			 Total number of Quanta and States : 3 3
+			 States per Quantum :: 	4:0:A =  1, 5:1:A =  1, 6:0:A =  1, 
+
+			 Loading Wavefunction .//node0//wave-0-4.0.0.tmp
+Last site state info 
+			 Total number of Quanta and States : 3 3
+			 States per Quantum :: 	4:0:A =  1, 5:1:A =  1, 6:0:A =  1, 
+
+			 Total number of Quanta and States : 3 20
+			 States per Quantum :: 	6:0:A =  6, 6:0:A =  8, 6:0:A =  6, 
+
+			 Total number of Quanta and States : 6 27
+			 States per Quantum :: 	2:0:A =  1, 3:1:A =  3, 4:0:A =  6, 4:2:A =  3, 5:1:A =  8, 6:0:A =  6, 
+
+			 Total number of Quanta and States : 3 3
+			 States per Quantum :: 	0:0:A =  1, 1:1:A =  1, 2:0:A =  1, 
+
+ nonZeroBlocks 3
+2  2
+4  1
+5  0
+indices : 0  0  
+6:0:A
+20
+2 2
+-0.183002662748  
+0.139981559391  
+-0.000004063117  
+0.041783561163  
+0.000017679852  
+0.209892128421  
+
+4 1
+-0.000004156196  
+-0.136846633703  
+0.000000978241  
+0.228551792878  
+-0.000016444322  
+0.041004395718  
+-0.000000662764  
+-0.187579363073  
+
+5 0
+0.421434765541  
+-0.000002283404  
+-0.020809959895  
+-0.369537246298  
+0.000000336423  
+0.691871536295  
+
+
+combinedstateinfo			 Total number of Quanta and States : 3 3
+			 States per Quantum :: 	6:0:A =  1, 6:0:A =  1, 6:0:A =  1, 
+
+|0> norm1.000000000000

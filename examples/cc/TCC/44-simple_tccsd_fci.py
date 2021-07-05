@@ -14,22 +14,17 @@ mol = pyscf.M(
     basis = 'ccpvdz')
 mf = mol.RHF().run()
 
-#################################
-# variational HCI wave function #
-#################################
+###################################
+# variational CASCI wave function #
+###################################
 no_cas = 6
 ne_cas = 6
 
-from pyscf import mcscf
-from pyscf.cornell_shci import shci, settings
-settings.SHCIEXE = '/home/slee89/opt/shci/shci'
-# Arrow
+from pyscf import mcscf, fci
 mc = mcscf.CASCI(mf, no_cas, ne_cas)
-mc.fcisolver = shci.SHCI(mf.mol, tol=1e-9) 
-mc.fcisolver.config['var_only']     = True 
-mc.fcisolver.config['s2']           = True
-mc.fcisolver.config['eps_vars']     = [1e-5]
-E_HCI = mc.kernel()[0]
+mc.fcisolver      = fci.direct_spin0.FCISolver(mol) 
+mc.fcisolver.spin = 0 
+mc.casci()
 
 #############################
 # externally corrected CCSD #
@@ -43,7 +38,7 @@ mytcc.conv_tol         = 1e-6
 mytcc.diis             = False     # deactivate diis 
 mytcc.level_shift      = 0.3
 #mytcc.iterative_damping= 0.8
-mytcc.kernel(mc, ext_source="SHCI")
+mytcc.kernel(mc, ext_source="FCI")
 E_TCCSD_HCI = mytcc.e_tot
 
 et = mytcc.ccsd_t()

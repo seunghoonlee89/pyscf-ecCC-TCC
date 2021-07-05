@@ -44,7 +44,7 @@ def n2(atom):
     mytcc.diis             = False     # deactivate diis 
     mytcc.level_shift      = 0.3
     #mytcc.iterative_damping= 0.8
-    mytcc.kernel(ne_cas//2, no_cas-ne_cas//2, ext_source="SHCI")
+    mytcc.kernel(mc, ext_source="SHCI")
     E_TCCSD_HCI = mytcc.e_tot
     
     #et = mytcc.ccsd_t()
