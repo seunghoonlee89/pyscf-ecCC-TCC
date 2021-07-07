@@ -229,7 +229,7 @@ def extracting_CI_coeff_from_MPS(nelectron, bond_dim, scal, reorder, sweeps, bon
     discW = get_largest_discarded_w(bond_dim, sweeps, bond_dims, noises)
     err = scal * numpy.sqrt(discW)
     #err = discW * scal
-    print('discW, err =',discW, err)
+    #print('discW, err =',discW, err)
 
     #err = 1e-10
     Write_input_for_MPS_to_CI(nelectron, symmetry, err, reorder)

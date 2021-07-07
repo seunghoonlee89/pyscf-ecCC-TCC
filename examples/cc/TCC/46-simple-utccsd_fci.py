@@ -4,27 +4,28 @@
 #
 
 '''
-A simple example to run TCCSD and TCCSD(T) calculation.
+A simple example to run unrestricted TCCSD calculation.
 '''
 
 import pyscf
 
 mol = pyscf.M(
-    atom = 'N 0 0 0; N 0 0 5.0',
-    basis = 'ccpvdz')
-mf = mol.RHF().run()
+    verbose = 5,
+    atom  = 'Be 0 0 0; Be 0 0 1.4',
+    basis = 'sto-3g',
+    spin  = 2)  # na - nb 
+mf = mol.UHF().run()
 
 ###################################
 # variational CASCI wave function #
 ###################################
-no_cas = 6
-ne_cas = 6
+no_cas = 10 
+ne_cas = (5, 3) 
 
 from pyscf import mcscf, fci
-mc = mcscf.CASCI(mf, no_cas, ne_cas)
-mc.fcisolver      = fci.direct_spin1.FCISolver(mol) 
-mc.fcisolver.spin = 0 
-mc.fix_spin_(shift=0.05, ss=0.0)
+mc = mcscf.UCASCI(mf, no_cas, ne_cas)
+mc.fcisolver      = fci.direct_uhf.FCISolver(mol) 
+mc.fcisolver.spin = 2 
 mc.casci()
 
 #############################
