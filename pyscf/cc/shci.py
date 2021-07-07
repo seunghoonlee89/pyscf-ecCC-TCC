@@ -7,6 +7,7 @@ import ctypes
 
 class shci_coeff: 
     def __init__(self, shci_out, nocc, nvir, idx, nc = 0):
+        self.rcas = True 
         self.nocc = nocc
         self.nvir = nvir
         self.nmo  = nocc + nvir 
@@ -29,7 +30,7 @@ class shci_coeff:
         self.nocc_iact= None
 
         self.data=pd.read_csv(shci_out,sep=",")
-        self.data.info()
+        #self.data.info()
 
         self.typ_det = list(self.data.loc[:,"typ"])
         self.num_det = len(self.typ_det)
@@ -131,7 +132,7 @@ class shci_coeff:
         dD = int(self.nocc*(self.nocc-1)*self.nvir*(self.nvir-1)/4) 
         dT = int(self.nocc*(self.nocc-1)*(self.nocc-2)*self.nvir*(self.nvir-1)*(self.nvir-2)/36) 
 #        dQ = len(self.idx.idx4.keys())
-        print('dS, dD, dT =',dS,dD,dT)
+        #print('dS, dD, dT =',dS,dD,dT)
 
         nex = self.nocc * self.nvir
         self.Ref    = numpy.zeros((1), dtype=numpy.float64)
@@ -456,13 +457,13 @@ class shci_coeff:
     get_T=get_All
     get_Q=get_All
 
-    def get_SD(self, nc):
+    def get_SD(self):
         self.flagS = True 
         self.flagD = True
 
         dS = int(self.nocc_cas*self.nvir_cas)
         dD = int(self.nocc_cas*(self.nocc_cas-1)*self.nvir_cas*(self.nvir_cas-1)/4) 
-        print('dS, dD =',dS,dD)
+        #print('dS, dD =',dS,dD)
 
         self.Ref    = numpy.zeros((1), dtype=numpy.float64)
 
@@ -521,6 +522,10 @@ class shci_coeff:
 #                   self.top_w_idx = [i, j, a, b] 
 #                   self.top_w_typ = typ 
 
+        self.S_b    = self.S_a 
+        self.D_bb   = self.D_aa
+
+
     def get_SDT(self, nc, numzero=1e-9):
         self.flagS = True 
         self.flagD = True
@@ -532,7 +537,7 @@ class shci_coeff:
         dS = int(self.nocc*self.nvir)
         dD = int(self.nocc*(self.nocc-1)*self.nvir*(self.nvir-1)/4) 
         dT = int(self.nocc*(self.nocc-1)*(self.nocc-2)*self.nvir*(self.nvir-1)*(self.nvir-2)/36) 
-        print('dS, dD, dT =',dS,dD,dT)
+        #print('dS, dD, dT =',dS,dD,dT)
 
         nex = self.nocc * self.nvir
         self.Ref    = numpy.zeros((1), dtype=numpy.float64)

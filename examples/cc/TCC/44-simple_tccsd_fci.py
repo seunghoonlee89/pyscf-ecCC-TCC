@@ -9,8 +9,9 @@ A simple example to run TCCSD and TCCSD(T) calculation.
 
 import pyscf
 
+b = 3.0*0.529177249
 mol = pyscf.M(
-    atom = 'N 0 0 0; N 0 0 5.0',
+    atom = 'N 0 0 0; N 0 0 %f'%(b),
     basis = 'ccpvdz')
 mf = mol.RHF().run()
 

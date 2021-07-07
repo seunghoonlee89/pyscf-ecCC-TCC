@@ -1081,13 +1081,139 @@ class ci2cc_mem:
         self.nocc_iact = nocc_iact
         self.idx  = idx 
         self.t1 = None 
+        self.t1a= None 
+        self.t1b= None 
         self.t2 = None 
         self.t3 = None 
         self.t3p= None 
         self.t2aa   = None 
         self.t2ab   = None
+        self.t2bb   = None 
         self.t3aaa  = None 
         self.t3aab  = None 
+
+    def c1_to_t1_tcc_tmp(self, coeff):
+        if coeff.rcas:
+            c1 = coeff.S_a.copy()
+            self.t1 = numpy.zeros((self.nocc_corr,self.nvir_corr), dtype=numpy.float64)
+            _ccsd.libcc.c1_to_t1_mem(self.t1.ctypes.data_as(ctypes.c_void_p),
+                                 c1.ctypes.data_as(ctypes.c_void_p),
+                                 ctypes.c_int(self.nocc_cas),
+                                 ctypes.c_int(self.nvir_cas),
+                                 ctypes.c_int(self.nvir_corr),
+                                 ctypes.c_int(self.nocc_iact))
+        else:
+            nocca_corr = self.nocc_corr[0]
+            nvira_corr = self.nvir_corr[0]
+            nocca_cas  = self.nocc_cas [0]
+            nvira_cas  = self.nvir_cas [0]
+            nocca_iact = self.nocc_iact[0]
+            noccb_corr = self.nocc_corr[1]
+            nvirb_corr = self.nvir_corr[1]
+            noccb_cas  = self.nocc_cas [1]
+            nvirb_cas  = self.nvir_cas [1]
+            noccb_iact = self.nocc_iact[1]
+
+            c1a = coeff.S_a.copy()
+            self.t1a = numpy.zeros((nocca_corr,nvira_corr), dtype=numpy.float64)
+            _ccsd.libcc.c1_to_t1_mem(self.t1a.ctypes.data_as(ctypes.c_void_p),
+                                 c1a.ctypes.data_as(ctypes.c_void_p),
+                                 ctypes.c_int(nocca_cas),
+                                 ctypes.c_int(nvira_cas),
+                                 ctypes.c_int(nvira_corr),
+                                 ctypes.c_int(nocca_iact))
+            c1b = coeff.S_b.copy()
+            self.t1b = numpy.zeros((noccb_corr,nvirb_corr), dtype=numpy.float64)
+            _ccsd.libcc.c1_to_t1_mem(self.t1b.ctypes.data_as(ctypes.c_void_p),
+                                 c1b.ctypes.data_as(ctypes.c_void_p),
+                                 ctypes.c_int(noccb_cas),
+                                 ctypes.c_int(nvirb_cas),
+                                 ctypes.c_int(nvirb_corr),
+                                 ctypes.c_int(noccb_iact))
+#            print('t1a')
+#            for i in range(nocca_corr):
+#                for a in range(nvira_corr):
+#                    print(i,a,self.t1a[i][a])
+#            print('t1b')
+#            for i in range(noccb_corr):
+#                for a in range(nvirb_corr):
+#                    print(i,a,self.t1b[i][a])
+
+            self.t1 = (self.t1a, self.t1b)
+
+    def c2_to_t2_tcc_tmp(self, coeff, numzero=1e-12):
+        if coeff.rcas:
+            c2aa = coeff.D_aa.copy()
+            c2ab = coeff.D_ab.copy()
+    
+            nocc_corr = self.nocc_corr
+            nvir_corr = self.nvir_corr
+            self.t2aa = numpy.zeros((nocc_corr,nocc_corr,nvir_corr,nvir_corr), dtype=numpy.float64)
+            self.t2ab = numpy.zeros((nocc_corr,nocc_corr,nvir_corr,nvir_corr), dtype=numpy.float64)
+            _ccsd.libcc.c2_to_t2_mem(self.t2aa.ctypes.data_as(ctypes.c_void_p),
+                                 self.t2ab.ctypes.data_as(ctypes.c_void_p),
+                                 c2aa.ctypes.data_as(ctypes.c_void_p),
+                                 c2ab.ctypes.data_as(ctypes.c_void_p),
+                                 self.t1.ctypes.data_as(ctypes.c_void_p),
+                                 ctypes.c_int(self.nocc_cas),
+                                 ctypes.c_int(self.nvir_cas),
+                                 ctypes.c_int(self.nocc_corr),
+                                 ctypes.c_int(self.nvir_corr),
+                                 ctypes.c_int(self.nocc_iact),
+                                 ctypes.c_double(numzero))
+            self.t2 = self.t2ab
+        else:
+            c2aa = coeff.D_aa.copy()
+            c2ab = coeff.D_ab.copy()
+            c2bb = coeff.D_bb.copy()
+    
+            nocca_corr = self.nocc_corr[0]
+            nvira_corr = self.nvir_corr[0]
+            noccb_corr = self.nocc_corr[1]
+            nvirb_corr = self.nvir_corr[1]
+            self.t2aa = numpy.zeros((nocca_corr,nocca_corr,nvira_corr,nvira_corr), dtype=numpy.float64)
+            self.t2ab = numpy.zeros((nocca_corr,noccb_corr,nvira_corr,nvirb_corr), dtype=numpy.float64)
+            self.t2bb = numpy.zeros((noccb_corr,noccb_corr,nvirb_corr,nvirb_corr), dtype=numpy.float64)
+            _ccsd.libcc.c2_to_t2_u_mem(self.t2aa.ctypes.data_as(ctypes.c_void_p),
+                                 self.t2ab.ctypes.data_as(ctypes.c_void_p),
+                                 self.t2bb.ctypes.data_as(ctypes.c_void_p),
+                                 c2aa.ctypes.data_as(ctypes.c_void_p),
+                                 c2ab.ctypes.data_as(ctypes.c_void_p),
+                                 c2bb.ctypes.data_as(ctypes.c_void_p),
+                                 self.t1a.ctypes.data_as(ctypes.c_void_p),
+                                 self.t1b.ctypes.data_as(ctypes.c_void_p),
+                                 ctypes.c_int(self.nocc_cas[0]),
+                                 ctypes.c_int(self.nvir_cas[0]),
+                                 ctypes.c_int(self.nocc_cas[1]),
+                                 ctypes.c_int(self.nvir_cas[1]),
+                                 ctypes.c_int(self.nocc_corr[0]),
+                                 ctypes.c_int(self.nvir_corr[0]),
+                                 ctypes.c_int(self.nocc_corr[1]),
+                                 ctypes.c_int(self.nvir_corr[1]),
+                                 ctypes.c_int(self.nocc_iact[0]),
+                                 ctypes.c_int(self.nocc_iact[1]),
+                                 ctypes.c_double(numzero))
+            self.t2 = (self.t2aa, self.t2ab, self.t2bb)
+
+#            print('t2aa')
+#            for i in range(nocca_corr):
+#                for j in range(nocca_corr):
+#                    for a in range(nvira_corr):
+#                        for b in range(nvira_corr):
+#                            print(i,j,a,b,self.t2aa[i][j][a][b])
+#            print('t2ab')
+#            for i in range(nocca_corr):
+#                for j in range(noccb_corr):
+#                    for a in range(nvira_corr):
+#                        for b in range(nvirb_corr):
+#                            print(i,j,a,b,self.t2ab[i][j][a][b])
+#            print('t2bb')
+#            for i in range(noccb_corr):
+#                for j in range(noccb_corr):
+#                    for a in range(nvirb_corr):
+#                        for b in range(nvirb_corr):
+#                            print(i,j,a,b,self.t2bb[i][j][a][b])
+
 
     def c1_to_t1(self, c1):
         self.t1 = numpy.zeros((self.nocc_corr,self.nvir_corr), dtype=numpy.float64)

@@ -7,6 +7,7 @@ import ctypes
 
 class dmrg_coeff: 
     def __init__(self, dmrg_out, nocc, nvir, idx, nc = 0):
+        self.rcas = True 
         self.nocc = nocc
         self.nvir = nvir
         self.nmo  = nocc + nvir 
@@ -29,7 +30,7 @@ class dmrg_coeff:
         self.nvir_iact= None
 
         self.data=pd.read_csv(dmrg_out,sep=",")
-        self.data.info()
+        #self.data.info()
 
         self.typ_det = list(self.data.loc[:,"typ"])
         self.num_det = len(self.typ_det)
@@ -101,7 +102,7 @@ class dmrg_coeff:
         dS = int(self.nocc * self.nvir) 
         dD = int(self.nocc*(self.nocc-1)*self.nvir*(self.nvir-1)/4) 
         dT = int(self.nocc*(self.nocc-1)*(self.nocc-2)*self.nvir*(self.nvir-1)*(self.nvir-2)/36) 
-        print('dS, dD, dT =',dS,dD,dT)
+        #print('dS, dD, dT =',dS,dD,dT)
 
         self.Ref    = numpy.zeros((1), dtype=numpy.float64)
         self.S_a    = numpy.zeros((dS), dtype=numpy.float64)
@@ -198,13 +199,13 @@ class dmrg_coeff:
     get_T=get_All
     get_Q=get_All
 
-    def get_SD(self, nc):
+    def get_SD(self):
         self.flagS = True 
         self.flagD = True
 
         dS = int(self.nocc_cas*self.nvir_cas)
         dD = int(self.nocc_cas*(self.nocc_cas-1)*self.nvir_cas*(self.nvir_cas-1)/4) 
-        print('dS, dD =',dS,dD)
+        #print('dS, dD =',dS,dD)
 
         self.Ref    = numpy.zeros((1), dtype=numpy.float64)
         self.S_a    = numpy.zeros((dS), dtype=numpy.float64)
@@ -241,6 +242,9 @@ class dmrg_coeff:
                parity  = self.parity_ci_to_cc(i, 1)
                parity *= self.parity_ci_to_cc(j, 1)
                self.D_ab[ia][jb] = parity * self.data.loc[idet,"5"] 
+        self.S_b    = self.S_a 
+        self.D_bb   = self.D_aa
+
 
     def get_SDT(self, nc, numzero=1e-9):
         self.nc = nc
@@ -482,13 +486,13 @@ class dmrg_coeff:
         #TODO: put this assertion to cn_to_tn
         assert self.interm_norm_S and self.interm_norm_D and self.interm_norm_T
         ci2cc.c1_to_t1(self.S_a.copy())
-        print('=== END extracting S t amplitudes ===')
+        #print('=== END extracting S t amplitudes ===')
         ci2cc.c2_to_t2(self.D_aa.copy(),self.D_ab.copy())
-        print('=== END extracting D t amplitudes ===')
+        #print('=== END extracting D t amplitudes ===')
         #TODO: argument numzero as instance of ci2cc 
         #TODO: avoide gen t3 amplitudes 
         ci2cc.c3_to_t3(self.T_aaa.copy(), self.T_aab.copy(),numzero=numzero)
-        print('=== END extracting T t amplitudes ===')
+        #print('=== END extracting T t amplitudes ===')
 
         test_max = 0.0
         test_max_idx = [] 
@@ -510,7 +514,7 @@ class dmrg_coeff:
                           ctypes.c_int(self.nocc),ctypes.c_int(self.nvir),
                           ctypes.c_double(numzero),ctypes.c_double(self.Ref[0]),
                           ctypes.c_double(norm)) 
-        print('=== END contracting Q t amplitudes ===')
+        #print('=== END contracting Q t amplitudes ===')
 
     def get_t2t4c_omp_otf_mem(self, t2t4c, e2ovov, ci2cc, norm, numzero=1e-9):
         _ccsd.libcc.t2t4c_dmrg_omp_otf_mem(t2t4c.ctypes.data_as(ctypes.c_void_p),
@@ -668,7 +672,7 @@ class dmrg_coeff:
                    asgn_zero_t1_2(self.Pabb, k, i, j, c, a, b)
                    ncount_abb += 1
 
-        print ('n_aaa, n_abb=', ncount_aaa, ncount_abb)
+        #print ('n_aaa, n_abb=', ncount_aaa, ncount_abb)
 
     def exclude_t_ecCCSDt(self):
         nocc = self.nocc_cas
@@ -717,7 +721,7 @@ class dmrg_coeff:
                    self.Pbaa[S(k,c)][D(i,j,a,b)] = 0.0
                    ncount_baa += 1
 
-        print ('n_aaa, n_baa=', ncount_aaa, ncount_baa)
+        #print ('n_aaa, n_baa=', ncount_aaa, ncount_baa)
 
     def exclude_taaa(self, w):
         nc = self.nocc_iact
@@ -879,7 +883,7 @@ class dmrg_coeff:
                    asgn_zero_t2_1(self.Paab, i, j, k, a, b, c)
                    ncount_aab += 1
 
-        print ('n_aaa, n_aab=', ncount_aaa, ncount_aab)
+        #print ('n_aaa, n_aab=', ncount_aaa, ncount_aab)
 
 
     def denom_t3(self, denom, t1, t2aa, t2ab, numzero):

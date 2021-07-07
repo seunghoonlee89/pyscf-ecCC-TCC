@@ -80,6 +80,7 @@ from pyscf.cc import ecccsd_slow
 from pyscf.cc import ec_ccsd
 from pyscf.cc import ec_ccsd_devel
 from pyscf.cc import rtccsd
+from pyscf.cc import utccsd
 from pyscf.cc import tccsd
 from pyscf.cc import ec_tccsd
 from pyscf.cc import ec_tccsd_devel
@@ -87,7 +88,7 @@ from pyscf.cc import ec_tccsd_devel
 def CCSD(mf, frozen=None, mo_coeff=None, mo_occ=None, ecCCSD=False, ecCCSD_tmp=False, TCCSD=False, TCCSD_tmp=False, ecTCCSD=False, ecTCCSD_devel=False):
     __doc__ = ccsd.CCSD.__doc__
     if isinstance(mf, scf.uhf.UHF):
-        return UCCSD(mf, frozen, mo_coeff, mo_occ)
+        return UCCSD(mf, frozen, mo_coeff, mo_occ, TCCSD=TCCSD)
     elif isinstance(mf, scf.ghf.GHF):
         return GCCSD(mf, frozen, mo_coeff, mo_occ)
     else:
@@ -140,7 +141,7 @@ def RCCSD(mf, frozen=None, mo_coeff=None, mo_occ=None, ecCCSD=False, ecCCSD_tmp=
         return ccsd.CCSD(mf, frozen, mo_coeff, mo_occ)
 
 
-def UCCSD(mf, frozen=None, mo_coeff=None, mo_occ=None):
+def UCCSD(mf, frozen=None, mo_coeff=None, mo_occ=None, TCCSD=False):
     __doc__ = uccsd.UCCSD.__doc__
     from pyscf.soscf import newton_ah
 
@@ -149,9 +150,10 @@ def UCCSD(mf, frozen=None, mo_coeff=None, mo_occ=None):
 
     if getattr(mf, 'with_df', None):
         raise NotImplementedError('DF-UCCSD')
+    elif TCCSD:
+        return utccsd.UTCCSD(mf, frozen, mo_coeff, mo_occ)
     else:
         return uccsd.UCCSD(mf, frozen, mo_coeff, mo_occ)
-
 
 def GCCSD(mf, frozen=None, mo_coeff=None, mo_occ=None):
     __doc__ = gccsd.GCCSD.__doc__

@@ -1680,10 +1680,8 @@ def tcc_kernel_new(mycc, coeff, eris=None, t1=None, t2=None, max_cycle=50, tol=1
 
     cput1 = cput0 = (time.clock(), time.time())
 
-    nocc = eris.nocc
-    nmo  = eris.fock.shape[0]
-    nvir = nmo - nocc
-    assert nocc == coeff.nocc_corr and nvir == coeff.nvir_corr
+    nocc = coeff.nocc_corr
+    nvir = coeff.nvir_corr
 
     if t1 is None or t2 is None:
         nocc_cas  = coeff.nocc_cas 
@@ -1693,17 +1691,19 @@ def tcc_kernel_new(mycc, coeff, eris=None, t1=None, t2=None, max_cycle=50, tol=1
         ################
         # gen CI coeff # 
         ################
-        if not coeff.flagS or not coeff.flagD: coeff.get_SD(nocc_iact)
+        if not coeff.flagS or not coeff.flagD: coeff.get_SD()
         
         norm = numpy.square(coeff.Ref[0])
-        print ('        0 =', norm )
+        log.info('        0 = %f'%(norm) )
         norm0 = norm
-        norm += 2.0*numpy.sum(numpy.square (coeff.S_a))
-        print ('   0S (S) =', norm,'(', norm-norm0,')')
+        norm += numpy.sum(numpy.square (coeff.S_a))
+        norm += numpy.sum(numpy.square (coeff.S_b))
+        log.info('   0S (S) = %f ( %f )'%(norm, norm-norm0))
         norm0S = norm
-        norm += 2.0*numpy.sum(numpy.square ( coeff.D_aa ))
+        norm += numpy.sum(numpy.square ( coeff.D_aa ))
         norm += numpy.sum(numpy.square ( coeff.D_ab ))
-        print ('  0SD (D) =', norm,'(', norm-norm0S,')')
+        norm += numpy.sum(numpy.square ( coeff.D_bb ))
+        log.info('  0SD (D) = %f ( %f )'%(norm, norm-norm0S))
     
         log.info('max_memory %d MB (current use %d MB)',
                  mycc.max_memory, lib.current_memory()[0])
@@ -1714,21 +1714,20 @@ def tcc_kernel_new(mycc, coeff, eris=None, t1=None, t2=None, max_cycle=50, tol=1
         ####################### 
         # internorm
         coeff.interm_norm(T=False, Q=False)
-    
         mycc.ci2cc = ci2cc_mem(nocc, nvir, nocc_cas, nvir_cas, nocc_iact, coeff.idx, coeff.Ref)
-    
-        mycc.ci2cc.c1_to_t1(coeff.S_a.copy())
-        mycc.ci2cc.c2_to_t2(coeff.D_aa.copy(), coeff.D_ab.copy(),numzero=numzero)
+        mycc.ci2cc.c1_to_t1_tcc_tmp(coeff)
+        mycc.ci2cc.c2_to_t2_tcc_tmp(coeff, numzero=numzero)
     
         log.info('max_memory %d MB (current use %d MB)',
                  mycc.max_memory, lib.current_memory()[0])
         cput1 = log.timer('extracting t1 and t2', *cput1)
 
-        t1 = mycc.ci2cc.t1.copy()
-        t2 = mycc.ci2cc.t2ab.copy()
+        t1 = mycc.ci2cc.t1
+        t2 = mycc.ci2cc.t2
 
         mycc.t1f, mycc.t2f = coeff.tcc_tcas_idx()
     else:
+        raise RuntimeError('Not Implemented Yet')
         mycc.t1f = numpy.zeros((nocc,nvir), dtype=numpy.float64)
         mycc.t2f = numpy.zeros((nocc,nocc,nvir,nvir), dtype=numpy.float64)
         nocc_tcas = coeff.nocc_tcas
@@ -1756,14 +1755,14 @@ def tcc_kernel_new(mycc, coeff, eris=None, t1=None, t2=None, max_cycle=50, tol=1
         else:
             raise NotImplementedError
 
-
-    if isinstance(mycc.diis, lib.diis.DIIS):
-        adiis = mycc.diis
-    elif mycc.diis:
-        adiis = lib.diis.DIIS(mycc, mycc.diis_file, incore=mycc.incore_complete)
-        adiis.space = mycc.diis_space
-    else:
-        adiis = None
+# temporarily block
+#    if isinstance(mycc.diis, lib.diis.DIIS):
+#        adiis = mycc.diis
+#    elif mycc.diis:
+#        adiis = lib.diis.DIIS(mycc, mycc.diis_file, incore=mycc.incore_complete)
+#        adiis.space = mycc.diis_space
+#    else:
+    adiis = None
 
     tccsd = mycc.energy(t1, t2, eris)
     log.info('Init E_corr(TCCSD) = %.15g', tccsd)
@@ -2926,6 +2925,7 @@ http://sunqm.net/pyscf/code-rule.html#api-rules for the details of API conventio
         self.nocc_cas  = None
         self.nvir_cas  = None
         self.nocc_iact = None
+        self.coeff     = None
 
         self.nc = 0 #TODO: will be removed
         # restart = -1 (save mode), 0 (default), 1 (restart t mode), 2 (restart c mode)
@@ -3469,8 +3469,8 @@ class _ChemistsERIs:
         mo_e = self.mo_energy = self.fock.diagonal().real
 
 #        #lsh test
-        print("mo_e")
-        print(mo_e)
+#        print("mo_e")
+#        print(mo_e)
 
         #print(mo_e)
         try:

@@ -54,7 +54,7 @@ def n2(atom):
     #############################
     from pyscf import cc 
     mytcc = cc.CCSD(mf, TCCSD=True)
-    mytcc.verbose          = 5 
+    #mytcc.verbose          = 5 
     mytcc.max_memory       = 10000  # 10 g
     mytcc.max_cycle        = 1000
     mytcc.conv_tol         = 1e-6

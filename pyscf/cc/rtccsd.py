@@ -175,7 +175,7 @@ class RTCCSD(ccsd.CCSD):
 
     Ground-state CCSD is performed in optimized ccsd.CCSD and EOM is performed here.
     '''
-    def kernel(self, mc, nocc_cas=None, nvir_cas=None, nocc_corr=None, nvir_corr=None, ext_source="SHCI", t1=None, t2=None, eris=None, numzero=1E-12, coeff=None):
+    def kernel(self, mc, nocc_cas=None, nvir_cas=None, nocc_corr=None, nvir_corr=None, ext_source="FCI", t1=None, t2=None, eris=None, numzero=1E-12, coeff=None):
 
         if nocc_cas  == None:
             assert (mc.nelecas[0] + mc.nelecas[1]) % 2 == 0

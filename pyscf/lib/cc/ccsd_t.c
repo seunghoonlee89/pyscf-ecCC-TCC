@@ -1051,6 +1051,15 @@ double t1xt1ab(int i, int j, int a, int b, int nocc, int nvir, double *t1)
     return t1xt1;
 }
 
+double t1xt1ab_u(int i, int j, int a, int b, int nvira, int nvirb, double *t1a, double *t1b)
+{
+    double t1xt1;
+
+    t1xt1 = t1a[S(i, a, nvira)] * t1b[S(j, b, nvirb)];
+
+    return t1xt1;
+}
+
 double t1xt2aaa(int i, int j, int k, int a, int b, int c, int nocc, int nvir, double *t1, double *t2aa)
 {
     double t1xt2 = 0.0;
@@ -7091,6 +7100,86 @@ void c2_to_t2_mem(double *t2aa, double *t2ab, double *c2aa, double *c2ab, double
     }
     }
 
+}
+
+void c2_to_t2_u_mem(double *t2aa, double *t2ab, double *t2bb, double *c2aa, double *c2ab, double *c2bb, double *t1a, double *t1b, int nocca_cas, int nvira_cas, int noccb_cas, int nvirb_cas, int nocca_corr, int nvira_corr, int noccb_corr, int nvirb_corr, int nocca_iact, int noccb_iact, double numzero) 
+{
+    int i, j, a, b, ijab_c, ijab_t1, ijab_t2, ijab_t3, ijab_t4;
+    int ia, jb, iajb_c, ijab_t;
+    double tmp;
+
+    // t2aa
+    ijab_c = -1;
+    for (b = 1; b < nvira_cas; b++) {
+    for (a = 0; a < b; a++) {
+    for (j = nocca_cas-1; j > 0; j--) {
+    for (i = j-1; i > -1; i--) {
+        ijab_c += 1;
+        ijab_t1 = (((i+nocca_iact)*nocca_corr+j+nocca_iact)*nvira_corr+a)*nvira_corr+b;
+        ijab_t2 = (((i+nocca_iact)*nocca_corr+j+nocca_iact)*nvira_corr+b)*nvira_corr+a;
+        ijab_t3 = (((j+nocca_iact)*nocca_corr+i+nocca_iact)*nvira_corr+a)*nvira_corr+b;
+        ijab_t4 = (((j+nocca_iact)*nocca_corr+i+nocca_iact)*nvira_corr+b)*nvira_corr+a;
+
+        tmp = c2aa[ijab_c]; 
+        if(fabs(tmp) > numzero) 
+        {
+            tmp -= t1xt1aa (i+nocca_iact, j+nocca_iact, a, b, nocca_corr, nvira_corr, t1a); 
+            t2aa[ijab_t1] =  tmp;
+            t2aa[ijab_t2] = -tmp;
+            t2aa[ijab_t3] = -tmp;
+            t2aa[ijab_t4] =  tmp;
+        }
+    }
+    }
+    }
+    }
+    // t2ab
+    ia = -1;
+    for (a = 0; a < nvira_cas; a++) {
+    for (i = nocca_cas-1; i > -1; i--) {
+        ia += 1;
+        jb  =-1;
+        for (b = 0; b < nvirb_cas; b++) {
+        for (j = noccb_cas-1; j > -1; j--) {
+            jb += 1;
+            iajb_c = ia * noccb_cas*nvirb_cas + jb;
+            ijab_t = (((i+nocca_iact)*noccb_corr+j+noccb_iact)*nvira_corr+a)*nvirb_corr+b;
+
+            tmp = c2ab[iajb_c]; 
+            if(fabs(tmp) > numzero) 
+            {
+                tmp -= t1xt1ab_u (i+nocca_iact, j+noccb_iact, a, b, nvira_corr, nvirb_corr, t1a, t1b); 
+                t2ab[ijab_t] = tmp;
+            } 
+        }
+        }
+    }
+    }
+    // t2bb
+    ijab_c = -1;
+    for (b = 1; b < nvirb_cas; b++) {
+    for (a = 0; a < b; a++) {
+    for (j = noccb_cas-1; j > 0; j--) {
+    for (i = j-1; i > -1; i--) {
+        ijab_c += 1;
+        ijab_t1 = (((i+noccb_iact)*noccb_corr+j+noccb_iact)*nvirb_corr+a)*nvirb_corr+b;
+        ijab_t2 = (((i+noccb_iact)*noccb_corr+j+noccb_iact)*nvirb_corr+b)*nvirb_corr+a;
+        ijab_t3 = (((j+noccb_iact)*noccb_corr+i+noccb_iact)*nvirb_corr+a)*nvirb_corr+b;
+        ijab_t4 = (((j+noccb_iact)*noccb_corr+i+noccb_iact)*nvirb_corr+b)*nvirb_corr+a;
+
+        tmp = c2bb[ijab_c]; 
+        if(fabs(tmp) > numzero) 
+        {
+            tmp -= t1xt1aa (i+noccb_iact, j+noccb_iact, a, b, noccb_corr, nvirb_corr, t1b); 
+            t2bb[ijab_t1] =  tmp;
+            t2bb[ijab_t2] = -tmp;
+            t2bb[ijab_t3] = -tmp;
+            t2bb[ijab_t4] =  tmp;
+        }
+    }
+    }
+    }
+    }
 }
 
 double c3tot3aab_mem(int i, int j, int k, int a, int b, int c, int nocc_corr, int nvir_corr, int nocc_cas, int nvir_cas, int nocc_iact, int nocc2, double *t1, double *t2aa, double *t2ab, double *c3aab, double c0)
