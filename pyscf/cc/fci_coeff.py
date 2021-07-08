@@ -279,6 +279,8 @@ class ufci_coeff:
         index1_b = numpy.argsort(t1addrs_b)
         index2_b = numpy.argsort(t2addrs_b)
 
+        print('S size, D size=',t1addrs_a.size, t2addrs_a.size)
+
         self.Ref  = [self.fcivec[0, 0]]
         S_a_us    = self.fcivec[t1addrs_a, 0] * t1signs_a
         S_b_us    = self.fcivec[0, t1addrs_b] * t1signs_b 
