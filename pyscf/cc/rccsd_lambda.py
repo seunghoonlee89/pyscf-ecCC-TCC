@@ -35,10 +35,10 @@ from pyscf.cc import rintermediates as imd
 einsum = lib.einsum
 
 def kernel(mycc, eris=None, t1=None, t2=None, l1=None, l2=None,
-           max_cycle=50, tol=1e-8, verbose=logger.INFO):
+           max_cycle=50, tol=1e-8, verbose=logger.INFO, TCC=False):
     if eris is None: eris = mycc.ao2mo()
     return ccsd_lambda.kernel(mycc, eris, t1, t2, l1, l2, max_cycle, tol,
-                              verbose, make_intermediates, update_lambda)
+                              TCC, verbose, make_intermediates, update_lambda)
 
 
 def make_intermediates(mycc, t1, t2, eris):
@@ -152,7 +152,7 @@ def make_intermediates(mycc, t1, t2, eris):
 
 
 # update L1, L2
-def update_lambda(mycc, t1, t2, l1, l2, eris, imds):
+def update_lambda(mycc, t1, t2, l1, l2, eris, imds, TCC=False):
     time0 = time.clock(), time.time()
     log = logger.Logger(mycc.stdout, mycc.verbose)
     nocc, nvir = t1.shape
@@ -245,6 +245,13 @@ def update_lambda(mycc, t1, t2, l1, l2, eris, imds):
     l2new = l2new + l2new.transpose(1,0,3,2)
     l2new /= lib.direct_sum('ia+jb->ijab', eia, eia)
     l2new += l2
+
+    if TCC: 
+        # keep active lambda as zero
+        t1f = mycc.t1f
+        t2f = mycc.t2f
+        l1new = l1 * t1f + l1new * (1-t1f)
+        l2new = l2 * t2f + l2new * (1-t2f)        
 
     time0 = log.timer_debug1('update l1 l2', *time0)
     return l1new, l2new

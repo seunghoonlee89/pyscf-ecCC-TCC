@@ -175,7 +175,7 @@ class RTCCSD(ccsd.CCSD):
 
     Ground-state CCSD is performed in optimized ccsd.CCSD and EOM is performed here.
     '''
-    def kernel(self, mc, nocc_cas=None, nvir_cas=None, nocc_corr=None, nvir_corr=None, ext_source="FCI", t1=None, t2=None, eris=None, numzero=1E-12, coeff=None):
+    def kernel(self, mc, nocc_cas=None, nvir_cas=None, nocc_corr=None, nvir_corr=None, nocc_tcas=None, nvir_tcas=None, ext_source="FCI", t1=None, t2=None, eris=None, numzero=1E-12, coeff=None):
 
         if nocc_cas  == None:
             assert (mc.nelecas[0] + mc.nelecas[1]) % 2 == 0
@@ -225,6 +225,9 @@ class RTCCSD(ccsd.CCSD):
         self.coeff.nocc_iact= nocc_corr - nocc_cas 
         self.coeff.nvir_iact= nvir_corr - nvir_cas 
 
+        self.coeff.nocc_tcas = nocc_tcas
+        self.coeff.nvir_tcas = nvir_tcas
+
         return self.ccsd(self.coeff, t1, t2, eris, numzero)
 
     def ccsd(self, coeff, t1=None, t2=None, eris=None, numzero=1E-5):
@@ -273,6 +276,7 @@ class RTCCSD(ccsd.CCSD):
                 rccsd_lambda.kernel(self, eris, t1, t2, l1, l2,
                                     max_cycle=self.max_cycle,
                                     tol=self.conv_tol_normt,
+                                    TCC=True,
                                     verbose=self.verbose)
         return self.l1, self.l2
 

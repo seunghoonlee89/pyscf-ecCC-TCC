@@ -77,6 +77,8 @@ def kernel(eom, nroots=1, koopmans=False, guess=None, left=False,
         conv, es, vs = eig(matvec, guess, precond, pick=pickeig,
                            tol=eom.conv_tol, max_cycle=eom.max_cycle,
                            max_space=eom.max_space, nroots=nroots, verbose=log)
+#                           max_space=eom.max_space, nroots=nroots, verbose=log,
+#                           tol_residual=1e-9)
 
     if eom.verbose >= logger.INFO:
         for n, en, vn, convn in zip(range(nroots), es, vs, conv):

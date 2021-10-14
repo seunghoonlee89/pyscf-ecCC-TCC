@@ -94,70 +94,139 @@ class fci_coeff:
         self.flagD = True
 
         self.t1addrs, self.t1signs = tn_addrs_signs(self.nocc_cas + self.nvir_cas, self.nocc_cas, 1)
-        self.t2addrs, self.t2signs = tn_addrs_signs(self.nocc_cas + self.nvir_cas, self.nocc_cas, 2)
         self.index1 = numpy.argsort(self.t1addrs)
-        self.index2 = numpy.argsort(self.t2addrs)
 
         self.Ref  = [self.fcivec[0, 0]]
         S_a_us    = self.fcivec[self.t1addrs, 0] * self.t1signs
         self.S_a    = S_a_us[self.index1]
+        self.S_b  = self.S_a
 
-        D_aa_us   = self.fcivec[self.t2addrs, 0] * self.t2signs
-        self.D_aa   = D_aa_us[self.index2]
         D_ab_us   = numpy.einsum('ij,i,j->ij', 
                              self.fcivec[self.t1addrs[:,None], self.t1addrs], 
                              self.t1signs, self.t1signs)
         D_ab_t      = D_ab_us[self.index1,:]
         self.D_ab   = D_ab_t[:,self.index1]
-#        D_aa_us   = self.fcivec[self.t2addrs, 0]
-#        D_ab_us   = self.fcivec[self.t1addrs[:,None], self.t1addrs]
-#        D_bb_us   = self.fcivec[0, self.t2addrs]
 
-        self.S_b  = self.S_a
+        if self.nocc_cas < 2 or self.nvir_cas < 2:
+            return
+
+        self.t2addrs, self.t2signs = tn_addrs_signs(self.nocc_cas + self.nvir_cas, self.nocc_cas, 2)
+        self.index2 = numpy.argsort(self.t2addrs)
+
+        D_aa_us   = self.fcivec[self.t2addrs, 0] * self.t2signs
+        self.D_aa   = D_aa_us[self.index2]
         self.D_bb = self.D_aa
+
+    def get_SD_test(self):
+        self.flagS = True 
+        self.flagD = True
+
+        self.t1addrs, self.t1signs = tn_addrs_signs(self.nocc_cas + self.nvir_cas, self.nocc_cas, 1)
+        self.index1 = numpy.argsort(self.t1addrs)
+
+        self.Ref  = [self.fcivec[0, 0]]
+        S_a_us    = self.fcivec[self.t1addrs, 0] * self.t1signs
+        self.S_a    = S_a_us[self.index1]
+
+        D_ab_us   = numpy.einsum('ij,i,j->ij', 
+                             self.fcivec[self.t1addrs[:,None], self.t1addrs], 
+                             self.t1signs, self.t1signs)
+        D_ab_t      = D_ab_us[self.index1,:]
+        self.D_ab   = D_ab_t[:,self.index1]
 
     def get_T(self):
         self.flagT = True
-        self.t3addrs, self.t3signs = tn_addrs_signs(self.nocc_cas + self.nvir_cas, self.nocc_cas, 3)
-        self.index3 = numpy.argsort(self.t3addrs)
-        T_aaa_us  = self.fcivec[self.t3addrs, 0] * self.t3signs
+
+        if self.nocc_cas < 2 or self.nvir_cas < 2:
+            return
+
         T_aab_us  = numpy.einsum('ij,i,j->ij', self.fcivec[self.t2addrs[:,None], self.t1addrs], self.t2signs, self.t1signs)
         T_abb_us  = numpy.einsum('ij,i,j->ij', self.fcivec[self.t1addrs[:,None], self.t2addrs], self.t1signs, self.t2signs)
-        T_bbb_us  = self.fcivec[0, self.t3addrs] * self.t3signs
 
-        self.T_aaa  = T_aaa_us[self.index3]
         T_aab_t     = T_aab_us[self.index2,:]
         self.T_aab  = T_aab_t[:,self.index1]
         T_abb_t     = T_abb_us[self.index1,:]
         self.T_abb  = T_abb_t[:,self.index2]
+
+        if self.nocc_cas < 3 or self.nvir_cas < 3:
+            return
+
+        self.t3addrs, self.t3signs = tn_addrs_signs(self.nocc_cas + self.nvir_cas, self.nocc_cas, 3)
+        self.index3 = numpy.argsort(self.t3addrs)
+        T_aaa_us  = self.fcivec[self.t3addrs, 0] * self.t3signs
+        T_bbb_us  = self.fcivec[0, self.t3addrs] * self.t3signs
+        self.T_aaa  = T_aaa_us[self.index3]
         self.T_bbb  = T_bbb_us[self.index3]
 
-    def get_Q(self):
-        self.flagQ = True
-        self.t4addrs, self.t4signs = tn_addrs_signs(self.nocc_cas + self.nvir_cas, self.nocc_cas, 4)
-        self.index4 = numpy.argsort(self.t4addrs)
-        Q_aaaa_us = self.fcivec[self.t4addrs, 0] * self.t4signs
-        Q_aaab_us = numpy.einsum('ij,i,j->ij', self.fcivec[self.t3addrs[:,None], self.t1addrs], self.t3signs, self.t1signs)
-        Q_aabb_us = numpy.einsum('ij,i,j->ij', self.fcivec[self.t2addrs[:,None], self.t2addrs], self.t2signs, self.t2signs)
-        Q_abbb_us = numpy.einsum('ij,i,j->ij', self.fcivec[self.t1addrs[:,None], self.t3addrs], self.t1signs, self.t3signs)
-        Q_bbbb_us = self.fcivec[0, self.t4addrs] * self.t4signs
 
-        self.Q_aaaa = Q_aaaa_us[self.index4]
-        Q_aaab_t    = Q_aaab_us[self.index3,:]
-        self.Q_aaab = Q_aaab_t[:,self.index1]
+    def get_Q(self):
+
+        if self.nocc_cas < 2 or self.nvir_cas < 2:
+            return
+
+        self.flagQ = True
+        Q_aabb_us = numpy.einsum('ij,i,j->ij', self.fcivec[self.t2addrs[:,None], self.t2addrs], self.t2signs, self.t2signs)
         Q_aabb_t    = Q_aabb_us[self.index2,:]
         self.Q_aabb = Q_aabb_t[:,self.index2]
+
+        if self.nocc_cas < 3 or self.nvir_cas < 3:
+            return
+
+        Q_aaab_us = numpy.einsum('ij,i,j->ij', self.fcivec[self.t3addrs[:,None], self.t1addrs], self.t3signs, self.t1signs)
+        Q_abbb_us = numpy.einsum('ij,i,j->ij', self.fcivec[self.t1addrs[:,None], self.t3addrs], self.t1signs, self.t3signs)
+        Q_aaab_t    = Q_aaab_us[self.index3,:]
+        self.Q_aaab = Q_aaab_t[:,self.index1]
         Q_abbb_t    = Q_abbb_us[self.index1,:]
         self.Q_abbb = Q_abbb_t[:,self.index3]
-        self.Q_bbbb = Q_bbbb_us[self.index4]
+
+        #self.t4addrs, self.t4signs = tn_addrs_signs(self.nocc_cas + self.nvir_cas, self.nocc_cas, 4)
+        #self.index4 = numpy.argsort(self.t4addrs)
+        #Q_aaaa_us = self.fcivec[self.t4addrs, 0] * self.t4signs
+
+        #Q_bbbb_us = self.fcivec[0, self.t4addrs] * self.t4signs
+
+        #self.Q_aaaa = Q_aaaa_us[self.index4]
+        #self.Q_bbbb = Q_bbbb_us[self.index4]
+
+    def interm_norm_test(self, T=True, Q=True):
+        self.interm_norm_S = True 
+        self.interm_norm_D = True 
+
+        self.S_a    = self.S_a    / self.Ref[0]
+        self.D_ab   = self.D_ab   / self.Ref[0]
+
+        if self.nocc_cas < 2 or self.nvir_cas < 2:
+            return
+
+        self.D_aa   = self.D_aa   / self.Ref[0]
+        if(T): 
+           self.interm_norm_T = True 
+           self.T_aab  = self.T_aab / self.Ref[0]
+        if(Q): 
+           self.interm_norm_Q = True 
+           self.Q_aabb = self.Q_aabb/ self.Ref[0]
+
+        if self.nocc_cas < 3 or self.nvir_cas < 3:
+            return
+
+        if(T): 
+           self.interm_norm_T = True 
+           self.T_aaa  = self.T_aaa / self.Ref[0]
+        if(Q): 
+           self.interm_norm_Q = True 
+           self.Q_aaab = self.Q_aaab/ self.Ref[0]
 
     def interm_norm(self, T=True, Q=True):
         self.interm_norm_S = True 
         self.interm_norm_D = True 
 
         self.S_a    = self.S_a    / self.Ref[0]
-        self.D_aa   = self.D_aa   / self.Ref[0]
         self.D_ab   = self.D_ab   / self.Ref[0]
+
+        if self.nocc_cas < 2 or self.nvir_cas < 2:
+            return
+
+        self.D_aa   = self.D_aa   / self.Ref[0]
         if(T): 
            self.interm_norm_T = True 
            self.T_aaa  = self.T_aaa / self.Ref[0]
@@ -173,18 +242,34 @@ class fci_coeff:
         n_a  = 0
         n_ab = 0
 
-        for i in range(self.nocc_cas):
-            ip = i+self.nocc_iact
-            for a in range(self.nvir_cas):
-                t1f[ip][a] = 1.0
+        if self.nocc_tcas is not None and self.nvir_tcas is not None:
+            nocc_iact = self.nocc_corr - self.nocc_tcas 
 
-        for i in range(self.nocc_cas):
-            ip = i+self.nocc_iact
-            for j in range(self.nocc_cas):
-                jp = j+self.nocc_iact
+            for i in range(self.nocc_tcas):
+                ip = i+nocc_iact
+                for a in range(self.nvir_tcas):
+                    t1f[ip,a] = 1.0
+    
+            for i in range(self.nocc_tcas):
+                ip = i+nocc_iact
+                for j in range(self.nocc_tcas):
+                    jp = j+nocc_iact
+                    for a in range(self.nvir_tcas):
+                        for b in range(self.nvir_tcas):
+                            t2f[ip,jp,a,b] = 1.0
+        else:
+            for i in range(self.nocc_cas):
+                ip = i+self.nocc_iact
                 for a in range(self.nvir_cas):
-                    for b in range(self.nvir_cas):
-                        t2f[ip][jp][a][b] = 1.0
+                    t1f[ip,a] = 1.0
+    
+            for i in range(self.nocc_cas):
+                ip = i+self.nocc_iact
+                for j in range(self.nocc_cas):
+                    jp = j+self.nocc_iact
+                    for a in range(self.nvir_cas):
+                        for b in range(self.nvir_cas):
+                            t2f[ip,jp,a,b] = 1.0
         return t1f, t2f
 
 class ufci_coeff: 

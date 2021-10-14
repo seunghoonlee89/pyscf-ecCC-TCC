@@ -1700,9 +1700,9 @@ def tcc_kernel_new(mycc, coeff, eris=None, t1=None, t2=None, max_cycle=50, tol=1
         norm += numpy.sum(numpy.square (coeff.S_b))
         log.info('   0S (S) = %f ( %f )'%(norm, norm-norm0))
         norm0S = norm
-        norm += numpy.sum(numpy.square ( coeff.D_aa ))
+        #norm += numpy.sum(numpy.square ( coeff.D_aa ))
         norm += numpy.sum(numpy.square ( coeff.D_ab ))
-        norm += numpy.sum(numpy.square ( coeff.D_bb ))
+        #norm += numpy.sum(numpy.square ( coeff.D_bb ))
         log.info('  0SD (D) = %f ( %f )'%(norm, norm-norm0S))
     
         log.info('max_memory %d MB (current use %d MB)',
@@ -1726,8 +1726,13 @@ def tcc_kernel_new(mycc, coeff, eris=None, t1=None, t2=None, max_cycle=50, tol=1
         t2 = mycc.ci2cc.t2
 
         mycc.t1f, mycc.t2f = coeff.tcc_tcas_idx()
+
+        #t1zero = numpy.zeros(t1.shape)
+        #t2zero = numpy.zeros(t2.shape)
+        #t1 = t1 * mycc.t1f + t1zero * (1-mycc.t1f)
+        #t2 = t2 * mycc.t2f + t2zero * (1-mycc.t2f)
     else:
-        raise RuntimeError('Not Implemented Yet')
+        #raise RuntimeError('Not Implemented Yet')
         mycc.t1f = numpy.zeros((nocc,nvir), dtype=numpy.float64)
         mycc.t2f = numpy.zeros((nocc,nocc,nvir,nvir), dtype=numpy.float64)
         nocc_tcas = coeff.nocc_tcas

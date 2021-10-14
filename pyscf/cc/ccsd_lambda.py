@@ -33,7 +33,7 @@ from pyscf.cc import _ccsd
 
 # t2,l2 as ijab
 def kernel(mycc, eris=None, t1=None, t2=None, l1=None, l2=None,
-           max_cycle=50, tol=1e-8, verbose=logger.INFO,
+           max_cycle=50, tol=1e-8, TCC=False, verbose=logger.INFO,
            fintermediates=None, fupdate=None):
     if eris is None: eris = mycc.ao2mo()
     cput0 = (time.clock(), time.time())
@@ -43,11 +43,19 @@ def kernel(mycc, eris=None, t1=None, t2=None, l1=None, l2=None,
     if t2 is None: t2 = mycc.t2
     if l1 is None: l1 = t1
     if l2 is None: l2 = t2
+    if TCC: 
+        # keep active lambda as zero
+        t1f = mycc.t1f
+        t2f = mycc.t2f
+        l1zero = numpy.zeros(t1.shape)
+        l2zero = numpy.zeros(t2.shape)
+        l1 = l1zero * t1f + l1 * (1-t1f)
+        l2 = l2zero * t2f + l2 * (1-t2f)        
+
     if fintermediates is None:
         fintermediates = make_intermediates
     if fupdate is None:
         fupdate = update_lambda
-
     imds = fintermediates(mycc, t1, t2, eris)
 
     if isinstance(mycc.diis, lib.diis.DIIS):
@@ -61,7 +69,7 @@ def kernel(mycc, eris=None, t1=None, t2=None, l1=None, l2=None,
 
     conv = False
     for istep in range(max_cycle):
-        l1new, l2new = fupdate(mycc, t1, t2, l1, l2, eris, imds)
+        l1new, l2new = fupdate(mycc, t1, t2, l1, l2, eris, imds, TCC)
         normt = numpy.linalg.norm(mycc.amplitudes_to_vector(l1new, l2new) -
                                   mycc.amplitudes_to_vector(l1, l2))
         l1, l2 = l1new, l2new
@@ -237,7 +245,7 @@ def make_intermediates(mycc, t1, t2, eris):
 
 
 # update L1, L2
-def update_lambda(mycc, t1, t2, l1, l2, eris=None, imds=None):
+def update_lambda(mycc, t1, t2, l1, l2, eris=None, imds=None, TCC=False):
     if imds is None: imds = make_intermediates(mycc, t1, t2, eris)
     time1 = time0 = time.clock(), time.time()
     log = logger.Logger(mycc.stdout, mycc.verbose)
@@ -364,6 +372,13 @@ def update_lambda(mycc, t1, t2, l1, l2, eris=None, imds=None):
             l2new[:i,i] = l2new[i,:i].transpose(0,2,1)
         l2new[i,i] = l2new[i,i] + l2new[i,i].T
         l2new[i,i] /= lib.direct_sum('a,b->ab', eia[i], eia[i])
+
+    if TCC: 
+        # keep active lambda as zero
+        t1f = mycc.t1f
+        t2f = mycc.t2f
+        l1new = l1 * t1f + l1new * (1-t1f)
+        l2new = l2 * t2f + l2new * (1-t2f)        
 
     time0 = log.timer_debug1('update l1 l2', *time0)
     return l1new, l2new

@@ -1143,7 +1143,11 @@ class ci2cc_mem:
 
     def c2_to_t2_tcc_tmp(self, coeff, numzero=1e-12):
         if coeff.rcas:
-            c2aa = coeff.D_aa.copy()
+            if self.nocc_cas > 1 and self.nvir_cas > 1:
+                c2aa = coeff.D_aa.copy()
+            else:
+                c2aa = numpy.zeros((int(self.nocc_cas*(self.nocc_cas-1)/2))) 
+
             c2ab = coeff.D_ab.copy()
     
             nocc_corr = self.nocc_corr

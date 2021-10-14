@@ -116,20 +116,23 @@ class dmrg_coeff:
 
         for idet in range(self.num_det):
             typ = self.typ_det[idet]
+            parity  = 1
             if (typ == "rf"):
                self.Ref[0] = self.data.loc[idet,"1"] 
             elif (typ == "a"):
                i = int(self.data.loc[idet,"1"]) + nc
                a = int(self.data.loc[idet,"2"]) - nocc_cas 
                ia = self.idx.S(i, a) 
-               self.S_a[ia] = self.data.loc[idet,"3"] 
+               parity = self.parity_ci_to_cc(i, 1)
+               self.S_a[ia] = parity * self.data.loc[idet,"3"] 
             elif (typ == "aa"):
                i = int(self.data.loc[idet,"1"]) + nc
                j = int(self.data.loc[idet,"2"]) + nc
                a = int(self.data.loc[idet,"3"]) - nocc_cas 
                b = int(self.data.loc[idet,"4"]) - nocc_cas 
                ijab = self.idx.D(i, j, a, b) 
-               self.D_aa[ijab] = self.data.loc[idet,"5"] 
+               parity = self.parity_ci_to_cc(i+j, 2)
+               self.D_aa[ijab] = parity * self.data.loc[idet,"5"] 
             elif (typ == "ab"):
                i = int(self.data.loc[idet,"1"]) + nc
                a = int(self.data.loc[idet,"2"]) - nocc_cas
@@ -137,7 +140,9 @@ class dmrg_coeff:
                b = int(self.data.loc[idet,"4"]) - nocc_cas
                ia = self.idx.S(i, a) 
                jb = self.idx.S(j, b) 
-               self.D_ab[ia][jb] = self.data.loc[idet,"5"] 
+               parity  = self.parity_ci_to_cc(i, 1)
+               parity *= self.parity_ci_to_cc(j, 1)
+               self.D_ab[ia][jb] = parity * self.data.loc[idet,"5"] 
             elif (typ == "aaa"):
                i = int(self.data.loc[idet,"1"]) + nc
                j = int(self.data.loc[idet,"2"]) + nc
@@ -146,7 +151,8 @@ class dmrg_coeff:
                b = int(self.data.loc[idet,"5"]) - nocc_cas
                c = int(self.data.loc[idet,"6"]) - nocc_cas
                ijkabc = self.idx.T(i, j, k, a, b, c) 
-               self.T_aaa[ijkabc] = self.data.loc[idet,"7"] 
+               parity  = self.parity_ci_to_cc(i+j+k, 3)
+               self.T_aaa[ijkabc] = parity * self.data.loc[idet,"7"] 
             elif (typ == "aab"):
                i = int(self.data.loc[idet,"1"]) + nc
                j = int(self.data.loc[idet,"2"]) + nc
@@ -156,7 +162,9 @@ class dmrg_coeff:
                c = int(self.data.loc[idet,"6"]) - nocc_cas 
                ijab = self.idx.D(i, j, a, b) 
                kc   = self.idx.S(k, c) 
-               self.T_aab[ijab][kc] = self.data.loc[idet,"7"] 
+               parity  = self.parity_ci_to_cc(i+j, 2)
+               parity *= self.parity_ci_to_cc(k, 1)
+               self.T_aab[ijab][kc] = parity * self.data.loc[idet,"7"] 
             elif (typ == "aaab"):
                i = int(self.data.loc[idet,"1"]) + nc
                j = int(self.data.loc[idet,"2"]) + nc
@@ -168,7 +176,9 @@ class dmrg_coeff:
                d = int(self.data.loc[idet,"8"]) - nocc_cas 
                ijkabc = self.idx.T(i, j, k, a, b, c) 
                ld     = self.idx.S(l, d) 
-               self.Q_aaab[ijkabc][ld] = self.data.loc[idet,"9"] 
+               parity  = self.parity_ci_to_cc(i+j+k, 3)
+               parity *= self.parity_ci_to_cc(l, 1)
+               self.Q_aaab[ijkabc][ld] = parity * self.data.loc[idet,"9"] 
             elif (typ == "aabb"):
                i = int(self.data.loc[idet,"1"]) + nc
                j = int(self.data.loc[idet,"2"]) + nc
@@ -178,14 +188,14 @@ class dmrg_coeff:
                l = int(self.data.loc[idet,"6"]) + nc
                c = int(self.data.loc[idet,"7"]) - nocc_cas
                d = int(self.data.loc[idet,"8"]) - nocc_cas
-
+               parity  = self.parity_ci_to_cc(i+j, 2)
+               parity *= self.parity_ci_to_cc(k+l, 2)
 #               if i == 2 and j == 3 and a == 0 and b == 1 \
 #              and k == 2 and l == 3 and c == 0 and d == 1:
                if True:
                    ijab = self.idx.D(i, j, a, b) 
                    klcd = self.idx.D(k, l, c, d) 
-                   self.Q_aabb[ijab][klcd] = self.data.loc[idet,"9"] 
-
+                   self.Q_aabb[ijab][klcd] = parity * self.data.loc[idet,"9"] 
 
         self.S_b    = self.S_a
         self.D_bb   = self.D_aa
