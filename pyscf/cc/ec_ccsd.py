@@ -179,12 +179,29 @@ def energy(cc, t1=None, t2=None, eris=None):
 class ecRCCSD(ccsd.CCSD):
     '''restricted externally corrected CCSD
     '''
-    def kernel(self, nocc_corr, nvir_corr, nocc_cas, nvir_cas, ext_source="Arrow", t1=None, t2=None, eris=None, numzero=0.0, coeff=None, skip_idx=None):
+    def kernel(self, mc, nocc_cas=None, nvir_cas=None, nocc_corr=None, nvir_corr=None, nocc_tcas=None, nvir_tcas=None, ext_source="FCI", t1=None, t2=None, eris=None, numzero=0.0, coeff=None, skip_idx=None):
+
+        if nocc_cas  == None:
+            assert (mc.nelecas[0] + mc.nelecas[1]) % 2 == 0
+            nocc_cas  = (mc.nelecas[0] + mc.nelecas[1]) // 2
+        if nvir_cas  == None:
+            nvir_cas  = mc.ncas - nocc_cas
+        if nocc_corr == None:
+            nocc_corr = self.mol.nelectron // 2
+        if nvir_corr == None:
+            nvir_corr = self.mo_coeff.shape[1] - nocc_corr
 
         if coeff == None:
             import os
+            if ext_source == "FCI" or ext_source == "fci":
+                fcivec = mc.ci            
+                from pyscf.cc.fci_index import fci_index_nomem
+                idx = fci_index_nomem(nocc_cas, nvir_cas) 
+                from pyscf.cc.fci_coeff import fci_coeff 
+                self.coeff = fci_coeff(mc.ci, nocc_cas, nvir_cas, idx)
+
             # DUMP file for CI coeff 
-            if ext_source == "Arrow" or ext_source == "ARROW" or ext_source == "arrow":
+            elif ext_source == "Arrow" or ext_source == "ARROW" or ext_source == "arrow":
                 # TODO: to remove this (automatically generate CIcoeff_shci.out or t3, t4 files)
                 # TODO: get_CIcoef_SHCI.sh -> python script 
                 os.system('get_CIcoef_SHCI.sh output.dat > CIcoeff_shci.out')

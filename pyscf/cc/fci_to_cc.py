@@ -155,7 +155,7 @@ class fci_to_cc:
 
         self.t2 = self.t2ab 
 
-    def c3_to_t3(self, c3aaa, c3aab):
+    def c3_to_t3(self, c3aaa, c3aab, numzero=1e-9):
         nocc = self.nocc
         nvir = self.nvir
         self.t3    = numpy.zeros((nocc,nocc,nocc,nvir,nvir,nvir), dtype=numpy.float64)
@@ -181,12 +181,13 @@ class fci_to_cc:
                 ap, bp, pv = reorder(idx_v)
                 ijab = self.idx.D(ip, jp, ap, bp) 
                 kc   = self.idx.S(k, c) 
-                t3ind_aab  = self.t1xt2aab(i, j, k, a, b, c)
-                t3ind_aab += self.t1xt1xt1aab(i, j, k, a, b, c)
-#                t3ind_aab  = self.t1xt2(i, j, k, a, b, c, 'aab')
-#                t3ind_aab += self.t1xt1xt1(i, j, k, a, b, c, 'aab')
-                self.t3aab[i][j][k][a][b][c] = po*pv*c3aab[ijab,kc].copy() - t3ind_aab
-                if self.dbg and abs(self.t3aab[i][j][k][a][b][c])>0.001: print ('aab %d %d %d %d %d %d %20.10f %20.10f'%(i+1,j+1,k+1,a+nocc+1,b+nocc+1,c+nocc+1,self.t3aab[i][j][k][a][b][c], po*pv*c3aab[ijab,kc]))
+                if abs(c3aab[ijab,kc]) > numzero:
+                    t3ind_aab  = self.t1xt2aab(i, j, k, a, b, c)
+                    t3ind_aab += self.t1xt1xt1aab(i, j, k, a, b, c)
+#                    t3ind_aab  = self.t1xt2(i, j, k, a, b, c, 'aab')
+#                    t3ind_aab += self.t1xt1xt1(i, j, k, a, b, c, 'aab')
+                    self.t3aab[i][j][k][a][b][c] = po*pv*c3aab[ijab,kc].copy() - t3ind_aab
+                    if self.dbg and abs(self.t3aab[i][j][k][a][b][c])>0.001: print ('aab %d %d %d %d %d %d %20.10f %20.10f'%(i+1,j+1,k+1,a+nocc+1,b+nocc+1,c+nocc+1,self.t3aab[i][j][k][a][b][c], po*pv*c3aab[ijab,kc]))
 
             if i != j and j != k and k != i \
             and a != b and b != c and c != a:
@@ -196,11 +197,12 @@ class fci_to_cc:
                 ap, bp, cp, pv = reorder(idx_v)
 
                 ijkabc = self.idx.T(ip, jp, kp, ap, bp, cp) 
-                t3ind_aaa  = self.t1xt2aaa(i, j, k, a, b, c)
-                t3ind_aaa += self.t1xt1xt1aaa(i, j, k, a, b, c)
-#                t3ind_aaa  = self.t1xt2(i, j, k, a, b, c, 'aaa')
-#                t3ind_aaa += self.t1xt1xt1(i, j, k, a, b, c, 'aaa')
-                self.t3aaa[i][j][k][a][b][c] = po*pv*c3aaa[ijkabc].copy() - t3ind_aaa
+                if abs(c3aab[ijab,kc]) > numzero:
+                    t3ind_aaa  = self.t1xt2aaa(i, j, k, a, b, c)
+                    t3ind_aaa += self.t1xt1xt1aaa(i, j, k, a, b, c)
+#                    t3ind_aaa  = self.t1xt2(i, j, k, a, b, c, 'aaa')
+#                    t3ind_aaa += self.t1xt1xt1(i, j, k, a, b, c, 'aaa')
+                    self.t3aaa[i][j][k][a][b][c] = po*pv*c3aaa[ijkabc].copy() - t3ind_aaa
 #lsh TODO: don't make t3aaa, t3aab to make t3 and t3p
         self.t3_rccsd()
 
@@ -279,7 +281,7 @@ class fci_to_cc:
 #lsh TODO: don't make t3aaa, t3aab to make t3 and t3p
         self.t3_rccsd()
 
-    def c4_to_t4(self, c4aaab, c4aabb):
+    def c4_to_t4(self, c4aaab, c4aabb, numzero=1e-9):
         nocc = self.nocc
         nvir = self.nvir
         self.t4 = numpy.zeros((nocc,nocc,nocc,nocc,nvir,nvir,nvir,nvir), dtype=numpy.float64)
@@ -311,21 +313,22 @@ class fci_to_cc:
                 klcd = self.idx.D(kp, lp, cp, dp) 
                 parity = po1 * po2 * pv1 * pv2
 
-                t4ind_aabb = 0.0
-                t4ind_aabb  = self.t1xt3aabb(i, j, k, l, a, b, c, d)
-                t4ind_aabb += self.t2xt2aabb(i, j, k, l, a, b, c, d)
-                t4ind_aabb += self.t1xt1xt2aabb(i, j, k, l, a, b, c, d)
-                t4ind_aabb += self.t1xt1xt1xt1aabb(i, j, k, l, a, b, c, d)
-
-#                t4ind_aabb  = self.t1xt3(i, j, k, l, a, b, c, d, 'aabb')
-#                t4ind_aabb += self.t2xt2(i, j, k, l, a, b, c, d, 'aabb')
-#                t4ind_aabb += self.t1xt1xt2(i, j, k, l, a, b, c, d, 'aabb')
-#                t4ind_aabb += self.t1xt1xt1xt1(i, j, k, l, a, b, c, d, 'aabb')
-#                self.t4aabb[i][j][k][l][a][b][c][d] = parity*c4aabb[ijab,klcd]
-#                self.t4aabb[i][j][k][l][a][b][c][d] = 0.0 
-                self.t4aabb[i][j][k][l][a][b][c][d] = parity*c4aabb[ijab,klcd].copy() - t4ind_aabb
+                if abs(c4aabb[ijab,klcd]) > numzero:
+                    t4ind_aabb = 0.0
+                    t4ind_aabb  = self.t1xt3aabb(i, j, k, l, a, b, c, d)
+                    t4ind_aabb += self.t2xt2aabb(i, j, k, l, a, b, c, d)
+                    t4ind_aabb += self.t1xt1xt2aabb(i, j, k, l, a, b, c, d)
+                    t4ind_aabb += self.t1xt1xt1xt1aabb(i, j, k, l, a, b, c, d)
+    
+    #                t4ind_aabb  = self.t1xt3(i, j, k, l, a, b, c, d, 'aabb')
+    #                t4ind_aabb += self.t2xt2(i, j, k, l, a, b, c, d, 'aabb')
+    #                t4ind_aabb += self.t1xt1xt2(i, j, k, l, a, b, c, d, 'aabb')
+    #                t4ind_aabb += self.t1xt1xt1xt1(i, j, k, l, a, b, c, d, 'aabb')
+    #                self.t4aabb[i][j][k][l][a][b][c][d] = parity*c4aabb[ijab,klcd]
+    #                self.t4aabb[i][j][k][l][a][b][c][d] = 0.0 
+                    self.t4aabb[i][j][k][l][a][b][c][d] = parity*c4aabb[ijab,klcd].copy() - t4ind_aabb
 #lsh test
-                if self.dbg and abs(self.t4aabb[i][j][k][l][a][b][c][d])>0.001: print ('aabb %d %d %d %d %d %d %d %d %20.10f %20.10f'%(i+1,j+1,k+1,l+1,a+self.nocc+1,b+self.nocc+1,c+self.nocc+1,d+self.nocc+1,self.t4aabb[i][j][k][l][a][b][c][d], parity*c4aabb[ijab,klcd]))
+                    if self.dbg and abs(self.t4aabb[i][j][k][l][a][b][c][d])>0.001: print ('aabb %d %d %d %d %d %d %d %d %20.10f %20.10f'%(i+1,j+1,k+1,l+1,a+self.nocc+1,b+self.nocc+1,c+self.nocc+1,d+self.nocc+1,self.t4aabb[i][j][k][l][a][b][c][d], parity*c4aabb[ijab,klcd]))
 
             if i != j and j != k and k != i \
             and a != b and b != c and c != a:
@@ -336,20 +339,20 @@ class fci_to_cc:
                 ijkabc = self.idx.T(ip, jp, kp, ap, bp, cp) 
                 ld   = self.idx.S(l, d) 
 
-
-                t4ind_aaab = 0.0
-                t4ind_aaab  = self.t1xt3aaab(i, j, k, l, a, b, c, d)
-                t4ind_aaab += self.t2xt2aaab(i, j, k, l, a, b, c, d)
-                t4ind_aaab += self.t1xt1xt2aaab(i, j, k, l, a, b, c, d)
-                t4ind_aaab += self.t1xt1xt1xt1aaab(i, j, k, l, a, b, c, d)
-
-#                t4ind_aaab  = self.t1xt3(i, j, k, l, a, b, c, d, 'aaab')
-#                t4ind_aaab += self.t2xt2(i, j, k, l, a, b, c, d, 'aaab')
-#                t4ind_aaab += self.t1xt1xt2(i, j, k, l, a, b, c, d, 'aaab')
-#                t4ind_aaab += self.t1xt1xt1xt1(i, j, k, l, a, b, c, d, 'aaab')
-#                self.t4aaab[i][j][k][l][a][b][c][d] = po*pv*c4aaab[ijkabc,ld]
-                self.t4aaab[i][j][k][l][a][b][c][d] = po*pv*c4aaab[ijkabc,ld].copy() - t4ind_aaab
-                if self.dbg and abs(self.t4aaab[i][j][k][l][a][b][c][d])>0.001: print ('aaab %d %d %d %d %d %d %d %d %20.10f %20.10f'%(i+1,j+1,k+1,l+1,a+self.nocc+1,b+self.nocc+1,c+self.nocc+1,d+self.nocc+1,self.t4aaab[i][j][k][l][a][b][c][d], parity*c4aaab[ijab,klcd]))
+                if abs(c4aaab[ijkabc,ld]) > numzero:
+                    t4ind_aaab = 0.0
+                    t4ind_aaab  = self.t1xt3aaab(i, j, k, l, a, b, c, d)
+                    t4ind_aaab += self.t2xt2aaab(i, j, k, l, a, b, c, d)
+                    t4ind_aaab += self.t1xt1xt2aaab(i, j, k, l, a, b, c, d)
+                    t4ind_aaab += self.t1xt1xt1xt1aaab(i, j, k, l, a, b, c, d)
+    
+    #                t4ind_aaab  = self.t1xt3(i, j, k, l, a, b, c, d, 'aaab')
+    #                t4ind_aaab += self.t2xt2(i, j, k, l, a, b, c, d, 'aaab')
+    #                t4ind_aaab += self.t1xt1xt2(i, j, k, l, a, b, c, d, 'aaab')
+    #                t4ind_aaab += self.t1xt1xt1xt1(i, j, k, l, a, b, c, d, 'aaab')
+    #                self.t4aaab[i][j][k][l][a][b][c][d] = po*pv*c4aaab[ijkabc,ld]
+                    self.t4aaab[i][j][k][l][a][b][c][d] = po*pv*c4aaab[ijkabc,ld].copy() - t4ind_aaab
+                    if self.dbg and abs(self.t4aaab[i][j][k][l][a][b][c][d])>0.001: print ('aaab %d %d %d %d %d %d %d %d %20.10f %20.10f'%(i+1,j+1,k+1,l+1,a+self.nocc+1,b+self.nocc+1,c+self.nocc+1,d+self.nocc+1,self.t4aaab[i][j][k][l][a][b][c][d], parity*c4aaab[ijab,klcd]))
 #lsh TODO: don't make t4aaaa, t4aaab to make t4
         self.t4_rccsd()
 

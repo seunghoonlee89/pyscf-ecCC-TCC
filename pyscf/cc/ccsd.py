@@ -199,6 +199,16 @@ def ec_kernel(mycc, coeff, eris=None, t1=None, t2=None, max_cycle=50, tol=1e-8,
 #        log.info('max_memory %d MB (current use %d MB)',
 #                 mycc.max_memory, lib.current_memory()[0])
 #        cput1 = log.timer('extracting and contracting t3 for t1 eqn', *cput1)
+        if mycc.t3_0_t1_0_approx:
+            t2_t3t4c = t2_t4c.copy() 
+            tmp1  = einsum('kdlc,id->kilc', eris_ovov, ci2cc.t1)
+            tmp1 += eris_ooov.conj().copy()
+            tmp2  = -einsum('kcld,la->kcad', eris_ovov, ci2cc.t1)
+            tmp2 +=  eris_ovvv.conj().copy()
+            tmp3  = 2*einsum('kcld,ld->kc', eris_ovov, ci2cc.t1)
+            tmp3 +=  -einsum('kdlc,ld->kc', eris_ovov, ci2cc.t1)
+            tmp3 += np.asarray(fov).conj().copy()
+            coeff.get_t2t3c_omp_mem(t2_t3t4c, tmp1, tmp2, tmp3, ci2cc)
 
     elif mycc.restart <= 0 and not mycc.onthefly:  
         raise NotImplementedError
@@ -237,7 +247,17 @@ def ec_kernel(mycc, coeff, eris=None, t1=None, t2=None, max_cycle=50, tol=1e-8,
 #        cput1 = log.timer('extracting and contracting t3 for t1 eqn', *cput1)
 
     elif mycc.restart == 1:  
-        raise NotImplementedError
+        t1 = numpy.load('t1.npy')
+        t2 = numpy.load('t2.npy')
+        t1_t3c = numpy.load('t1t3c.npy')
+        t2_t3t4c = numpy.load('t2_t3t4c.npy')
+
+        mycc.ci2cc = ci2cc_mem(nocc_corr, nvir_corr, nocc_cas, nvir_cas, nocc_iact, None, None)
+        ci2cc = mycc.ci2cc
+        ci2cc.t1 = t1.copy()
+        ci2cc.t2ab = t2.copy()
+
+#        raise NotImplementedError
 #        mycc.ci2cc = fci_to_cc_c(nocc, nvir, coeff.idx, coeff.Ref)
 #        ci2cc = mycc.ci2cc
 #        ci2cc.read_t3aab()
@@ -251,7 +271,10 @@ def ec_kernel(mycc, coeff, eris=None, t1=None, t2=None, max_cycle=50, tol=1e-8,
     #TODO: need to be updated
     # save t1_t3c, t2_t4c, t3aab in csv file
     if mycc.restart == -1:
-        raise NotImplementedError
+        numpy.save('t1.npy',ci2cc.t1)
+        numpy.save('t2.npy',ci2cc.t2ab)
+        numpy.save('t2_t3t4c.npy',t2_t3t4c)
+        numpy.save('t1_t3c.npy',t1_t3c)
 #        import pandas as pd
 #        from pandas import DataFrame
 #        data_t1_t3c    = {'t1_t3c': t1_t3c.reshape(nocc*nvir)}
@@ -311,17 +334,6 @@ def ec_kernel(mycc, coeff, eris=None, t1=None, t2=None, max_cycle=50, tol=1e-8,
             tmp2 += np.asarray(fov).conj().copy()
             t2_t3t4c+=  einsum('kc,kijcab->ijab', tmp2, t3tmp)
     
-        elif mycc.onthefly:
-            t2_t3t4c = t2_t4c.copy() 
-            tmp1  = einsum('kdlc,id->kilc', eris_ovov, ci2cc.t1)
-            tmp1 += eris_ooov.conj().copy()
-            tmp2  = -einsum('kcld,la->kcad', eris_ovov, ci2cc.t1)
-            tmp2 +=  eris_ovvv.conj().copy()
-            tmp3  = 2*einsum('kcld,ld->kc', eris_ovov, ci2cc.t1)
-            tmp3 +=  -einsum('kdlc,ld->kc', eris_ovov, ci2cc.t1)
-            tmp3 += np.asarray(fov).conj().copy()
-            coeff.get_t2t3c_omp_mem(t2_t3t4c, tmp1, tmp2, tmp3, ci2cc)
-
 #        log.info('max_memory %d MB (current use %d MB)',
 #                 mycc.max_memory, lib.current_memory()[0])
 #        cput1 = log.timer('extracting and contracting t3 for t2 eqn', *cput1)
@@ -421,7 +433,7 @@ def ec_kernel_devel(mycc, coeff, eris=None, t1=None, t2=None, t3aaa=None, t3aab=
         eris = mycc.ao2mo(mycc.mo_coeff)
 
     ideal_correct = False 
-    cWrapper = True
+    cWrapper = False 
     dbg = False 
     t3_0_t1_0_approx = True
     t1t3c_onthefly = True

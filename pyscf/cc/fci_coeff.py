@@ -117,6 +117,53 @@ class fci_coeff:
         self.D_aa   = D_aa_us[self.index2]
         self.D_bb = self.D_aa
 
+    def get_SDT(self, nc, numzero=0.0):
+        self.flagS = True 
+        self.flagD = True
+        self.flagT = True
+
+        self.t1addrs, self.t1signs = tn_addrs_signs(self.nocc_cas + self.nvir_cas, self.nocc_cas, 1)
+        self.index1 = numpy.argsort(self.t1addrs)
+
+        self.Ref  = [self.fcivec[0, 0]]
+        S_a_us    = self.fcivec[self.t1addrs, 0] * self.t1signs
+        self.S_a    = S_a_us[self.index1]
+        self.S_b  = self.S_a
+
+        D_ab_us   = numpy.einsum('ij,i,j->ij', 
+                             self.fcivec[self.t1addrs[:,None], self.t1addrs], 
+                             self.t1signs, self.t1signs)
+        D_ab_t      = D_ab_us[self.index1,:]
+        self.D_ab   = D_ab_t[:,self.index1]
+
+        if self.nocc_cas < 2 or self.nvir_cas < 2:
+            return
+
+        self.t2addrs, self.t2signs = tn_addrs_signs(self.nocc_cas + self.nvir_cas, self.nocc_cas, 2)
+        self.index2 = numpy.argsort(self.t2addrs)
+
+        D_aa_us   = self.fcivec[self.t2addrs, 0] * self.t2signs
+        self.D_aa   = D_aa_us[self.index2]
+        self.D_bb = self.D_aa
+
+        T_aab_us  = numpy.einsum('ij,i,j->ij', self.fcivec[self.t2addrs[:,None], self.t1addrs], self.t2signs, self.t1signs)
+        T_abb_us  = numpy.einsum('ij,i,j->ij', self.fcivec[self.t1addrs[:,None], self.t2addrs], self.t1signs, self.t2signs)
+
+        T_aab_t     = T_aab_us[self.index2,:]
+        self.T_aab  = T_aab_t[:,self.index1]
+        T_abb_t     = T_abb_us[self.index1,:]
+        self.T_abb  = T_abb_t[:,self.index2]
+
+        if self.nocc_cas < 3 or self.nvir_cas < 3:
+            return
+
+        self.t3addrs, self.t3signs = tn_addrs_signs(self.nocc_cas + self.nvir_cas, self.nocc_cas, 3)
+        self.index3 = numpy.argsort(self.t3addrs)
+        T_aaa_us  = self.fcivec[self.t3addrs, 0] * self.t3signs
+        T_bbb_us  = self.fcivec[0, self.t3addrs] * self.t3signs
+        self.T_aaa  = T_aaa_us[self.index3]
+        self.T_bbb  = T_bbb_us[self.index3]
+
     def get_SD_test(self):
         self.flagS = True 
         self.flagD = True
